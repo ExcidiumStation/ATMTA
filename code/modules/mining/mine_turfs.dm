@@ -654,6 +654,73 @@ var/global/list/rockTurfEdgeCache = list(
 	return
 
 /**********************Lavaland Turfs**************************/
+///LAVA
+
+/turf/simulated/floor/plating/lava
+	name = "lava"
+	icon_state = "lava"
+	baseturf = /turf/simulated/floor/plating/lava //lava all the way down
+	slowdown = 2
+	luminosity = 1
+
+/turf/simulated/floor/plating/lava/airless
+	oxygen = 0
+	nitrogen = 0
+	temperature = TCMB
+
+/turf/simulated/floor/plating/lava/Entered(atom/movable/AM)
+	burn_stuff()
+
+/turf/simulated/floor/plating/lava/proc/burn_stuff()
+	. = 0
+	for(var/thing in contents)
+		if(istype(thing, /obj))
+			var/obj/O = thing
+			if(istype(O, /obj/effect/decal/cleanable/ash)) //So we don't get stuck burning the same ash pile forever
+				qdel(O)
+				continue
+			. = 1
+			if(O.burn_state == FIRE_PROOF)
+				O.burn_state = FLAMMABLE //Even fireproof things burn up in lava
+
+			O.fire_act()
+
+
+		else if (istype(thing, /mob/living))
+			. = 1
+			var/mob/living/L = thing
+			if("mining" in L.faction)
+				continue
+			L.adjustFireLoss(20)
+			if(L) //mobs turning into object corpses could get deleted here.
+				L.adjust_fire_stacks(20)
+				L.IgniteMob()
+
+
+/turf/simulated/floor/plating/lava/attackby(obj/item/C, mob/user, params) //Lava isn't a good foundation to build on
+	return
+
+/turf/simulated/floor/plating/lava/break_tile()
+	return
+
+/turf/simulated/floor/plating/lava/burn_tile()
+	return
+
+/turf/simulated/floor/plating/lava/attackby(obj/item/C, mob/user, params) //Lava isn't a good foundation to build on
+	return
+
+/turf/simulated/floor/plating/lava/smooth
+	name = "lava"
+	baseturf = /turf/simulated/floor/plating/lava/smooth
+	icon = 'icons/turf/floors/lava.dmi'
+	icon_state = "unsmooth"
+	canSmoothWith = list(/turf/simulated/wall, /turf/simulated/mineral, /turf/simulated/floor/plating/lava/smooth, /turf/simulated/floor/plating/lava/smooth/lava_land_surface
+	)
+
+/turf/simulated/floor/plating/lava/smooth/airless
+	oxygen = 0
+	nitrogen = 0
+	temperature = TCMB
 
 ///////Surface. The surface is warm, but survivable without a suit. Internals are required. The floors break to chasms, which drop you into the underground.
 /turf/simulated/floor/plating/asteroid/basalt
