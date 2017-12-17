@@ -154,7 +154,7 @@
 	name = "tranquilizer rifle"
 	desc = "A big brother to the tranquilizer pistol, it can fold up and fit into a backpack."
 	icon_state = "SL-8"
-	item_state = "ARC"
+	item_state = "SL-8"
 	mag_type = /obj/item/ammo_box/magazine/tranq
 	recoil = 0
 	fire_delay = 10
@@ -163,6 +163,12 @@
 	zoom_amt = 5 //Same as the Dragon
 	weapon_weight = WEAPON_LIGHT
 	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/weapon/gun/projectile/automatic/sniper_rifle/tranq/update_icon()
+	if(magazine)
+		icon_state = "SL-8-mag"
+	else
+		icon_state = "SL-8"
 
 /obj/item/ammo_box/magazine/tranq
 	name = "Tranquilizer rounds"
