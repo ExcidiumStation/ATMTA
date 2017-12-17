@@ -26,6 +26,12 @@
 		message_admins("[key_name_admin(usr)] rejected [key_name_admin(C.mob)]'s admin help")
 		log_admin("[key_name(usr)] rejected [key_name(C.mob)]'s admin help")
 
+	if(href_list["openadminticket"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/ticketID = text2num(href_list["openadminticket"])
+		globAdminTicketHolder.showDetailUI(usr, ticketID)
+
 	if(href_list["stickyban"])
 		stickyban(href_list["stickyban"],href_list)
 
@@ -242,16 +248,23 @@
 
 		else if(task == "permissions")
 			if(!D)	return
-			var/list/permissionlist = list()
-			for(var/i=1, i<=R_MAXPERMISSION, i<<=1)		//that <<= is shorthand for i = i << 1. Which is a left bitshift
-				permissionlist[rights2text(i)] = i
-			var/new_permission = input("Select a permission to turn on/off", "Permission toggle", null, null) as null|anything in permissionlist
-			if(!new_permission)	return
-			D.rights ^= permissionlist[new_permission]
+			while(TRUE)
+				var/list/permissionlist = list()
+				for(var/i=1, i<=R_MAXPERMISSION, i<<=1)		//that <<= is shorthand for i = i << 1. Which is a left bitshift
+					permissionlist[rights2text(i)] = i
+				var/new_permission = input("Select a permission to turn on/off", adm_ckey + "'s Permissions", null, null) as null|anything in permissionlist
+				if(!new_permission)
+					return
+				var/oldrights = D.rights
+				var/toggleresult = "ON"
+				D.rights ^= permissionlist[new_permission]
+				if(oldrights > D.rights)
+					toggleresult = "OFF"
 
-			message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey]")
-			log_admin("[key_name(usr)] toggled the [new_permission] permission of [adm_ckey]")
-			log_admin_permission_modification(adm_ckey, permissionlist[new_permission])
+				message_admins("[key_name_admin(usr)] toggled the [new_permission] permission of [adm_ckey] to [toggleresult]")
+				log_admin("[key_name(usr)] toggled the [new_permission] permission of [adm_ckey] to [toggleresult]")
+				log_admin_permission_modification(adm_ckey, permissionlist[new_permission])
+
 
 		edit_admin_permissions()
 
@@ -1642,7 +1655,7 @@
 		playsound(P.loc, 'sound/effects/adminpunish.ogg', 75, 0, 0, 1)
 		P.do_jitter_animation(20)
 		P.stuttering = 20
-		var/datum/effect/system/spark_spread/s = new /datum/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, P)
 		s.start()
 		log_admin("[key_name(src.owner)] punished [key_name(P)]")
@@ -1821,7 +1834,7 @@
 				H.gene_stability = 100
 				logmsg = "permanent regeneration."
 			if("Super Powers")
-				var/list/default_genes = list(REGENERATEBLOCK, NOBREATHBLOCK, COLDBLOCK)
+				var/list/default_genes = list(REGENERATEBLOCK, BREATHLESSBLOCK, COLDBLOCK)
 				for(var/gene in default_genes)
 					H.dna.SetSEState(gene, 1)
 					genemutcheck(H, gene,  null, MUTCHK_FORCED)
@@ -1999,6 +2012,20 @@
 		if(logmsg)
 			log_admin("[key_name(owner)] answered [key_name(M)]'s prayer with a smiting: [logmsg]")
 			message_admins("[key_name_admin(owner)] answered [key_name_admin(M)]'s prayer with a smiting: [logmsg]")
+	else if(href_list["cryossd"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/living/carbon/human/H = locateUID(href_list["cryossd"])
+		if(!istype(H))
+			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			return
+		if(!isLivingSSD(H))
+			to_chat(usr, "This can only be used on living, SSD players.")
+			return
+		var/success = cryo_ssd(H)
+		if(success)
+			log_admin("[key_name(usr)] sent [H.job] [H] to cryo.")
+			message_admins("[key_name_admin(usr)] sent [H.job] [H] to cryo.")
 	else if(href_list["FaxReplyTemplate"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -3435,7 +3462,7 @@
 		return
 	var/datum/outfit/O = hunter_outfits[dresscode]
 	message_admins("[key_name_admin(mob)] is sending a ([dresscode]) to [killthem ? "assassinate" : "protect"] [key_name_admin(H)]...")
-	var/list/candidates = pollCandidates("Play as a [killthem ? "murderous" : "protective"] [dresscode]?")
+	var/list/candidates = pollCandidates("Play as a [killthem ? "murderous" : "protective"] [dresscode]?", ROLE_TRAITOR, 1)
 	if(!candidates.len)
 		to_chat(usr, "ERROR: Could not create eventmob. No valid candidates.")
 		return

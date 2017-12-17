@@ -40,6 +40,11 @@
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "coconuts"
 
+/obj/effect/overlay/sparkles
+	name = "sparkles"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shieldsparkles"
+
 /obj/effect/overlay/adminoverlay
 	name = "adminoverlay"
 	icon = 'icons/effects/effects.dmi'
@@ -278,3 +283,10 @@
 /obj/effect/overlay/temp/cult/turf/open/floor
 	icon_state = "floorglow"
 	duration = 5
+
+/obj/effect/overlay/temp/shieldflash
+	icon_state = "shield-flash"
+	duration = 3
+
+/obj/effect/overlay/temp/shieldflash/New(var/flash_color)
+

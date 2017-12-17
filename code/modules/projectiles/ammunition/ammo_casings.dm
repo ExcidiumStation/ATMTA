@@ -134,7 +134,7 @@
 	name = "rubber shot"
 	desc = "A shotgun casing filled with densely-packed rubber balls, used to incapacitate crowds from a distance."
 	icon_state = "cshell"
-	projectile_type = /obj/item/projectile/bullet/rpellet
+	projectile_type = /obj/item/projectile/bullet/pellet/rubber
 	pellets = 6
 	variance = 25
 	materials = list(MAT_METAL=4000)
@@ -269,6 +269,17 @@
 	icon_state = "nshell"
 	projectile_type = /obj/item/projectile/bullet/dart/syringe/tranquilizer
 	materials = list(MAT_METAL=250)
+
+/obj/item/ammo_casing/shotgun/dart/special
+	icon_state = "dart-casing"
+	desc = "A dart for use in high caliber rifles. Can be injected with up to 30 units of any chemical."
+	projectile_type = /obj/item/projectile/bullet/dart/rifle
+	caliber = "9x39"
+
+/obj/item/ammo_casing/shotgun/dart/special/tranquilizer
+	icon_state = "tranq-casing"
+	desc = "A tranquilizer round used to subdue individuals."
+	projectile_type = /obj/item/projectile/bullet/dart/rifle/tranq
 
 /obj/item/ammo_casing/a556
 	desc = "A 5.56mm bullet casing."

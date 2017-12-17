@@ -65,6 +65,7 @@
 
 /mob/living/carbon/human/Destroy()
 	QDEL_LIST(bodyparts)
+	splinted_limbs.Cut()
 	return ..()
 
 /mob/living/carbon/human/dummy
@@ -401,7 +402,7 @@
 				Stuttering(power)
 				Stun(power)
 
-				var/datum/effect/system/spark_spread/s = new /datum/effect/system/spark_spread
+				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(5, 1, src)
 				s.start()
 
@@ -457,7 +458,14 @@
 	if(slot_wear_mask in obscured)
 		dat += "<tr><td><font color=grey><B>Mask:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
-		dat += "<tr><td><B>Mask:</B></td><td><A href='?src=[UID()];item=[slot_wear_mask]'>[(wear_mask && !(wear_mask.flags&ABSTRACT)) ? wear_mask : "<font color=grey>Empty</font>"]</A></td></tr>"
+		dat += "<tr><td><B>Mask:</B></td><td><A href='?src=[UID()];item=[slot_wear_mask]'>[(wear_mask && !(wear_mask.flags&ABSTRACT)) ? wear_mask : "<font color=grey>Empty</font>"]</A>"
+
+		if(istype(wear_mask, /obj/item/clothing/mask/muzzle))
+			var/obj/item/clothing/mask/muzzle/M = wear_mask
+			if(M.security_lock)
+				dat += "&nbsp;<A href='?src=[M.UID()];locked=\ref[src]'>[M.locked ? "Disable Lock" : "Set Lock"]</A>"
+
+		dat += "</td></tr><tr><td>&nbsp;</td></tr>"
 
 	if(!issmall(src))
 		if(slot_glasses in obscured)
@@ -799,7 +807,7 @@
 	if(href_list["criminal"])
 		if(hasHUD(usr,"security"))
 
-			var/modified = 0
+			var/found_record = 0
 			var/perpname = "wot"
 			if(wear_id)
 				var/obj/item/weapon/card/id/I = wear_id.GetID()
@@ -817,16 +825,33 @@
 							if(R.fields["id"] == E.fields["id"])
 
 								var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", R.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Parolled", "Released", "Cancel")
+								var/t1 = copytext(trim(sanitize(input("Enter Reason:", "Security HUD", null, null) as text)), 1, MAX_MESSAGE_LEN)
+								if(!t1)
+									t1 = "(none)"
 
-								if(hasHUD(usr, "security"))
-									if(setcriminal != "Cancel")
+								if(hasHUD(usr, "security") && setcriminal != "Cancel")
+									found_record = 1
+									var/their_name = R.fields["name"]
+									var/their_rank = R.fields["rank"]
+									if(R.fields["criminal"] == "*Execute*")
+										to_chat(usr, "<span class='warning'>Unable to modify the sec status of a person with an active Execution order. Use a security computer instead.</span>")
+									else
+										if(ishuman(usr))
+											var/mob/living/carbon/human/U = usr
+											R.fields["comments"] += "Set to [setcriminal] by [U.get_authentification_name()] ([U.get_assignment()]) on [current_date_string] [worldtime2text()] with comment: [t1]<BR>"
+										if(isrobot(usr))
+											var/mob/living/silicon/robot/U = usr
+											R.fields["comments"] += "Set to [setcriminal] by [U.name] ([U.modtype] [U.braintype]) on [current_date_string] [worldtime2text()] with comment: [t1]<BR>"
+										if(isAI(usr))
+											var/mob/living/silicon/ai/U = usr
+											R.fields["comments"] += "Set to [setcriminal] by [U.name] (artificial intelligence) on [current_date_string] [worldtime2text()] with comment: [t1]<BR>"
+
 										R.fields["criminal"] = setcriminal
-										modified = 1
-
+										log_admin("[key_name_admin(usr)] set secstatus of [their_rank] [their_name] to [setcriminal], comment: [t1]")
 										spawn()
 											sec_hud_set_security_status()
 
-			if(!modified)
+			if(!found_record)
 				to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
 
 	if(href_list["secrecord"])
@@ -1546,36 +1571,6 @@
 		src.custom_pain("You feel a stabbing pain in your chest!", 1)
 		L.damage = L.min_bruised_damage
 
-/*
-/mob/living/carbon/human/verb/simulate()
-	set name = "sim"
-	//set background = 1
-
-	var/damage = input("Wound damage","Wound damage") as num
-
-	var/germs = 0
-	var/tdamage = 0
-	var/ticks = 0
-	while(germs < 2501 && ticks < 100000 && round(damage/10)*20)
-		diary << "VIRUS TESTING: [ticks] : germs [germs] tdamage [tdamage] prob [round(damage/10)*20]"
-		ticks++
-		if(prob(round(damage/10)*20))
-			germs++
-		if(germs == 100)
-			to_chat(world, "Reached stage 1 in [ticks] ticks")
-		if(germs > 100)
-			if(prob(10))
-				damage++
-				germs++
-		if(germs == 1000)
-			to_chat(world, "Reached stage 2 in [ticks] ticks")
-		if(germs > 1000)
-			damage++
-			germs++
-		if(germs == 2500)
-			to_chat(world, "Reached stage 3 in [ticks] ticks")
-	to_chat(world, "Mob took [tdamage] tox damage")
-*/
 //returns 1 if made bloody, returns 0 otherwise
 
 /mob/living/carbon/human/clean_blood(var/clean_feet)
@@ -1681,10 +1676,6 @@
 
 	maxHealth = species.total_health
 
-	toxins_alert = 0
-	oxygen_alert = 0
-	fire_alert = 0
-
 	if(species.language)
 		add_language(species.language)
 
@@ -1696,13 +1687,9 @@
 
 	if(species.base_color && default_colour)
 		//Apply colour.
-		r_skin = color2R(species.base_color)
-		g_skin = color2G(species.base_color)
-		b_skin = color2B(species.base_color)
+		skin_colour = species.base_color
 	else
-		r_skin = 0
-		g_skin = 0
-		b_skin = 0
+		skin_colour = "#000000"
 
 	if(!(species.bodyflags & HAS_SKIN_TONE))
 		s_tone = 0
@@ -1726,29 +1713,17 @@
 
 	if(species.default_hair_colour)
 		//Apply colour.
-		H.r_hair = color2R(species.default_hair_colour)
-		H.g_hair = color2G(species.default_hair_colour)
-		H.b_hair = color2B(species.default_hair_colour)
+		H.hair_colour = species.default_hair_colour
 	else
-		H.r_hair = 0
-		H.g_hair = 0
-		H.b_hair = 0
+		H.hair_colour = "#000000"
 	if(species.default_fhair_colour)
-		H.r_facial = color2R(species.default_fhair_colour)
-		H.g_facial = color2G(species.default_fhair_colour)
-		H.b_facial = color2B(species.default_fhair_colour)
+		H.facial_colour = species.default_fhair_colour
 	else
-		H.r_facial = 0
-		H.g_facial = 0
-		H.b_facial = 0
+		H.facial_colour = "#000000"
 	if(species.default_headacc_colour)
-		H.r_headacc = color2R(species.default_headacc_colour)
-		H.g_headacc = color2G(species.default_headacc_colour)
-		H.b_headacc = color2B(species.default_headacc_colour)
+		H.headacc_colour = species.default_headacc_colour
 	else
-		H.r_headacc = 0
-		H.g_headacc = 0
-		H.b_headacc = 0
+		H.headacc_colour = "#000000"
 
 	m_styles = DEFAULT_MARKING_STYLES //Wipes out markings, setting them all to "None".
 	m_colours = DEFAULT_MARKING_COLOURS //Defaults colour to #00000 for all markings.
@@ -1879,8 +1854,8 @@
 
 		else if(robohead.is_monitor) //Means that the character's head is a monitor (has a screen). Time to customize.
 			var/list/hair = list()
-			for(var/i in hair_styles_list)
-				var/datum/sprite_accessory/hair/tmp_hair = hair_styles_list[i]
+			for(var/i in hair_styles_public_list)
+				var/datum/sprite_accessory/hair/tmp_hair = hair_styles_public_list[i]
 				if((head_organ.species.name in tmp_hair.species_allowed) && (robohead.company in tmp_hair.models_allowed)) //Populate the list of available monitor styles only with styles that the monitor-head is allowed to use.
 					hair += i
 
@@ -2050,6 +2025,8 @@
 		var/datum/data/record/R = find_record("name", perpname, data_core.security)
 		if(R && R.fields["criminal"])
 			switch(R.fields["criminal"])
+				if("*Execute*")
+					threatcount += 7
 				if("*Arrest*")
 					threatcount += 5
 				if("Incarcerated")
@@ -2322,8 +2299,26 @@
 
 	..()
 
-mob/living/carbon/human/get_taste_sensitivity()
+
+/mob/living/carbon/human/vv_get_dropdown()
+	. = ..()
+	. += "---"
+	.["Set Species"] = "?_src_=vars;setspecies=[UID()]"
+	.["Make AI"] = "?_src_=vars;makeai=[UID()]"
+	.["Make Mask of Nar'sie"] = "?_src_=vars;makemask=[UID()]"
+	.["Make cyborg"] = "?_src_=vars;makerobot=[UID()]"
+	.["Make monkey"] = "?_src_=vars;makemonkey=[UID()]"
+	.["Make alien"] = "?_src_=vars;makealien=[UID()]"
+	.["Make slime"] = "?_src_=vars;makeslime=[UID()]"
+	.["Make superhero"] = "?_src_=vars;makesuper=[UID()]"
+	. += "---"
+
+/mob/living/carbon/human/get_taste_sensitivity()
 	if(species)
 		return species.taste_sensitivity
 	else
 		return 1
+
+/mob/living/carbon/human/proc/special_post_clone_handling()
+	if(mind && mind.assigned_role == "Cluwne") //HUNKE your suffering never stops
+		makeCluwne()

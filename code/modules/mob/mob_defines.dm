@@ -100,8 +100,6 @@
 
 	var/in_throw_mode = 0
 
-	var/coughedtime = null
-
 	var/emote_cd = 0		// Used to supress emote spamming. 1 if on CD, 2 if disabled by admin (manually set), else 0
 
 	var/job = null//Living
@@ -188,6 +186,8 @@
 	var/list/active_genes = list()
 
 	var/last_movement = -100 // Last world.time the mob actually moved of its own accord.
+
+	var/last_logout = 0
 
 	var/resize = 1 //Badminnery resize
 

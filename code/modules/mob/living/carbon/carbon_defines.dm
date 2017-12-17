@@ -14,6 +14,8 @@
 	var/obj/item/head = null
 	var/obj/item/clothing/suit/wear_suit = null		//TODO: necessary? Are they even used? ~Carn
 
+	var/mob/living/simple_animal/borer/borer = null
+
 	//Active emote/pose
 	var/pose = null
 
@@ -21,12 +23,8 @@
 
 	var/wetlevel = 0 //how wet the mob is
 
-	var/oxygen_alert = 0
-	var/toxins_alert = 0
-	var/co2_alert = 0
-	var/fire_alert = 0
-
-	var/failed_last_breath = 0 //This is used to determine if the mob failed a breath. If they did fail a brath, they will attempt to breathe each tick, otherwise just once per 4 ticks.
+	var/failed_last_breath = FALSE //This is used to determine if the mob failed a breath. If they did fail a brath, they will attempt to breathe each tick, otherwise just once per 4 ticks.
+	var/list/active_effect = list()
 	var/co2overloadtime = null
 
 	blood_volume = BLOOD_VOLUME_NORMAL

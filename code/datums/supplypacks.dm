@@ -402,6 +402,45 @@ var/list/all_supply_groups = list(supply_emergency,supply_security,supply_engine
 	containername = "incendiary weapons crate"
 	access = access_heads
 
+/datum/supply_packs/security/enforcer
+	name = "Enforcer Pistol Crate"
+	contains = list(/obj/item/weapon/gun/projectile/automatic/pistol/enforcer,
+					/obj/item/weapon/gun/projectile/automatic/pistol/enforcer,
+					/obj/item/weapon/gun/projectile/automatic/pistol/enforcer,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45)
+	cost = 30
+	containername = "Enforcer pistol crate"
+
+/datum/supply_packs/security/enforcermag
+	name = "Enforcer Rubber Ammo Crate"
+	contains = list(/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45,
+					/obj/item/ammo_box/magazine/m45/enforcer45)
+	cost = 25
+	containername = "enforcer rubber ammo crate"
+
+/datum/supply_packs/security/enforcermaglethal
+	name = "Enforcer Lethal Ammo Crate"
+	contains = list(/obj/item/ammo_box/magazine/m45/enforcer45/lethal,
+					/obj/item/ammo_box/magazine/m45/enforcer45/lethal,
+					/obj/item/ammo_box/magazine/m45/enforcer45/lethal,
+					/obj/item/ammo_box/magazine/m45/enforcer45/lethal,
+					/obj/item/ammo_box/magazine/m45/enforcer45/lethal,
+					/obj/item/ammo_box/magazine/m45/enforcer45/lethal,
+					/obj/item/ammo_box/magazine/m45/enforcer45/lethal,
+					/obj/item/ammo_box/magazine/m45/enforcer45/lethal,
+					/obj/item/ammo_box/magazine/m45/enforcer45/lethal)
+	cost = 50
+	containername = "enforcer lethal ammo crate"
+
 /datum/supply_packs/security/armory/wt550
 	name = "WT-550 Auto Rifle Crate"
 	contains = list(/obj/item/weapon/gun/projectile/automatic/wt550,
@@ -417,6 +456,34 @@ var/list/all_supply_groups = list(supply_emergency,supply_security,supply_engine
 					/obj/item/ammo_box/magazine/wt550m9,)
 	cost = 30
 	containername = "auto rifle ammo crate"
+
+/datum/supply_packs/security/armory/tranqrifle
+	name = "Tranquilizer Rifle Crate"
+	contains = list(/obj/item/weapon/gun/projectile/automatic/sniper_rifle/tranq)
+	cost = 80
+	containername = "tranquilizer rifle crate"
+
+/datum/supply_packs/security/armory/tranqriflemag
+	name = "Tranquilizer Rifle Magazines Crate"
+	contains = list(/obj/item/ammo_box/magazine/tranq,
+					/obj/item/ammo_box/magazine/tranq)
+	cost = 40
+	containername = "tranquilizer rifle magazines crate"
+
+/datum/supply_packs/security/armory/tranqammo
+	name = "Tranquilizer Rifle Ammo Crate"
+	contains = list(/obj/item/ammo_box/tranqdarts,
+					/obj/item/ammo_box/tranqdarts)
+	cost = 30
+	containername = "tranquilizer rifle ammo crate"
+
+/datum/supply_packs/security/armory/tranqpistol
+	name = "Tranquilizer Pistol Crate"
+	contains = list(/obj/item/weapon/gun/projectile/revolver/tranqpistol,
+					/obj/item/weapon/gun/projectile/revolver/tranqpistol,
+					/obj/item/weapon/gun/projectile/revolver/tranqpistol)
+	cost = 20
+	containername = "tranquilizer pistol crate"
 
 /////// Implants & etc
 
@@ -949,7 +1016,8 @@ var/list/all_supply_groups = list(supply_emergency,supply_security,supply_engine
 	contains = list(/obj/item/pizzabox/margherita,
 					/obj/item/pizzabox/mushroom,
 					/obj/item/pizzabox/meat,
-					/obj/item/pizzabox/vegetable)
+					/obj/item/pizzabox/vegetable,
+					/obj/item/pizzabox/hawaiian)
 	cost = 60
 	containername = "Pizza crate"
 
@@ -1248,7 +1316,7 @@ var/list/all_supply_groups = list(supply_emergency,supply_security,supply_engine
 /datum/supply_packs/misc/watertank
 	name = "Water Tank Crate"
 	contains = list(/obj/structure/reagent_dispensers/watertank)
-	cost = 6
+	cost = 8
 	containertype = /obj/structure/largecrate
 	containername = "water tank crate"
 
@@ -1513,6 +1581,22 @@ var/list/all_supply_groups = list(supply_emergency,supply_security,supply_engine
 	containername = "foam force pistols crate"
 	contraband = 1
 
+/datum/supply_packs/misc/bigband
+	name = "Big band instrument collection"
+	contains = list(/obj/item/device/instrument/violin,
+					/obj/item/device/instrument/guitar,
+					/obj/item/device/instrument/eguitar,
+					/obj/item/device/instrument/glockenspiel,
+					/obj/item/device/instrument/accordion,
+					/obj/item/device/instrument/saxophone,
+					/obj/item/device/instrument/trombone,
+					/obj/item/device/instrument/recorder,
+					/obj/item/device/instrument/harmonica,
+					/obj/item/device/instrument/xylophone,
+					/obj/structure/piano)
+	cost = 50
+	containername = "Big band musical instruments collection"
+
 /datum/supply_packs/misc/randomised/contraband
 	num_contained = 5
 	contains = list(/obj/item/weapon/storage/pill_bottle/random_drug_bottle,
@@ -1645,6 +1729,26 @@ var/list/all_supply_groups = list(supply_emergency,supply_security,supply_engine
 					/obj/item/weapon/circuitboard/computer/sat_control
 					)
 	containername = "shield control board crate"
+
+///////////// Bathroom Fixtures
+
+/datum/supply_packs/misc/toilet
+	name = "Lavatory Crate"
+	cost = 10
+	contains = list(
+					/obj/item/weapon/bathroom_parts,
+					/obj/item/weapon/bathroom_parts/urinal
+					)
+	containername = "lavatory crate"
+
+/datum/supply_packs/misc/hygiene
+	name = "Hygiene Station Crate"
+	cost = 10
+	contains = list(
+					/obj/item/weapon/bathroom_parts/sink,
+					/obj/item/mounted/shower
+					)
+	containername = "hygiene station crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Vending /////////////////////////////////////////

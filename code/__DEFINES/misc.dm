@@ -254,6 +254,9 @@
 #define REGION_COMMAND		7
 #define REGION_CENTCOMM		8
 
+//Just space
+#define SPACE_ICON_STATE	"[((x + y) ^ ~(x * y) + z) % 25]"
+
 //used for maploader
 #define MAP_MINX 1
 #define MAP_MINY 2
@@ -296,10 +299,6 @@
 #define FIRE_PROOF -1
 #define FLAMMABLE 0
 #define ON_FIRE 1
-
-// Sound
-#define SOUND_MINIMUM_PRESSURE 10
-#define FALLOFF_SOUNDS 0.5
 
 // Bluespace shelter deploy checks
 #define SHELTER_DEPLOY_ALLOWED "allowed"
@@ -349,4 +348,4 @@
 #define BLOOD_STATE_NOT_BLOODY		"no blood whatsoever"
 
 // The SQL version required by this version of the code
-#define SQL_VERSION 0
+#define SQL_VERSION 1

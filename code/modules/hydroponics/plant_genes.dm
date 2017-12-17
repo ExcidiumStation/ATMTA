@@ -267,7 +267,7 @@
 	rate = 0.03
 	examine_line = "<span class='info'>It emits a soft glow.</span>"
 	trait_id = "glow"
-	var/glow_color = "#AAD84B"
+	var/glow_color = "#C3E381"
 
 /datum/plant_gene/trait/glow/proc/glow_range(obj/item/seeds/S)
 	return 1.4 + S.potency*rate
@@ -284,6 +284,7 @@
 	//adds -potency*(rate*0.05) light power to products
 	name = "Shadow Emission"
 	rate = 0.04
+	glow_color = "#AAD84B"
 
 /datum/plant_gene/trait/glow/shadow/glow_power(obj/item/seeds/S)
 	return -max(S.potency*(rate*0.05), 0.075)
@@ -401,7 +402,7 @@
 	name = "gaseous decomposition"
 
 /datum/plant_gene/trait/smoke/on_squash(obj/item/weapon/reagent_containers/food/snacks/grown/G, atom/target)
-	var/datum/effect/system/chem_smoke_spread/S = new
+	var/datum/effect_system/smoke_spread/chem/S = new
 	var/splat_location = get_turf(target)
 	var/smoke_amount = round(sqrt(G.seed.potency * 0.1), 1)
 	S.attach(splat_location)
