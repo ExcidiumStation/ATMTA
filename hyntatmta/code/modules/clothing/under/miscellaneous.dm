@@ -27,3 +27,11 @@
 	icon_state = "adachi"
 	item_state = "adachi"
 	item_color = "adachi" //WHY. WHY DO WE NEED THIS.
+
+/obj/item/clothing/under/atmta/jabroni
+	name = "Jabroni Outfit"
+	desc = "The leather club is two blocks down."
+	icon_state = "darkholme"
+	item_state = "darkholme"
+	item_color = "darkholme"
+	can_adjust = 0
