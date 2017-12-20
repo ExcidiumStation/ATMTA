@@ -34,4 +34,3 @@
 	icon_state = "darkholme"
 	item_state = "darkholme"
 	item_color = "darkholme"
-	can_adjust = 0
