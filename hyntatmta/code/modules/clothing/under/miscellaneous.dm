@@ -27,3 +27,18 @@
 	icon_state = "adachi"
 	item_state = "adachi"
 	item_color = "adachi" //WHY. WHY DO WE NEED THIS.
+
+/obj/item/clothing/under/atmta/jabroni
+	name = "Jabroni Outfit"
+	desc = "The leather club is two blocks down."
+	icon_state = "darkholme"
+	item_state = "darkholme"
+	item_color = "darkholme"
+
+/obj/item/clothing/under/atmta/clubskirt
+	name = "literature club skirt"
+	desc = "Welcome to the club, buddy"
+	icon_state = "clubskirt"
+	item_state = "clubskirt"
+	item_color = "clubskirt"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
