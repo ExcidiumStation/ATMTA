@@ -2199,6 +2199,7 @@
 #include "hyntatmta\code\datums\action.dm"
 #include "hyntatmta\code\datums\reagents_alcohol.dm"
 #include "hyntatmta\code\DjSmail1shit\fitnessheat.dm"
+#include "hyntatmta\code\DjSmail1shit\gooncarpet.dm"
 #include "hyntatmta\code\DjSmail1shit\vending.dm"
 #include "hyntatmta\code\DjSmail1shit\vending2.dm"
 #include "hyntatmta\code\DjSmail1shit\vending3.dm"
