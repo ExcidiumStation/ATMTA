@@ -97,6 +97,14 @@
 		to_chat(usr, "The maintenance panel is [open ? "open" : "closed"].")
 		to_chat(usr, "Hardsuit systems are [offline ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"].")
 
+
+/obj/item/weapon/rig/verb/air_switch(mob/user as mob)
+	set name = "Air Switch"
+	set category = "IC"
+	set src in range(1)
+	if(air_supply && istype(air_supply, /obj/item/weapon/tank/oxygen))
+		air_supply.toggle_internals(user)
+
 /obj/item/weapon/rig/New()
 	..()
 
