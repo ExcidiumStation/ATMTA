@@ -34,7 +34,7 @@ var opts = {
 	'restarting': false, //Is the round restarting?
 	'previousMessage': '',
 	'previousMessageCount': 1,
-	'hideSpam': false,
+	'hideSpam': true,
 
 	//Options menu
 	'subOptionsLoop': null, //Contains the interval loop for closing the options menu
@@ -275,10 +275,18 @@ function output(message, flag) {
 		opts.previousMessageCount++;
 		var lastIndex = $messages[0].children.length - 1;
 		var countBadge = '<span class="repeatBadge">x' + opts.previousMessageCount + '</span>';
-		$messages[0].children[lastIndex].innerHTML = opts.previousMessage + countBadge;
+		var lastEntry = $messages[0].children[lastIndex];
+		lastEntry.innerHTML = opts.previousMessage + countBadge;
+		var insertedBadge = $(lastEntry).find('.repeatBadge');
+		insertedBadge.animate({
+			"font-size": "0.9em"
+		}, 100, function() {
+			insertedBadge.animate({
+				"font-size": "0.7em"
+			}, 100);
+		});
 		return;
 	}
-
 
 	opts.previousMessage = entry.innerHTML;
 	opts.previousMessageCount = 1;
