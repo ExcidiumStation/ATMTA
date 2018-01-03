@@ -15,12 +15,13 @@ var/global/list/rockTurfEdgeCache = list(
 	name = "Rock"
 	icon = 'icons/turf/mining.dmi'
 	icon_state = "rock_nochance"
-	oxygen = 0
-	nitrogen = 0
 	opacity = 1
 	density = 1
 	blocks_air = 1
-	temperature = TCMB
+	temperature = 200
+
+	baseturf = /turf/simulated/frostland
+
 	var/mineralType = null
 	var/mineralAmt = 3
 	var/mineralName = null
@@ -116,6 +117,7 @@ var/global/list/rockTurfEdgeCache = list(
 
 /turf/simulated/mineral/random/New()
 	..()
+	icon_state = "[initial(icon_state)][rand(0,4)]"
 	if(prob(mineralChance))
 		var/mName = pickweight(mineralSpawnChanceList) //temp mineral name
 
