@@ -972,7 +972,6 @@
 		if(H.mind && (H.mind.assigned_role == "Detective" || H.mind.assigned_role == "Coroner"))
 			return //too cool for puke
 		if(prob(2))
-			var/obj/item/clothing/mask/M = H.wear_mask
 			if(M && (M.flags_cover & MASKCOVERSMOUTH))
 				return
 			if(NO_BREATHE in H.species.species_traits)
