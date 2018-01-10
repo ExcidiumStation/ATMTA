@@ -250,7 +250,7 @@
 			air_master.add_to_active(src)
 
 /turf/proc/ReplaceWithLattice()
-	src.ChangeTurf(/turf/space)
+	src.ChangeTurf(baseturf)
 	new /obj/structure/lattice( locate(src.x, src.y, src.z) )
 
 /turf/proc/kill_creatures(mob/U = null)//Will kill people/creatures and damage mechs./N
@@ -380,7 +380,7 @@
 				continue
 			if(O.invisibility == 101)
 				O.singularity_act()
-	ChangeTurf(/turf/space)
+	ChangeTurf(baseturf)
 	return(2)
 
 /turf/proc/visibilityChanged()

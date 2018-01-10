@@ -56,7 +56,7 @@ var/list/icons_to_ignore_at_floor_init = list("damaged1","damaged2","damaged3","
 		return
 	switch(severity)
 		if(1.0)
-			src.ChangeTurf(/turf/space)
+			src.ChangeTurf(baseturf)
 		if(2.0)
 			switch(pick(1,2;75,3))
 				if(1)
@@ -64,7 +64,7 @@ var/list/icons_to_ignore_at_floor_init = list("damaged1","damaged2","damaged3","
 						src.ReplaceWithLattice()
 						if(prob(33)) new /obj/item/stack/sheet/metal(src)
 				if(2)
-					src.ChangeTurf(/turf/space)
+					src.ChangeTurf(baseturf)
 				if(3)
 					if(prob(80))
 						src.break_tile_to_plating()

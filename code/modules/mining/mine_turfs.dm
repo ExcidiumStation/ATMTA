@@ -14,13 +14,13 @@ var/global/list/rockTurfEdgeCache = list(
 /turf/simulated/mineral //wall piece
 	name = "Rock"
 	icon = 'icons/turf/mining.dmi'
-	icon_state = "rock_nochance"
+	icon_state = "rock"
 	opacity = 1
 	density = 1
 	blocks_air = 1
 	temperature = 200
 
-	baseturf = /turf/simulated/frostland
+	baseturf = /turf/simulated/floor/frostland
 
 	var/mineralType = null
 	var/mineralAmt = 3
@@ -137,7 +137,7 @@ var/global/list/rockTurfEdgeCache = list(
 				if("Plasma")
 					M = new/turf/simulated/mineral/plasma(src)
 				if("Cave")
-					new/turf/simulated/floor/plating/airless/asteroid/cave(src)
+					new/turf/simulated/floor/frostland/cave(src)
 				if("Gibtonite")
 					M = new/turf/simulated/mineral/gibtonite(src)
 				if("Bananium")
@@ -187,12 +187,12 @@ var/global/list/rockTurfEdgeCache = list(
 
 /turf/simulated/mineral/iron
 	name = "iron deposit"
-	icon_state = "rock_Iron"
 	mineralType = /obj/item/weapon/ore/iron
 	mineralName = "Iron"
 	spreadChance = 20
 	spread = 1
 	hidden = 0
+	scan_state = "rock_Iron"
 
 /turf/simulated/mineral/uranium
 	name = "uranium deposit"
@@ -358,10 +358,10 @@ var/global/list/rockTurfEdgeCache = list(
 		if(det_time >= 1 && det_time <= 2)
 			G.quality = 2
 			G.icon_state = "Gibtonite ore 2"
-	var/turf/simulated/floor/plating/airless/asteroid/gibtonite_remains/G = ChangeTurf(/turf/simulated/floor/plating/airless/asteroid/gibtonite_remains)
+	var/turf/simulated/floor/frostland/gibtonite_remains/G = ChangeTurf(/turf/simulated/floor/frostland/gibtonite_remains)
 	G.fullUpdateMineralOverlays()
 
-/turf/simulated/floor/plating/airless/asteroid/gibtonite_remains
+/turf/simulated/floor/frostland/gibtonite_remains
 	var/det_time = 0
 	var/stage = 0
 
@@ -400,7 +400,7 @@ var/global/list/rockTurfEdgeCache = list(
 		for(i=0;i<mineralAmt;i++)
 			new mineralType(src)
 		feedback_add_details("ore_mined","[mineralType]|[mineralAmt]")
-	var/turf/simulated/floor/plating/airless/asteroid/N = ChangeTurf(/turf/simulated/floor/plating/airless/asteroid)
+	var/turf/simulated/floor/frostland/N = ChangeTurf(/turf/simulated/floor/frostland)
 	playsound(src, 'sound/effects/break_stone.ogg', 50, 1) //beautiful destruction
 	N.fullUpdateMineralOverlays()
 
@@ -558,12 +558,12 @@ var/global/list/rockTurfEdgeCache = list(
 	for(var/turf/t in range(1,src))
 		t.updateMineralOverlays()
 
-/turf/simulated/floor/plating/airless/asteroid/cave
+/turf/simulated/floor/frostland/cave
 	var/length = 100
 	var/mob_spawn_list = list("Goldgrub" = 1, "Goliath" = 5, "Basilisk" = 4, "Hivelord" = 3)
 	var/sanity = 1
 
-/turf/simulated/floor/plating/airless/asteroid/cave/New(loc, var/length, var/go_backwards = 1, var/exclude_dir = -1)
+/turf/simulated/floor/frostland/cave/New(loc, var/length, var/go_backwards = 1, var/exclude_dir = -1)
 
 	// If length (arg2) isn't defined, get a random length; otherwise assign our length to the length arg.
 	if(!length)
@@ -584,7 +584,7 @@ var/global/list/rockTurfEdgeCache = list(
 	SpawnFloor(src)
 	..()
 
-/turf/simulated/floor/plating/airless/asteroid/cave/proc/make_tunnel(var/dir)
+/turf/simulated/floor/frostland/cave/proc/make_tunnel(var/dir)
 
 	var/turf/simulated/mineral/tunnel = src
 	var/next_angle = pick(45, -45)
@@ -621,7 +621,7 @@ var/global/list/rockTurfEdgeCache = list(
 			next_angle = -next_angle
 			dir = angle2dir(dir2angle(dir) + next_angle)
 
-/turf/simulated/floor/plating/airless/asteroid/cave/proc/SpawnFloor(var/turf/T)
+/turf/simulated/floor/frostland/cave/proc/SpawnFloor(var/turf/T)
 	for(var/turf/S in range(2,T))
 		if(istype(S, /turf/space) || istype(S.loc, /area/mine/dangerous/explored))
 			sanity = 0
@@ -630,11 +630,16 @@ var/global/list/rockTurfEdgeCache = list(
 		return
 
 	SpawnMonster(T)
-	var/turf/simulated/floor/t = new /turf/simulated/floor/plating/airless/asteroid(T)
-	spawn(2)
-		t.fullUpdateMineralOverlays()
+	if(prob(75))
+		var/turf/simulated/floor/t = new /turf/simulated/floor/frostland/snow(T)
+		spawn(2)
+			t.fullUpdateMineralOverlays()
+	else
+		var/turf/simulated/floor/t = new /turf/simulated/floor/frostland/deepsnow(T)
+		spawn(2)
+			t.fullUpdateMineralOverlays()
 
-/turf/simulated/floor/plating/airless/asteroid/cave/proc/SpawnMonster(var/turf/T)
+/turf/simulated/floor/frostland/cave/proc/SpawnMonster(var/turf/T)
 	if(prob(30))
 		if(istype(loc, /area/mine/dangerous/explored))
 			return

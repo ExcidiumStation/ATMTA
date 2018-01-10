@@ -48,7 +48,7 @@ var/global/max_secret_rooms = 6
 	var/areapoints = 0
 	var/theme = "organharvest"
 	var/list/walltypes = list(/turf/simulated/wall=3, /turf/simulated/mineral/random=1)
-	var/list/floortypes = list(/turf/simulated/floor)
+	var/list/floortypes = list(/turf/simulated/floor/frostland)
 	var/list/treasureitems = list()//good stuff. only 1 is created per room.
 	var/list/fluffitems = list()//lesser items, to help fill out the room and enhance the theme.
 
@@ -87,7 +87,7 @@ var/global/max_secret_rooms = 6
 		if("cavein")
 			theme = "cavein"
 			walltypes = list(/turf/simulated/mineral/random/high_chance=1)
-			floortypes = list(/turf/simulated/floor/plating/airless/asteroid, /turf/simulated/floor/beach/sand)
+			floortypes = list(/turf/simulated/floor/frostland/snow, /turf/simulated/floor/frostland/deepsnow, /turf/simulated/floor/frostland/ice)
 			treasureitems = list(/obj/mecha/working/ripley/mining=1, /obj/item/weapon/pickaxe/drill/diamonddrill=2,
 							/obj/item/weapon/resonator/upgraded=1, /obj/item/weapon/pickaxe/drill/jackhammer=5)
 			fluffitems = list(/obj/effect/decal/cleanable/blood=3,/obj/effect/decal/remains/human=1,/obj/item/clothing/under/overalls=1,
@@ -96,7 +96,7 @@ var/global/max_secret_rooms = 6
 		if("xenoden")
 			theme = "xenoden"
 			walltypes = list(/turf/simulated/mineral/random/high_chance=1)
-			floortypes = list(/turf/simulated/floor/plating/airless/asteroid, /turf/simulated/floor/beach/sand)
+			floortypes = list(/turf/simulated/floor/frostland/snow, /turf/simulated/floor/frostland/deepsnow)
 			treasureitems = list(/obj/item/clothing/mask/facehugger=1,/obj/item/stack/sheet/animalhide/xeno=2,/obj/item/clothing/suit/xenos=2,/obj/item/clothing/head/xenos=2,/obj/item/weapon/guardiancreator/biological/choose=1)
 			fluffitems = list(/obj/effect/decal/remains/human=1,/obj/effect/decal/cleanable/blood/xeno=5)
 
@@ -177,7 +177,7 @@ var/global/max_secret_rooms = 6
 			valid = 0
 			continue
 
-		if(locate(/turf/simulated/floor/plating/airless/asteroid) in range(5,T))//A little less strict than the other checks due to tunnels
+		if(locate(/turf/simulated/floor/frostland/deepsnow) in range(5,T))//A little less strict than the other checks due to tunnels
 			valid = 0
 			continue
 

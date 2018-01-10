@@ -307,7 +307,7 @@
 	smash()
 
 /turf/simulated/floor/plating/metalfoam/proc/smash()
-	ChangeTurf(/turf/space)
+	ChangeTurf(baseturf)
 
 /turf/simulated/floor/plating/abductor
 	name = "alien floor"

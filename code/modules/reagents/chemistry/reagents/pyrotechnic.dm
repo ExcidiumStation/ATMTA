@@ -88,7 +88,7 @@
 /datum/reagent/clf3/reaction_turf(turf/simulated/T, volume)
 	if(prob(1) && istype(T, /turf/simulated/floor/plating))
 		var/turf/simulated/floor/plating/F = T
-		F.ChangeTurf(/turf/space)
+		F.ChangeTurf(F.baseturf)
 	if(istype(T, /turf/simulated/floor))
 		var/turf/simulated/floor/F = T
 		if(prob(volume/10))

@@ -257,7 +257,7 @@ RCD
 							return 0
 						activate()
 						var/turf/AT = A
-						AT.ChangeTurf(/turf/space)
+						AT.ChangeTurf(AT.baseturf)
 						return 1
 				return 0
 
