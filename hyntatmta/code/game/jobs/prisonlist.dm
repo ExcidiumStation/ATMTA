@@ -41,7 +41,7 @@ var/list/bwhitelist
 		<input type='submit' value='search'>
 		</form>"}
 
-	var/DBQuery/select_query = dbcon.NewQuery("SELECT ckey,lastseen FROM [format_table_name("player")] ORDER BY lastseen ASC")
+	var/DBQuery/select_query = dbcon.NewQuery("SELECT ckey,lastseen FROM [format_table_name("player")] WHERE whitelist = '1' ORDER BY lastseen DESC")
 	select_query.Execute()
 
 	output += {"<table width='90%' bgcolor='#e3e3e3' cellpadding='5' cellspacing='0' align='center'>
@@ -130,7 +130,7 @@ var/list/bwhitelist
 	dbcon.Disconnect() */
 
 /proc/bwhitelist_save(var/ckeyname)
-	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '1' WHERE ckey='[ckeyname]'"
+	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '1' WHERE ckey='[ckey(ckeyname)]'"
 	var/DBQuery/query_insert = dbcon.NewQuery(sql)
 	if(!query_insert.Execute())
 		var/err = query_insert.ErrorMsg()
@@ -140,12 +140,12 @@ var/list/bwhitelist
 	to_chat(usr, "\blue Ckey saved to database.")
 	message_admins("[key_name_admin(usr)] has added [ckeyname] to the whitelist.",1)
 	for(var/client/C in clients)
-		if(C.ckey == ckeyname)
+		if(ckey(C.ckey) == ckey(ckeyname))
 			C.prefs.whitelist = 1
 			return 1
 
 /proc/bwhitelist_remove(var/ckeyname)
-	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '0' WHERE ckey='[ckeyname]'"
+	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '0' WHERE ckey='[ckey(ckeyname)]'"
 	var/DBQuery/query_insert = dbcon.NewQuery(sql)
 	if(!query_insert.Execute())
 		var/err = query_insert.ErrorMsg()
@@ -155,6 +155,6 @@ var/list/bwhitelist
 	to_chat(usr, "\blue Ckey removed from database.")
 	message_admins("[key_name_admin(usr)] has removed [ckeyname] from the whitelist.",1)
 	for(var/client/C in clients)
-		if(C.ckey == ckeyname)
+		if(ckey(C.ckey) == ckey(ckeyname))
 			C.prefs.whitelist = 0
 			return 1
