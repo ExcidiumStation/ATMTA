@@ -20,7 +20,7 @@ var/list/bwhitelist
 		to_chat(usr, "\red Failed to establish database connection")
 		return
 
-	var/output = "<div align='center'><table width='90%'><tr>"
+	var/output = "<div align='center'><table><tr>"
 
 	ckeyname = ckey(ckeyname) //Just in case
 
@@ -57,7 +57,7 @@ var/list/bwhitelist
 		output += {"<tr bgcolor='lightgrey'>
 		<td align='center'><b>[ckey]</b></td>
 		<td align='center'><b>[lastseen]</b></td>
-		<td align='center'>(["<b><a href=\"byond://?src=[UID()];remove=[ckey];\">Remove</a></b>"]) (["<a href='?_src_=holder;adminplayeropts=[UID()]'>PP</A>"])</td>
+		<td align='center'>["<b><a href=\"byond://?src=[UID()];remove=[ckey];\">Remove</a></b>"] ["<a href='?_src_=holder;adminplayeropts=[UID()]'>PP</A>"]</td>
 		</tr>"}
 
 	/*if(ckeyname)
@@ -109,9 +109,8 @@ var/list/bwhitelist
 	if(!config.prisonlist_enabled)
 		log_admin("Whitelist disabled in config.")
 		return 1
-	else
-		if(C.is_in_whitelist())
-			return 1
+	if(C.is_in_whitelist())
+		return 1
 	return 0
 
 /*/proc/load_bwhitelist()
@@ -130,6 +129,7 @@ var/list/bwhitelist
 	dbcon.Disconnect() */
 
 /proc/bwhitelist_save(var/ckeyname)
+	log_debug("ckeyname: [ckeyname]")
 	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '1' WHERE ckey='[ckey(ckeyname)]'"
 	var/DBQuery/query_insert = dbcon.NewQuery(sql)
 	if(!query_insert.Execute())
@@ -140,8 +140,12 @@ var/list/bwhitelist
 	to_chat(usr, "\blue Ckey saved to database.")
 	message_admins("[key_name_admin(usr)] has added [ckeyname] to the whitelist.",1)
 	for(var/client/C in clients)
+		log_debug("Clients C.ckey: [C.ckey]")
+		log_debug("Clients ckey(C.ckey): [ckey(C.ckey)]")
 		if(ckey(C.ckey) == ckey(ckeyname))
 			C.prefs.whitelist = 1
+			log_debug("Single Client C.ckey: [ckey(C.ckey)]. If success")
+			log_debug("ckey(ckeyname): [ckey(ckeyname)]")
 			return 1
 
 /proc/bwhitelist_remove(var/ckeyname)
