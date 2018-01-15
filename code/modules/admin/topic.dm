@@ -1670,7 +1670,7 @@
 			to_chat(usr, "<span class='warning'>[P] doesn't seem to have an active client.</span>")
 			return
 
-		if(check_prisonlist(ckey(P.mind.key)))
+		if(check_prisonlist(P.client))
 			if(alert(usr, "Player listed in the whitelist. Remove [key_name(P)] from the whitelist?", "Message", "Yes", "No") != "Yes")
 				return
 			bwhitelist_remove(ckey(P.mind.key))

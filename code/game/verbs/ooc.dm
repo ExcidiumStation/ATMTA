@@ -14,7 +14,7 @@ var/global/admin_ooc_colour = "#b82e00"
 		to_chat(src, "<span class='danger'>Guests may not use OOC.</span>")
 		return
 
-	if(!check_prisonlist(ckey(key)))
+	if(!check_prisonlist(src))
 		to_chat(src, "<span class='danger'>Not-whitelisted may not use OOC.</span>")
 		return
 

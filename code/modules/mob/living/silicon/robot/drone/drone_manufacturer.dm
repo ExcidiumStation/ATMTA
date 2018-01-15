@@ -121,7 +121,7 @@
 		if(cannotPossess(G))
 			to_chat(usr, "<span class='warning'>Upon using the antagHUD you forfeited the ability to join the round.</span>")
 			return
-		if(!check_prisonlist(ckey(G.key)))
+		if(!check_prisonlist(G.client))
 			to_chat(usr, "<span class='warning'>Non-whitelisted can't join as drone!</span>")
 			return
 		if(G.started_as_observer == 1)

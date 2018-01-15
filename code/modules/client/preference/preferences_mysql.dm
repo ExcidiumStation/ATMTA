@@ -16,7 +16,8 @@
 					lastchangelog,
 					windowflashing,
 					ghost_anonsay,
-					exp
+					exp,
+					whitelist
 					FROM [format_table_name("player")]
 					WHERE ckey='[C.ckey]'"}
 					)
@@ -46,6 +47,7 @@
 		windowflashing = text2num(query.item[14])
 		ghost_anonsay = text2num(query.item[15])
 		exp = query.item[16]
+		whitelist = query.item[17]
 
 	//Sanitize
 	ooccolor		= sanitize_hexcolor(ooccolor, initial(ooccolor))
@@ -89,7 +91,8 @@
 					show_ghostitem_attack='[show_ghostitem_attack]',
 					lastchangelog='[lastchangelog]',
 					windowflashing='[windowflashing]',
-					ghost_anonsay='[ghost_anonsay]'
+					ghost_anonsay='[ghost_anonsay]',
+					whitelist='[whitelist]'
 					WHERE ckey='[C.ckey]'"}
 					)
 
@@ -469,6 +472,20 @@
 		load_character(C)
 		return 0
 	load_character(C,pick(saves))
+	return 1
+
+/datum/preferences/proc/update_whitelist_status(client/C)
+	if(whitelist)
+		whitelist = FALSE
+	else
+		whitelist = TRUE
+	var/DBQuery/query = dbcon.NewQuery("UPDATE [format_table_name("player")] SET whitelist='[whitelist]' WHERE ckey='[C.ckey]'")
+	if(!query.Execute())
+		var/err = query.ErrorMsg()
+		log_game("SQL ERROR during lastchangelog updating. Error : \[[err]\]\n")
+		message_admins("SQL ERROR during lastchangelog updating. Error : \[[err]\]\n")
+		to_chat(C, "Couldn't update your last seen changelog, please try again later.")
+		return
 	return 1
 
 /datum/preferences/proc/SetChangelog(client/C,hash)

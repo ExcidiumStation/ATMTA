@@ -444,6 +444,11 @@
 			src << link(href_list["link"])
 
 	..()	//redirect to hsrc.Topic()
+/client/proc/is_in_whitelist()
+	if(!prefs.whitelist)
+		to_chat(src, "You're not whitelisted! Visit https://discord.gg/CA5WUzq to fill whitelist entry form!")
+		return 0
+	return 1
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
