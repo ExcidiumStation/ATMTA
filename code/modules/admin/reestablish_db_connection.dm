@@ -7,7 +7,7 @@
         return
 
     if(dbcon && dbcon.IsConnected())
-        if(!check_rights(R_MODERATOR,0))
+        if(!check_rights(R_MOD,0))
             alert("The database is already connected! (Only those with +debug can force a reconnection)", "The database is already connected!")
             return
 
