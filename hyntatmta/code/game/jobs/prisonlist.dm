@@ -115,7 +115,7 @@ var/list/bwhitelist
 		return 1
 	if(!C.is_in_whitelist())
 		return 0
-	return 0
+	return 1
 
 /*/proc/load_bwhitelist()
 	log_admin("Loading whitelist")

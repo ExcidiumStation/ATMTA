@@ -445,9 +445,9 @@
 
 	..()	//redirect to hsrc.Topic()
 /client/proc/is_in_whitelist()
-	if(prefs.whitelist == 1)
-		return 1
-	return 0
+	if(!prefs.whitelist)
+		return 0
+	return 1
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
