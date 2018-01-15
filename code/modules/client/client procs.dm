@@ -447,23 +447,7 @@
 /client/proc/is_in_whitelist()
 	if(prefs.whitelist == 1)
 		return 1
-	var/DBQuery/query = dbcon.NewQuery({"SELECT
-						whitelist
-						FROM [format_table_name("player")]
-						WHERE ckey='[ckey]'"})
-	if(!query.Execute())
-		var/err = query.ErrorMsg()
-		log_game("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
-		message_admins("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
-		return 1
-	while(query.NextRow())
-		var/iswhitemale = query.item[1]
-		if(iswhitemale == 0)
-			to_chat(src, "You're not whitelisted! Visit https://discord.gg/CA5WUzq to fill whitelist entry form!")
-			return 0
-		else
-			prefs.whitelist = 1
-	return 1
+	return 0
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
