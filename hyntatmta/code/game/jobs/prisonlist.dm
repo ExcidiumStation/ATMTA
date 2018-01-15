@@ -109,8 +109,8 @@ var/list/bwhitelist
 	if(!config.prisonlist_enabled)
 		log_admin("Whitelist disabled in config.")
 		return 1
-	if(C.is_in_whitelist())
-		return 1
+	if(!C.is_in_whitelist())
+		return 0
 	return 0
 
 /*/proc/load_bwhitelist()

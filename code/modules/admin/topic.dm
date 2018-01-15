@@ -1675,7 +1675,7 @@
 				return
 			bwhitelist_remove(ckey(P.mind.key))
 			P.client.prefs.whitelist = 0
-		else
+		if(!check_prisonlist(P.client))
 			if(alert(usr, "Player NOT listed in the whitelist. Add [key_name(P)] to the whitelist?", "Message", "Yes", "No") != "Yes")
 				return
 			if(!check_rights(R_PERMISSIONS))
