@@ -722,52 +722,21 @@ var/list/admin_verbs_ticket = list(
 
 	var/datum/admins/D = admin_datums[ckey]
 	var/rank = null
-	if(config.admin_legacy_system)
-		//load text from file
-		var/list/Lines = file2list("config/admins.txt")
-		for(var/line in Lines)
-			var/list/splitline = splittext(line, " - ")
-			if(n_lower(splitline[1]) == ckey)
-				if(splitline.len >= 2)
-					rank = ckeyEx(splitline[2])
-				break
-			continue
-	else
-		if(!dbcon.IsConnected())
-			message_admins("Warning, MySQL database is not connected.")
-			to_chat(src, "Warning, MYSQL database is not connected.")
-			return
-		var/sql_ckey = sanitizeSQL(ckey)
-		var/DBQuery/query = dbcon.NewQuery("SELECT rank FROM [format_table_name("admin")] WHERE ckey = '[sql_ckey]'")
-		query.Execute()
-		while(query.NextRow())
-			rank = ckeyEx(query.item[1])
+	//load text from file
+	var/list/Lines = file2list("config/admins.txt")
+	for(var/line in Lines)
+		var/list/splitline = splittext(line, " - ")
+		if(n_lower(splitline[1]) == ckey)
+			if(splitline.len >= 2)
+				rank = ckeyEx(splitline[2])
+			break
+		continue
 	if(!D)
-		if(config.admin_legacy_system)
-			if(admin_ranks[rank] == null)
-				error("Error while re-adminning [src], admin rank ([rank]) does not exist.")
-				to_chat(src, "Error while re-adminning, admin rank ([rank]) does not exist.")
-				return
-
-			D = new(rank, admin_ranks[rank], ckey)
-		else
-			var/sql_ckey = sanitizeSQL(ckey)
-			var/DBQuery/query = dbcon.NewQuery("SELECT ckey, rank, flags FROM [format_table_name("admin")] WHERE ckey = '[sql_ckey]'")
-			query.Execute()
-			while(query.NextRow())
-				var/admin_ckey = query.item[1]
-				var/admin_rank = query.item[2]
-				var/flags = query.item[3]
-				if(!admin_ckey)
-					to_chat(src, "Error while re-adminning, ckey [admin_ckey] was not found in the admin database.")
-					return
-				if(admin_rank == "Removed") //This person was de-adminned. They are only in the admin list for archive purposes.
-					to_chat(src, "Error while re-adminning, ckey [admin_ckey] is not an admin.")
-					return
-
-				if(istext(flags))
-					flags = text2num(flags)
-				D = new(admin_rank, flags, ckey)
+		if(admin_ranks[rank] == null)
+			error("Error while re-adminning [src], admin rank ([rank]) does not exist.")
+			to_chat(src, "Error while re-adminning, admin rank ([rank]) does not exist.")
+			return
+		D = new(rank, admin_ranks[rank], ckey)
 
 		var/client/C = directory[ckey]
 		D.associate(C)
