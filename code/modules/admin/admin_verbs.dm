@@ -725,11 +725,23 @@ var/list/admin_verbs_ticket = list(
 	var/rank = null
 	//load text from file
 	var/list/Lines = file2list("config/admins.txt")
+
+	//process each line seperately
 	for(var/line in Lines)
-		var/list/splitline = splittext(line, " - ")
-		if(n_lower(splitline[1]) == ckey)
-			if(splitline.len >= 2)
-				rank = ckeyEx(splitline[2])
+		if(!length(line))				continue
+		if(copytext(line,1,2) == "#")	continue
+
+		//Split the line at every "-"
+		var/list/List = splittext(line, "-")
+		if(!List.len)					continue
+
+		//ckey is before the first "-"
+		var/txtckey = ckey(List[1])
+		if(!ckey)						continue
+		if(ckey == txtckey)
+		//rank follows the first "-"
+			if(List.len >= 2)
+				rank = ckeyEx(List[2])
 			break
 		continue
 	if(!D)
