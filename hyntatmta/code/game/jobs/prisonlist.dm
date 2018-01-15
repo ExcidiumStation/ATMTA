@@ -132,14 +132,29 @@ var/list/bwhitelist
 /proc/bwhitelist_save(var/ckeyname)
 	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '1' WHERE ckey='[ckeyname]'"
 	var/DBQuery/query_insert = dbcon.NewQuery(sql)
-	query_insert.Execute()
+	if(!query_insert.Execute())
+		var/err = query_insert.ErrorMsg()
+		log_game("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
+		message_admins("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
+		return 0
 	to_chat(usr, "\blue Ckey saved to database.")
 	message_admins("[key_name_admin(usr)] has added [ckeyname] to the whitelist.",1)
-
+	for(var/client/C in clients)
+		if(C.ckey == ckeyname)
+			C.prefs.whitelist = 1
+			return 1
 
 /proc/bwhitelist_remove(var/ckeyname)
 	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '0' WHERE ckey='[ckeyname]'"
 	var/DBQuery/query_insert = dbcon.NewQuery(sql)
-	query_insert.Execute()
+	if(!query_insert.Execute())
+		var/err = query_insert.ErrorMsg()
+		log_game("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
+		message_admins("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
+		return 0
 	to_chat(usr, "\blue Ckey removed from database.")
 	message_admins("[key_name_admin(usr)] has removed [ckeyname] from the whitelist.",1)
+	for(var/client/C in clients)
+		if(C.ckey == ckeyname)
+			C.prefs.whitelist = 0
+			return 1
