@@ -972,6 +972,13 @@
 		if(H.mind && (H.mind.assigned_role == "Detective" || H.mind.assigned_role == "Coroner"))
 			return //too cool for puke
 		if(prob(2))
+			if(M && (M.flags_cover & MASKCOVERSMOUTH))
+				return
+			if(NO_BREATHE in H.species.species_traits)
+				return //no puking if you can't smell!
+			// Humans can lack a mind datum, y'know
+			if(H.mind && (H.mind.assigned_role == "Detective" || H.mind.assigned_role == "Coroner"))
+				return //too cool for puke
 			to_chat(H, "<span class='warning'>You smell something foul...</span>")
 			H.fakevomit()
 

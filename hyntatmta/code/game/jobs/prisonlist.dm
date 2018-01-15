@@ -41,23 +41,26 @@ var/list/bwhitelist
 		<input type='submit' value='search'>
 		</form>"}
 
-	var/DBQuery/select_query = dbcon.NewQuery("SELECT ckey FROM [format_table_name("bwhitelist")] ORDER BY ckey ASC")
+	var/DBQuery/select_query = dbcon.NewQuery("SELECT ckey,lastseen FROM [format_table_name("player")] ORDER BY lastseen ASC")
 	select_query.Execute()
 
 	output += {"<table width='90%' bgcolor='#e3e3e3' cellpadding='5' cellspacing='0' align='center'>
 			<tr>
-			<th width='60%'><b>CKEY</b></th>
-			<th width='40%'><b>OPTIONS</b></th>
+			<th width='30%'><b>CKEY</b></th>
+			<th width='40%'><b>LAST SEEN</b></th>
+			<th width='30%'><b>OPTIONS</b></th>
 			</tr>"}
 
 	while(select_query.NextRow())
 		var/ckey = select_query.item[1]
+		var/lastseen = select_query.item[2]
 		output += {"<tr bgcolor='lightgrey'>
 		<td align='center'><b>[ckey]</b></td>
-		<td align='center'>["<b><a href=\"byond://?src=[UID()];remove=[ckey];\">Remove</a></b>"]</td>
+		<td align='center'><b>[lastseen]</b></td>
+		<td align='center'>(["<b><a href=\"byond://?src=[UID()];remove=[ckey];\">Remove</a></b>"]) (["<a href='?_src_=holder;adminplayeropts=[UID()]'>PP</A>"])</td>
 		</tr>"}
 
-	if(ckeyname)
+	/*if(ckeyname)
 		output = "<div align='center'><table width='90%'><tr>"
 		output += {"<td width='35%' align='center'><h1>Whitelist</h1></td>
 		<td width='65%' align='center' bgcolor='#f9f9f9'>
@@ -78,12 +81,13 @@ var/list/bwhitelist
 		output += {"<table width='90%' bgcolor='#e3e3e3' cellpadding='5' cellspacing='0' align='center'>
 				<tr>
 				<th width='60%'><b>CKEY</b></th>
+				<th width='30%'><b>LAST SEEN</b></th>
 				<th width='40%'><b>OPTIONS</b></th>
 				</tr>"}
 
 
 
-		select_query = dbcon.NewQuery("SELECT ckey FROM [format_table_name("bwhitelist")] WHERE ckey = '[ckeyname]' ORDER BY ckey ASC")
+		select_query = dbcon.NewQuery("SELECT ckey FROM [format_table_name("player")] WHERE ckey = '[ckeyname]' ORDER BY ckey ASC")
 		select_query.Execute()
 
 		while(select_query.NextRow())
@@ -92,31 +96,25 @@ var/list/bwhitelist
 			output += {"<tr bgcolor='lightgrey'>
 				<td align='center'><b>[ckey]</b></td>
 				<td align='center'>["<b><a href=\"byond://?src=[UID()];remove=[ckeyname];\">Remove</a></b>"]</td>
-				</tr>"}
+				</tr>"}*/
 
 	output += "</table></div>"
+	var/datum/browser/popup = new(usr, "secrets", "<div align='center'>Whitelist Panel</div>", 900, 500)
+	popup.set_content(output)
+	popup.open(0)
 
-	usr << browse(output,"window=lookupbans;size=900x500")
-
-
-/proc/check_prisonlist(var/K)
-	var/noprison_key
-	if(!dbcon.IsConnected())
-		log_admin("Unable to connect to whitelist database. Please try again later.")
-		return 1
+/proc/check_prisonlist(var/client/C)
+	if(!C)
+		return 0
 	if(!config.prisonlist_enabled)
 		log_admin("Whitelist disabled in config.")
 		return 1
 	else
-		var/DBQuery/query = dbcon.NewQuery("SELECT ckey FROM [format_table_name("bwhitelist")] WHERE ckey='[K]'")
-		query.Execute()
-		while(query.NextRow())
-			noprison_key = query.item[1]
-		if(noprison_key == K)
+		if(C.is_in_whitelist())
 			return 1
 	return 0
 
-/proc/load_bwhitelist()
+/*/proc/load_bwhitelist()
 	log_admin("Loading whitelist")
 	bwhitelist = list()
 	if(!dbcon.IsConnected())
@@ -129,27 +127,34 @@ var/list/bwhitelist
 	if(bwhitelist==list(  ))
 		log_admin("Failed to load bwhitelist or its empty")
 		return
-	dbcon.Disconnect()
+	dbcon.Disconnect() */
 
 /proc/bwhitelist_save(var/ckeyname)
-	if(!bwhitelist)
-		load_bwhitelist()
-		if(!bwhitelist)
-			return
-	var/sql = "INSERT INTO [format_table_name("bwhitelist")] (`ckey`) VALUES ('[ckeyname]')"
+	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '1' WHERE ckey='[ckeyname]'"
 	var/DBQuery/query_insert = dbcon.NewQuery(sql)
-	query_insert.Execute()
+	if(!query_insert.Execute())
+		var/err = query_insert.ErrorMsg()
+		log_game("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
+		message_admins("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
+		return 0
 	to_chat(usr, "\blue Ckey saved to database.")
 	message_admins("[key_name_admin(usr)] has added [ckeyname] to the whitelist.",1)
-
+	for(var/client/C in clients)
+		if(C.ckey == ckeyname)
+			C.prefs.whitelist = 1
+			return 1
 
 /proc/bwhitelist_remove(var/ckeyname)
-	if(!bwhitelist)
-		load_bwhitelist()
-		if(!bwhitelist)
-			return
-	var/sql = "DELETE FROM [format_table_name("bwhitelist")] WHERE ckey='[ckeyname]'"
+	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '0' WHERE ckey='[ckeyname]'"
 	var/DBQuery/query_insert = dbcon.NewQuery(sql)
-	query_insert.Execute()
+	if(!query_insert.Execute())
+		var/err = query_insert.ErrorMsg()
+		log_game("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
+		message_admins("SQL ERROR during loading player preferences. Error : \[[err]\]\n")
+		return 0
 	to_chat(usr, "\blue Ckey removed from database.")
 	message_admins("[key_name_admin(usr)] has removed [ckeyname] from the whitelist.",1)
+	for(var/client/C in clients)
+		if(C.ckey == ckeyname)
+			C.prefs.whitelist = 0
+			return 1

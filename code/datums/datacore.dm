@@ -320,7 +320,7 @@ var/record_id_num = 1001
 		S.fields["ma_crim"]		= "None"
 		S.fields["ma_crim_d"]	= "No major crime convictions."
 		S.fields["notes"]		= "No notes."
-		if(!check_prisonlist(ckey(H.mind.key)))
+		if(!check_prisonlist(H.client))
 			var/list/commited_crime_major = list("Public Enemy",
                  "Bank Robber",
                  "Murderer",
@@ -344,7 +344,7 @@ var/record_id_num = 1001
 			S.fields["ma_crim"]		= "[pick(commited_crime_major)]"
 			S.fields["ma_crim_d"]	= "Convicted by NT to Permabrig Sentence"
 
-		if(!check_prisonlist(ckey(H.mind.key)))
+		if(!check_prisonlist(H.client))
 			S.fields["notes"]		= "Disposable prisoner for every need our station got."
 		else if(H.sec_record && !jobban_isbanned(H, "Records"))
 			S.fields["notes"] = H.sec_record

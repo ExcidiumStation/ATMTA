@@ -52,7 +52,7 @@
 
 /proc/log_robot(text)
 	if(config.log_say)
-		diary << "\[[time_stamp()]]ROBOT: [text]"
+		diary << "\[[time_stamp()]]ROBOT: [sanitize_local(text, SANITIZE_LOG)][log_end]"
 
 /proc/log_ooc(text)
 	if(config.log_ooc)
