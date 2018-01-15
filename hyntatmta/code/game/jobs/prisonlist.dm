@@ -133,7 +133,7 @@ var/list/bwhitelist
 	dbcon.Disconnect() */
 
 /proc/bwhitelist_save(var/ckeyname)
-	log_debug("ckeyname: [ckeyname]")
+	//log_debug("ckeyname: [ckeyname]")
 	var/sql = "UPDATE [format_table_name("player")] SET whitelist = '1' WHERE ckey='[ckey(ckeyname)]'"
 	var/DBQuery/query_insert = dbcon.NewQuery(sql)
 	if(!query_insert.Execute())
@@ -144,12 +144,12 @@ var/list/bwhitelist
 	to_chat(usr, "\blue Ckey saved to database.")
 	message_admins("[key_name_admin(usr)] has added [ckeyname] to the whitelist.",1)
 	for(var/client/C in clients)
-		log_debug("Clients C.ckey: [C.ckey]")
-		log_debug("Clients ckey(C.ckey): [ckey(C.ckey)]")
+		//log_debug("Clients C.ckey: [C.ckey]")
+		//log_debug("Clients ckey(C.ckey): [ckey(C.ckey)]")
 		if(ckey(C.ckey) == ckey(ckeyname))
 			C.prefs.whitelist = 1
-			log_debug("Single Client C.ckey: [ckey(C.ckey)]. If success")
-			log_debug("ckey(ckeyname): [ckey(ckeyname)]")
+			//log_debug("Single Client C.ckey: [ckey(C.ckey)]. If success")
+			//log_debug("ckey(ckeyname): [ckey(ckeyname)]")
 			return 1
 
 /proc/bwhitelist_remove(var/ckeyname)
