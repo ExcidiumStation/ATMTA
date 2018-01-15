@@ -54,11 +54,15 @@ var/list/bwhitelist
 	while(select_query.NextRow())
 		var/ckey = select_query.item[1]
 		var/lastseen = select_query.item[2]
+
 		output += {"<tr bgcolor='lightgrey'>
 		<td align='center'><b>[ckey]</b></td>
 		<td align='center'><b>[lastseen]</b></td>
-		<td align='center'>["<b><a href=\"byond://?src=[UID()];remove=[ckey];\">Remove</a></b>"] ["<a href='?_src_=holder;adminplayeropts=[UID()]'>PP</A>"]</td>
-		</tr>"}
+		<td align='center'>["<b><a href=\"byond://?src=[UID()];remove=[ckey];\">Remove</a></b>"]"}
+		for(var/client/C in clients)
+			if(ckey(C.ckey) == ckey(ckey))
+				output += "["<a href='?_src_=holder;adminplayeropts=\ref[C.mob]'>PP</A>"]"
+		output += "</td></tr>"
 
 	/*if(ckeyname)
 		output = "<div align='center'><table width='90%'><tr>"
