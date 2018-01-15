@@ -1299,6 +1299,9 @@ var/list/ghostteleportlocs = list()
 /area/holodeck/source_knightarena
 	name = "Holodeck - Knight Arena"
 
+/area/holodeck/source_lounge
+	name = "Holodeck - Lounge"
+
 
 //Embassies
 /area/embassy/
