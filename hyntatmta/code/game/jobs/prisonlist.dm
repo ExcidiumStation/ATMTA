@@ -57,7 +57,7 @@ var/list/bwhitelist
 		output += {"<tr bgcolor='lightgrey'>
 		<td align='center'><b>[ckey]</b></td>
 		<td align='center'><b>[lastseen]</b></td>
-		<td align='center'>["<b><a href=\"byond://?src=[UID()];remove=[ckey];\">Remove</a></b>"] [<A HREF='?_src_=holder;adminplayeropts=[UID()]'>PP</A>]</td>
+		<td align='center'>(["<b><a href=\"byond://?src=[UID()];remove=[ckey];\">Remove</a></b>"]) (["<a href='?_src_=holder;adminplayeropts=[UID()]'>PP</A>"])</td>
 		</tr>"}
 
 	/*if(ckeyname)
