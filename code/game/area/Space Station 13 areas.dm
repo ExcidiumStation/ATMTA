@@ -2133,17 +2133,33 @@ area/security/podbay
 	name = "Construction Site Maintenance"
 	icon_state = "yellow"
 
+/area/constructionsite/hallway/center
+	name = "Construction Site Central Hallway"
+	icon_state = "hallC"
+
 /area/constructionsite/hallway/aft
 	name = "Construction Site Aft Hallway"
-	icon_state = "hallP"
+	icon_state = "hallA"
 
 /area/constructionsite/hallway/fore
 	name = "Construction Site Fore Hallway"
+	icon_state = "hallF"
+
+/area/constructionsite/hallway/port
+	name = "Construction Site Port"
+	icon_state = "hallP"
+
+/area/constructionsite/hallway/starboard
+	name = "Construction Site Starboard"
 	icon_state = "hallS"
+
+/area/constructionsite/hallway/engcore
+	name = "Construction Site Eng Core"
+	icon_state = "green"
 
 /area/constructionsite/atmospherics
 	name = "Construction Site Atmospherics"
-	icon_state = "green"
+	icon_state = "atmos"
 
 /area/constructionsite/medical
 	name = "Construction Site Medbay"
@@ -2159,7 +2175,7 @@ area/security/podbay
 
 /area/solar/constructionsite
 	name = "Construction Site Solars"
-	icon_state = "aft"
+	icon_state = "panelsA"
 
 //area/constructionsite
 //	name = "Construction Site Shuttle"
