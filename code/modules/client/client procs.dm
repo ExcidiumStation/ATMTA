@@ -444,6 +444,10 @@
 			src << link(href_list["link"])
 
 	..()	//redirect to hsrc.Topic()
+/client/proc/is_in_whitelist()
+	if(!prefs.whitelist)
+		return 0
+	return 1
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)

@@ -1670,11 +1670,12 @@
 			to_chat(usr, "<span class='warning'>[P] doesn't seem to have an active client.</span>")
 			return
 
-		if(check_prisonlist(ckey(P.mind.key)))
+		if(check_prisonlist(P.client))
 			if(alert(usr, "Player listed in the whitelist. Remove [key_name(P)] from the whitelist?", "Message", "Yes", "No") != "Yes")
 				return
 			bwhitelist_remove(ckey(P.mind.key))
-		else
+			P.client.prefs.whitelist = 0
+		if(!check_prisonlist(P.client))
 			if(alert(usr, "Player NOT listed in the whitelist. Add [key_name(P)] to the whitelist?", "Message", "Yes", "No") != "Yes")
 				return
 			if(!check_rights(R_PERMISSIONS))
@@ -1682,6 +1683,7 @@
 				message_admins("[key_name_admin(src.owner)] doesn't have rights to add players into whitelist.")
 			else
 				bwhitelist_save(ckey(P.mind.key))
+				P.client.prefs.whitelist = 1
 
 	else if(href_list["BlueSpaceArtillery"])
 		if(!check_rights(R_ADMIN|R_EVENT))	return

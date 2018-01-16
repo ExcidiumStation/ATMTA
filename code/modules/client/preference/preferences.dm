@@ -95,6 +95,8 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 	var/UI_style_alpha = 255
 	var/windowflashing = TRUE
 
+	var/whitelist = 0
+
 	//ghostly preferences
 	var/ghost_anonsay = 0
 

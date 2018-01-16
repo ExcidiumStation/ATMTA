@@ -84,7 +84,7 @@ var/global/datum/controller/occupations/job_master
 			player.mind.assigned_role = rank
 			player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
 
-//			if(!job.prisonlist_job && !check_prisonlist(ckey(player.key))) // And no random prisoners for nice kids
+//			if(!job.prisonlist_job && !check_prisonlist(player.client)) // And no random prisoners for nice kids
 //				continue
 
 			unassigned -= player
