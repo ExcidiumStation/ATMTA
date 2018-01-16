@@ -2123,6 +2123,7 @@ area/security/podbay
 
 /area/constructionsite/science
 	name = "Construction Site Research"
+	icon_state = "medresearch"
 
 /area/constructionsite/bridge
 	name = "Construction Site Bridge"
