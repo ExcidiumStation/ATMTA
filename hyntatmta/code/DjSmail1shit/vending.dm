@@ -13,7 +13,7 @@
 /obj/item/weapon/storage/toolbox/fluff/lunchboxp/New()
 	..()
 	new /obj/item/weapon/reagent_containers/food/snacks/pureshka_cutlet(src)
-	new /obj/item/weapon/reagent_containers/food/snacks/mushroompizzaslice(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/baguette(src)
 	new /obj/item/weapon/reagent_containers/food/drinks/cans/cola(src)
 
 /obj/machinery/vending/pizza
