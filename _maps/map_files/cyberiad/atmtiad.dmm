@@ -2011,7 +2011,7 @@
 "aMI" = (/obj/effect/spawner/window/reinforced,/obj/machinery/door/poddoor/shutters{density = 0; dir = 4; icon_state = "shutter0"; id_tag = "lawyer"; name = "Privacy Shutters"; opacity = 0},/turf/simulated/floor/plating,/area/lawoffice)
 "aMJ" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/plasteel{icon_state = "redcorner"; dir = 1},/area/hallway/primary/fore)
 "aMK" = (/obj/structure/extinguisher_cabinet{pixel_x = 27; pixel_y = 0},/obj/machinery/atmospherics/unary/vent_scrubber{dir = 8; on = 1},/turf/simulated/floor/plasteel{icon_state = "bluecorner"},/area/hallway/primary/fore)
-"aML" = (/obj/pool{density = 1},/turf/simulated/floor/beach/pool,/area/crew_quarters/fitness)
+"aML" = (/obj/pool{density = 1},/turf/simulated/floor/plasteel,/area/crew_quarters/fitness)
 "aMM" = (/obj/effect/decal/cleanable/cobweb2,/obj/structure/closet/crate,/obj/effect/spawner/lootdrop/maintenance,/turf/simulated/floor/plating,/area/maintenance/fsmaint2)
 "aMN" = (/obj/structure/closet/crate,/obj/effect/spawner/lootdrop/maintenance{lootcount = 2; name = "2maintenance loot spawner"},/turf/simulated/floor/plating,/area/maintenance/fsmaint2)
 "aMO" = (/obj/machinery/portable_atmospherics/canister/air,/turf/simulated/floor/plating,/area/maintenance/fsmaint2)
