@@ -98,3 +98,4 @@
 	// Has the client been varedited by an admin?
 	var/var_edited = FALSE
 	//authenticate = 0
+	var/datum/whitelist_app/application
