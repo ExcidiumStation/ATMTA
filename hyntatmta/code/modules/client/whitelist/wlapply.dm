@@ -15,3 +15,27 @@
   return
 
 /client/proc/whitelist_app_window()
+	var/output = {"<div>
+	Сколько вы уже играете в SS13?<br>
+	<a href='?_src_=holder;firstquestion=\ref[C]'>ВВЕСТИ</A><br>
+	Где играли до нас?<br>
+	<a href='?_src_=holder;secondquestion=\ref[C]'>ВВЕСТИ</A><br>
+	Как игрок, что вы представляете из себя и как относитесь к отыгрышу роли??<br>
+	<a href='?_src_=holder;thirdquestion=\ref[C]'>ВВЕСТИ</A><br>
+	Опыт в других ролевых сферах<br>
+	<a href='?_src_=holder;forthquestion=\ref[C]'>ВВЕСТИ</A><br>
+	Ваш возраст<br>
+	<a href='?_src_=holder;fifthquestion=\ref[C]'>ВВЕСТИ</A><br>
+	Если у вас опыт в кодинге, спрайтинге, администрировании?<br>
+	<a href='?_src_=holder;sixthquestion=\ref[C]'>ВВЕСТИ</A><br>
+	Имеете ли вы баны на других серверах? (Этот пункт будет проверен, поэтому в ваших интересах отвечать честно)<br>
+	<a href='?_src_=holder;seventhquestion=\ref[C]'>ВВЕСТИ</A><br>
+	[firstquestion]<br>
+	<a href='?_src_=holder;eighthquestion=\ref[C]'>ВВЕСТИ</A><br>
+	[secondquestion]<br>
+	<a href='?_src_=holder;ninethquestion=\ref[C]'>ВВЕСТИ</A><br>
+	<a href='?_src_=holder;submit=\ref[C]'>ВВЕСТИ</A></div>
+	"}
+	var/datum/browser/popup = new(usr, "secrets", "<div align='center'>Whitelist Panel</div>", 900, 500)
+	popup.set_content(output)
+	popup.open(0)
