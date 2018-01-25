@@ -492,10 +492,6 @@
 	icon_state = "poker_table"
 	buildstack = /obj/item/stack/tile/carpet
 
-/obj/structure/table/woodentable/poker/destroy()
-	new /obj/item/stack/tile/grass(loc)
-	..()
-
 /obj/structure/table/wood/poker/narsie_act()
 	..(FALSE)
 
