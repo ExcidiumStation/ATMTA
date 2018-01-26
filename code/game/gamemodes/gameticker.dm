@@ -92,10 +92,10 @@ var/round_start_time = 0
 		src.mode = config.pick_mode(master_mode)
 	if(!src.mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
-		mode = null
-		current_state = GAME_STATE_PREGAME
+		mode = new /datum/game_mode/extended
+		/*current_state = GAME_STATE_PREGAME
 		job_master.ResetOccupations()
-		return 0
+		return 0*/
 
 	//Configure mode and assign player to special mode stuff
 	src.mode.pre_pre_setup()
@@ -103,9 +103,9 @@ var/round_start_time = 0
 	can_continue = src.mode.pre_setup()//Setup special modes
 	job_master.DivideOccupations() //Distribute jobs
 	if(!can_continue)
-		qdel(mode)
 		current_state = GAME_STATE_PREGAME
 		to_chat(world, "<B>Error setting up [master_mode].</B> Reverting to pre-game lobby.")
+		mode = new /datum/game_mode/extended
 		job_master.ResetOccupations()
 		return 0
 
