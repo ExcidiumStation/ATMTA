@@ -1,12 +1,15 @@
 /obj/item/device/ertsupplyget
 	name = "ERT supply request"
-	desc = "With this buttom you can request more ammo and equpment. NOTES: only one use."
+	desc = "With this button you can request more ammo and equpment. WARNING: only one use."
 	icon_state = "gangtool-red"
 	item_state = "walkietalkie"
 	var/used = 1
 
 /obj/item/device/ertsupplyget/attack_self(mob/living/user)
 	var/response = input("Drop-Location","ERT") in list("Arrival","Bridge","R&D","Brig") as text|null
+	var/datum/effect_system/smoke_spread/smoke = new
+	smoke.set_up(3,0, src.loc)
+	smoke.start()
 	if(response)
 		switch(response)
 			if("Arrival") new/obj/structure/closet/crate/secure/weapon/ertammo(locate(53,140,1))
