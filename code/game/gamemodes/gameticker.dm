@@ -91,6 +91,7 @@ var/round_start_time = 0
 	else
 		src.mode = config.pick_mode(master_mode)
 	if(!src.mode.can_start())
+		mode = null
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
 		mode = new /datum/game_mode/extended
 		current_state = GAME_STATE_PREGAME
