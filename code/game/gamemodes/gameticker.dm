@@ -93,9 +93,9 @@ var/round_start_time = 0
 	if(!src.mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
 		mode = new /datum/game_mode/extended
-		current_state = GAME_STATE_PREGAME
+		/*current_state = GAME_STATE_PREGAME
 		job_master.ResetOccupations()
-		return 0
+		return 0*/
 
 	//Configure mode and assign player to special mode stuff
 	src.mode.pre_pre_setup()
