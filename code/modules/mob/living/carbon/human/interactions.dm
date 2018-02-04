@@ -15,13 +15,13 @@
 	return
 
 //Distant interactions
-/mob/living/carbon/human/verb/interact(mob/M as mob)
+/*/mob/living/carbon/human/verb/interact(mob/M as mob)
 	set name = "Interact"
 	set category = "IC"
 
 	if (istype(M, /mob/living/carbon/human) && usr != M)
 		partner = M
-		make_interaction(machine)
+		make_interaction(machine)*/
 
 /datum/species/human
 	genitals = 1
