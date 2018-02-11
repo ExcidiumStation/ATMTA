@@ -150,30 +150,30 @@
 /datum/gear/karma/kung_suit
 	display_name = "kung suit"
 	cost = 2
-	wl_id = "3001"
+	wl_id = "5008"
 	path = /obj/item/clothing/under/atmta/kung
 
 /datum/gear/karma/kung_shoes
 	display_name = "kung shoes"
 	cost = 1
-	wl_id = "3002"
+	wl_id = "7003"
 	path = /obj/item/clothing/shoes/atmta/kung
 
 /datum/gear/karma/kung_headband
 	display_name = "kung headband"
 	cost = 1
-	wl_id = "3003"
+	wl_id = "0004"
 	path = /obj/item/clothing/head/atmta/kung
 
 /datum/gear/karma/kung_jacket
 	display_name = "kung jacket"
 	cost = 1
-	wl_id = "3004"
+	wl_id = "4012"
 	path = /obj/item/clothing/suit/atmta/kung
 
 /datum/gear/karma/clubskirt
 	display_name = "literature club skirt"
 	cost = 2
-	wl_id = "3005"
+	wl_id = "5009"
 	path = /obj/item/clothing/under/atmta/clubskirt
 	allowed_roles = list("Librarian")
