@@ -4,10 +4,10 @@
 	voice_name = "unidentifiable voice"
 	desc = "A fierce companion for any person of power, this spider has been carefully trained by Nanotrasen specialists. Its beady, staring eyes send shivers down your spine."
 	faction = list("spiders")
-	icon_state = "guard"
-	icon_living = "guard"
-	icon_dead = "guard_dead"
-	icon_gib = "guard_dead"
+	icon_state = "tarantula"
+	icon_living = "tarantula"
+	icon_dead = "tarantula_dead"
+	icon_gib = "tarantula_dead"
 	turns_per_move = 8
 	response_help = "pets"
 	emote_hear = list("chitters")
