@@ -59,9 +59,9 @@
 /obj/item/weapon/gun/energy/meteorgun
 	name = "meteor gun"
 	desc = "For the love of god, make sure you're aiming this the right way!"
-	icon = 'icons/obj/guns/projectile.dmi'
-	icon_state = "riotgun"
-	item_state = "c20r"
+	icon = 'icons/obj/guns/energy.dmi'
+	icon_state = "meteor_gun"
+	item_state = "meteor_gun"
 	w_class = WEIGHT_CLASS_BULKY
 	ammo_type = list(/obj/item/ammo_casing/energy/meteor)
 	cell_type = /obj/item/weapon/stock_parts/cell/potato

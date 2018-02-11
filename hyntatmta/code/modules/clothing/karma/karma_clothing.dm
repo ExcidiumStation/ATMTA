@@ -210,3 +210,40 @@
 	icon_state = "slastena"
 	item_state = "slastena"
 	flags = BLOCKHAIR
+
+// Doki Doki
+
+/obj/item/clothing/under/atmta/clubskirt
+	name = "literature club skirt"
+	desc = "Welcome to the club, buddy"
+	icon_state = "clubskirt"
+	item_state = "clubskirt"
+	item_color = "clubskirt"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+
+// Kung Fury
+
+/obj/item/clothing/under/atmta/kung
+	name = "Kung Jeans"
+	desc = "Pair of old jeans combined with a red tank-top"
+	icon_state = "kung_suit"
+	item_state = "kung_suit"
+	item_color = "kung_suit"
+
+/obj/item/clothing/suit/atmta/kung
+	name = "Kung jacket"
+	desc = "Leather jaket with an old security badge attached to it"
+	icon_state = "kung_jacket"
+	item_state = "kung_jacket"
+
+/obj/item/clothing/shoes/atmta/kung
+	name = "Kung shoes"
+	desc = "Pair of a high red shoes."
+	icon_state = "kung_shoes"
+	item_state = "kung_shoes"
+
+/obj/item/clothing/head/atmta/kung
+	name = "Kung headband"
+	desc = "Stripe of red cloth. You can wear it on your head."
+	icon_state = "kung_headband"
+	item_state = "kung_headband"

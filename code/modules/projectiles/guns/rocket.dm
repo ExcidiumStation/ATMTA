@@ -2,8 +2,8 @@
 	var/projectile
 	name = "rocket launcher"
 	desc = "Say hello to my little friend"
-	icon_state = "rocket"
-	item_state = "rocket"
+	icon_state = "launcher"
+	item_state = "launcher"
 	w_class = WEIGHT_CLASS_BULKY
 	throw_speed = 2
 	throw_range = 10
