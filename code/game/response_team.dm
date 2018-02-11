@@ -393,7 +393,7 @@ var/ert_request_answered = 0
 	suit = /obj/item/clothing/suit/armor/vest/ert/command
 	glasses = /obj/item/clothing/glasses/sunglasses
 
-	belt = /obj/item/weapon/gun/energy/gun
+	belt = /obj/item/weapon/gun/energy/gun/stun
 
 	backpack_contents = list(
 		/obj/item/clothing/head/helmet/ert/command = 1,
@@ -428,7 +428,7 @@ var/ert_request_answered = 0
 
 	belt = /obj/item/weapon/gun/energy/gun/nuclear
 
-	r_hand = /obj/item/weapon/gun/rocketlauncher
+	r_hand = /obj/item/weapon/gun/energy/sniperrifle
 
 	backpack_contents = list(
 		/obj/item/clothing/head/helmet/space/hardsuit/ert/commander = 1,
@@ -437,7 +437,6 @@ var/ert_request_answered = 0
 		/obj/item/weapon/storage/lockbox/mindshield = 1,
 		/obj/item/weapon/gun/energy/pulse/pistol = 1,
 		/obj/item/weapon/shield/energy = 1,
-		/obj/item/ammo_casing/rocket = 3
 		)
 
 /datum/outfit/job/centcom/response_team/security
