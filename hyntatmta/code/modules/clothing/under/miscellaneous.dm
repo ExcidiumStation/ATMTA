@@ -34,11 +34,3 @@
 	icon_state = "darkholme"
 	item_state = "darkholme"
 	item_color = "darkholme"
-
-/obj/item/clothing/under/atmta/clubskirt
-	name = "literature club skirt"
-	desc = "Welcome to the club, buddy"
-	icon_state = "clubskirt"
-	item_state = "clubskirt"
-	item_color = "clubskirt"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS

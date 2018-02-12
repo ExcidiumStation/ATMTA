@@ -15,45 +15,45 @@
 	return
 
 //Distant interactions
-/mob/living/carbon/human/verb/interact(mob/M as mob)
+/*/mob/living/carbon/human/verb/interact(mob/M as mob)
 	set name = "Interact"
 	set category = "IC"
 
 	if (istype(M, /mob/living/carbon/human) && usr != M)
 		partner = M
-		make_interaction(machine)
+		make_interaction(machine)*/
 
 /datum/species/human
-	genitals = 1
-	anus = 1
+	genitals = 0
+	anus = 0
 
 /datum/species/plasmaman
-	anus = 1
+	anus = 0
 
 /datum/species/kidan
-	anus = 1
+	anus = 0
 
 /datum/species/wryn
-	anus = 1
+	anus = 0
 
 /datum/species/unathi
-	genitals = 1
-	anus = 1
+	genitals = 0
+	anus = 0
 
 /datum/species/tajaran
-	genitals = 1
-	anus = 1
+	genitals = 0
+	anus = 0
 
 /datum/species/vulpkanin
-	genitals = 1
-	anus = 1
+	genitals = 0
+	anus = 0
 
 /datum/species/human/skrell
 	genitals = 0
 
 /datum/species/monkey
-	genitals = 1
-	anus = 1
+	genitals = 0
+	anus = 0
 
 /datum/species/monkey/skrell
 	genitals = 0
