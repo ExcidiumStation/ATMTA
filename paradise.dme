@@ -12,6 +12,7 @@
 // BEGIN_INCLUDE
 #include "_maps\__MAP_DEFINES.dm"
 #include "_maps\atmtiad.dm"
+#include "_maps\cyberiad.dm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"
 #include "code\setup.dm"
@@ -1468,6 +1469,7 @@
 #include "code\modules\logic\dual_input.dm"
 #include "code\modules\logic\logic_base.dm"
 #include "code\modules\logic\mono_input.dm"
+#include "code\modules\map_fluff\atmtiad.dm"
 #include "code\modules\map_fluff\cyberiad.dm"
 #include "code\modules\map_fluff\maps.dm"
 #include "code\modules\map_fluff\metastation.dm"
