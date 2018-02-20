@@ -13,16 +13,16 @@ z7 = empty
 */
 
 #if !defined(USING_MAP_DATUM)
-	#include "map_files\atmtiad\atmtiad.dmm"
-	#include "map_files\atmtiad\z2.dmm"
-	#include "map_files\atmtiad\z3.dmm"
-	#include "map_files\atmtiad\z4.dmm"
+	#include "map_files\excidium\excidium.dmm"
+	#include "map_files\excidium\z2.dmm"
+	#include "map_files\excidium\z3.dmm"
+	#include "map_files\excidium\z4.dmm"
 	#include "map_files\generic\z5.dmm"
-	#include "map_files\atmtiad\z6.dmm"
+	#include "map_files\excidium\z6.dmm"
 	#include "map_files\generic\z7.dmm"
 
-	#define MAP_FILE "atmtiad.dmm"
-	#define MAP_NAME "Atmtiad"
+	#define MAP_FILE "excidium.dmm"
+	#define MAP_NAME "Excidium"
 	#define MAP_TRANSITION_CONFIG list(\
 DECLARE_LEVEL(MAIN_STATION, CROSSLINKED, list(STATION_LEVEL,STATION_CONTACT,REACHABLE,AI_OK)),\
 DECLARE_LEVEL(CENTCOMM, SELFLOOPING, list(ADMIN_LEVEL, BLOCK_TELEPORT, IMPEDES_MAGIC)),\
@@ -32,10 +32,10 @@ DECLARE_LEVEL(MINING, CROSSLINKED, list(REACHABLE, STATION_CONTACT, HAS_WEATHER,
 DECLARE_LEVEL(DERELICT, CROSSLINKED, list(REACHABLE)),\
 DECLARE_LEVEL(EMPTY_AREA, CROSSLINKED, list(REACHABLE)))
 
-	#define USING_MAP_DATUM /datum/map/atmtiad
+	#define USING_MAP_DATUM /datum/map/excidium
 
 #elif !defined(MAP_OVERRIDE)
 
-	#warn a map has already been included, ignoring Atmtiad.
+	#warn a map has already been included, ignoring Excidium.
 
 #endif
