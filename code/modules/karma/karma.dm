@@ -306,7 +306,7 @@ You've gained <b>[totalkarma]</b> total karma in your time here.<br>"}
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=5009'>Unlock Literature club skirt -- 10KP</a>(for Librarian only)<br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=1'>Unlock DIO Set -- 15KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=2'>Unlock Slastena Set -- 15KP</a>(for Chef and Civilians only)<br>
-			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=5008'>Unlock Kung Fury Set -- 20KP</a><br
+			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=5008'>Unlock Kung Fury Set -- 20KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=0002'>Unlock Sergeant's Helmet -- 30KP</a>(for Head of Security and Warden only)<br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=0003'>Unlock Victorian Clothes -- 40KP</a><br>
 			"}
