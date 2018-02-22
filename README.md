@@ -1,6 +1,6 @@
-# ATMTA STATION [![Build Status](https://travis-ci.org/ITBlackwood/ATMTA-Station.svg?branch=master)](https://travis-ci.org/ITBlackwood/ATMTA-Station)
-Форк Paradise Station.
-[Website](http://атмта.рф/) - [Code](https://github.com/ParadiseSS13/Paradise) - [Discord](https://discord.gg/014REXI6YHvMSo7Ew)
+# Excidium Station [![Build Status](https://travis-ci.org/ITBlackwood/ATMTA-Station.svg?branch=master)](https://travis-ci.org/ITBlackwood/ATMTA-Station)
+Форк Paradise Station. Бывшая  Atmta Station.
+[Website](https://atmtiad.xyz/) - [Code](https://github.com/ParadiseSS13/Paradise) - [Discord](https://discord.gg/014REXI6YHvMSo7Ew)
 
 Постоянно модифицируемый билд Paradise, набитый мемами и МЕМАСАМИ.
 ---

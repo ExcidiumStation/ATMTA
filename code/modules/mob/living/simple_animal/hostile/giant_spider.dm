@@ -81,6 +81,45 @@
 	poison_per_bite = 5
 	move_to_delay = 5
 
+//vipers are the rare variant of the hunter, no IMMEDIATE damage but so much poison medical care will be needed fast.
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper
+	name = "viper"
+	desc = "Furry and black, it makes you shudder to look at it. This one has effervescent purple eyes."
+	icon_state = "viper"
+	icon_living = "viper"
+	icon_dead = "viper_dead"
+	maxHealth = 40
+	health = 40
+	melee_damage_lower = 1
+	melee_damage_upper = 1
+	poison_per_bite = 12
+	move_to_delay = 4
+	poison_type = "venom" //all in venom, glass cannon. you bite 5 times and they are DEFINITELY dead, but 40 health and you are extremely obvious. Ambush, maybe?
+
+//tarantulas are really tanky, regenerating (maybe), hulky monster but are also extremely slow, so.
+/mob/living/simple_animal/hostile/poison/giant_spider/tarantula
+	name = "tarantula"
+	desc = "Furry and black, it makes you shudder to look at it. This one has abyssal red eyes."
+	icon_state = "tarantula"
+	icon_living = "tarantula"
+	icon_dead = "tarantula_dead"
+	maxHealth = 300 // woah nelly
+	health = 300
+	melee_damage_lower = 35
+	melee_damage_upper = 40
+	poison_per_bite = 0
+	move_to_delay = 8
+
+//midwives are the queen of the spiders, can send messages to all them and web faster. That rare round where you get a queen spider and turn your 'for honor' players into 'r6siege' players will be a fun one.
+/mob/living/simple_animal/hostile/poison/giant_spider/nurse/midwife
+	name = "midwife"
+	desc = "Furry and black, it makes you shudder to look at it. This one has scintillating green eyes."
+	icon_state = "midwife"
+	icon_living = "midwife"
+	icon_dead = "midwife_dead"
+	maxHealth = 80
+	health = 80
+
 /mob/living/simple_animal/hostile/poison/giant_spider/hunter/handle_automated_action()
 	if(!..()) //AIStatus is off
 		return

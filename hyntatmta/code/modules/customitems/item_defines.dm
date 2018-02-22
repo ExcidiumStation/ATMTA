@@ -1,6 +1,6 @@
 /obj/item/weapon/lighter/zippo/robust
     name = "robust zippo"
-    desc = "All craftsspacemanship is of the highest quality. It is encrusted with gold sheets and rubies. There is etched R on the back."
+    desc = "What a quiant idea."
     icon = 'hyntatmta/icons/obj/custom_items.dmi'
     icon_state = "robustzippo"
     icon_on = "robustzippoon"

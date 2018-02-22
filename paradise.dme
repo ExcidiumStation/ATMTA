@@ -11,7 +11,7 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "_maps\__MAP_DEFINES.dm"
-#include "_maps\atmtiad.dm"
+#include "_maps\excidium.dm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"
 #include "code\setup.dm"
@@ -1469,6 +1469,7 @@
 #include "code\modules\logic\logic_base.dm"
 #include "code\modules\logic\mono_input.dm"
 #include "code\modules\map_fluff\cyberiad.dm"
+#include "code\modules\map_fluff\excidium.dm"
 #include "code\modules\map_fluff\maps.dm"
 #include "code\modules\map_fluff\metastation.dm"
 #include "code\modules\martial_arts\adminfu.dm"
@@ -1772,6 +1773,7 @@
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\clown.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\drone.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\fish.dm"
+#include "code\modules\mob\living\simple_animal\hostile\retaliate\frog.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\pet.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\retaliate.dm"
 #include "code\modules\mob\living\simple_animal\hostile\retaliate\undead.dm"
@@ -2235,6 +2237,7 @@
 #include "hyntatmta\code\game\objects\structures\watercloset.dm"
 #include "hyntatmta\code\modules\admin\verbs\atmta_secrets.dm"
 #include "hyntatmta\code\modules\admin\verbs\striketeam_doom.dm"
+#include "hyntatmta\code\modules\admin\verbs\whitelist.dm"
 #include "hyntatmta\code\modules\client\preference\loadout\loadout_karma.dm"
 #include "hyntatmta\code\modules\clothing\clothing.dm"
 #include "hyntatmta\code\modules\clothing\head\helmet.dm"
