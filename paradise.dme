@@ -2240,6 +2240,7 @@
 #include "hyntatmta\code\modules\admin\verbs\whitelist.dm"
 #include "hyntatmta\code\modules\client\preference\loadout\loadout_karma.dm"
 #include "hyntatmta\code\modules\clothing\clothing.dm"
+#include "hyntatmta\code\modules\clothing\gloves\miscellaneous.dm"
 #include "hyntatmta\code\modules\clothing\head\helmet.dm"
 #include "hyntatmta\code\modules\clothing\karma\karma_clothing.dm"
 #include "hyntatmta\code\modules\clothing\masks\gasmask.dm"
