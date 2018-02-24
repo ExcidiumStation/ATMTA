@@ -75,3 +75,17 @@
 		T.Weaken(5)
 		return
 	..()
+
+/obj/item/weapon/stool/bar
+	name = "bar stool"
+	desc = "Apply butt. Get drunk."
+	icon_state = "bar_stool"
+
+/obj/item/weapon/stool/piano
+	name = "piano stool"
+	desc = "Apply butt. Become Mozart."
+	icon_state = "piano_stool"
+
+//So they don't get picked up.
+/obj/item/weapon/stool/piano/attack_self(mob/user as mob)
+	return
