@@ -224,13 +224,13 @@
 	path = /obj/item/clothing/gloves/atmta/bikergloves
 
 /datum/gear/karma/biker_shoes
-	display name = "biker shoes"
+	display_name = "biker shoes"
 	cost = 2
 	wl_id = "7004"
 	path = /obj/item/clothing/shoes/atmta/biker
 
 /datum/gear/karma/CIA
-	display name = "CIA"
+	display_name = "CIA"
 	wl_id = "5012"
 	path = /obj/item/clothing/under/atmta/cia
 	allowed_roles = list("Internal Affairs Agent")
