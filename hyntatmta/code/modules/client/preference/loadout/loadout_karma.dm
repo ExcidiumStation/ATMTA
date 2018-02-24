@@ -152,24 +152,28 @@
 	cost = 2
 	wl_id = "5008"
 	path = /obj/item/clothing/under/atmta/kung
+	allowed_roles = list("Security Officer", "Detective")
 
 /datum/gear/karma/kung_shoes
 	display_name = "kung shoes"
 	cost = 1
 	wl_id = "7003"
 	path = /obj/item/clothing/shoes/atmta/kung
+	allowed_roles = list("Security Officer", "Detective")
 
 /datum/gear/karma/kung_headband
 	display_name = "kung headband"
 	cost = 1
 	wl_id = "0004"
 	path = /obj/item/clothing/head/atmta/kung
+	allowed_roles = list("Security Officer", "Detective")
 
 /datum/gear/karma/kung_jacket
 	display_name = "kung jacket"
 	cost = 1
 	wl_id = "4012"
 	path = /obj/item/clothing/suit/atmta/kung
+	allowed_roles = list("Security Officer", "Detective")
 
 /datum/gear/karma/clubskirt
 	display_name = "literature club skirt"
@@ -177,3 +181,56 @@
 	wl_id = "5009"
 	path = /obj/item/clothing/under/atmta/clubskirt
 	allowed_roles = list("Librarian")
+
+/datum/gear/karma/sundowner_coat
+	display_name = "armoured greatcoat"
+	wl_id = "4013"
+	path = /obj/item/clothing/suit/atmta/sundowner
+	allowed_roles = list("Head of Security")
+
+/datum/gear/karma/scorpio_jacket
+	display_name = "scorpio jacket"
+	wl_id = "4014"
+	path = /obj/item/clothing/suit/atmta/scorpiojacket
+
+/datum/gear/karma/richard
+	display_name = "richard's mask"
+	cost = 3
+	wl_id = "0005"
+	path = /obj/item/clothing/head/atmta/richard
+
+/datum/gear/karma/jacket_suit
+	display_name = "richard's outfit"
+	cost = 3
+	wl_id = "5010"
+	path = /obj/item/clothing/under/atmta/jacketsuit
+
+/datum/gear/karma/biker_helmet
+	display_name = "biker helmet"
+	cost = 2
+	wl_id = "0006"
+	path = /obj/item/clothing/head/atmta/biker
+
+/datum/gear/karma/biker_suit
+	display_name = "biker suit"
+	cost = 2
+	wl_id = "5011"
+	path = /obj/item/clothing/under/atmta/bikersuit
+
+/datum/gear/karma/biker_gloves
+	display_name = "biker gloves"
+	cost = 2
+	wl_id = "6002"
+	path = /obj/item/clothing/gloves/atmta/bikergloves
+
+/datum/gear/karma/biker_shoes
+	display name = "biker shoes"
+	cost = 2
+	wl_id = "7004"
+	path = /obj/item/clothing/shoes/atmta/biker
+
+/datum/gear/karma/CIA
+	display name = "CIA"
+	wl_id = "5012"
+	path = /obj/item/clothing/under/atmta/cia
+	allowed_roles = list("Internal Affairs Agent")
