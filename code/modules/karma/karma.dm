@@ -308,7 +308,7 @@ You've gained <b>[totalkarma]</b> total karma in your time here.<br>"}
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=5009'>Unlock CIA outfit -- 10KP</a>(for Internal Affairs Agent only)<br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=1'>Unlock DIO Set -- 15KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=2'>Unlock Slastena Set -- 15KP</a>(for Chef and Civilians only)<br>
-			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=5008'>Unlock Kung Fury Set -- 20KP</a>(for Security Officer and Detective only)<br>
+			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=3'>Unlock Kung Fury Set -- 20KP</a>(for Security Officer and Detective only)<br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4'>Unlock Jacket Set -- 20KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=5'>Unlock Biker Set -- 20KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4013'>Unlock Sundowner Coat -- 25KP</a>(for Head of Security only)<br>
