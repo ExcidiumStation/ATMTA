@@ -1,4 +1,4 @@
-/obj/item/clothing/gloves/anchor_arms
+/obj/item/clothing/gloves/atmta/anchor_arms
 	name = "Anchor Arms"
 	desc = "When you're a jerk, everybody loves you."
 	icon_state = "anchorarms"
