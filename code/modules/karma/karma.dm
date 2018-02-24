@@ -312,7 +312,7 @@ You've gained <b>[totalkarma]</b> total karma in your time here.<br>"}
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4'>Unlock Jacket Set -- 20KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=5'>Unlock Biker Set -- 20KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4013'>Unlock Sundowner Coat -- 25KP</a>(for Head of Security only)<br>
-			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=0002'>Unlock Sergeant's Helmet -- 30KP</a>(for Head of Security and Warden only)<br>
+			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=0002'>Unlock Sergeant's Helmet -- 40KP</a>(for Head of Security and Warden only)<br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=0003'>Unlock Victorian Clothes -- 40KP</a><br>
 			"}
 
