@@ -350,7 +350,7 @@
 							src.DB_item_unlock("0003", 5)
 							src.DB_item_unlock("5002", 5)
 							src.DB_item_unlock("7002", 5)
-					if("3")
+					if("5008")
 						if(karma < 20)
 							to_chat(usr,"You do not have enough karma!")
 						else
