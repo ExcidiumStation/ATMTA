@@ -215,13 +215,13 @@
 	display_name = "biker suit"
 	cost = 2
 	wl_id = "5011"
-	path = /obj/item/clothing/under/atmta/bikersuit
+	path = /obj/item/clothing/under/atmta/biker
 
 /datum/gear/karma/biker_gloves
 	display_name = "biker gloves"
 	cost = 2
 	wl_id = "6002"
-	path = /obj/item/clothing/gloves/atmta/bikergloves
+	path = /obj/item/clothing/gloves/atmta/biker
 
 /datum/gear/karma/biker_shoes
 	display_name = "biker shoes"

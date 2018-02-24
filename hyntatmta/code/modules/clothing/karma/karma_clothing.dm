@@ -315,9 +315,9 @@
 /obj/item/clothing/under/atmta/cia
 	name = "casual IAA outfit"
 	desc = "Just looking at this makes you feel in charge."
-	icon_state = "cia"
-	item_state = "cia"
-	item_color = "cia"
+	icon_state = "CIA"
+	item_state = "CIA"
+	item_color = "CIA"
 
 // Hotline Miami
 
@@ -339,23 +339,23 @@
 	name = "Biker's Helmet"
 	desc = "This helmet should protect you from russians and masked vigilantes."
 	armor = list(melee = 25, bullet = 15, laser = 20, energy = 10, bomb = 10, bio = 0, rad = 0)
-	icon_state = "biker_helmet"
+	icon_state = "biker"
 	flags = HEADCOVERSEYES|BLOCKHAIR|HEADCOVERSMOUTH
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 
-/obj/item/clothing/under/atmta/bikersuit
+/obj/item/clothing/under/atmta/biker
 	name = "Biker's outfit"
 	desc = "Blue jeans with pink jacket"
 	icon_state = "biker"
 	item_state = "biker"
 	item_color = "biker"
 
-/obj/item/clothing/gloves/atmta/bikergloves
+/obj/item/clothing/gloves/atmta/biker
 	name = "Biker's Gloves"
 	desc = "Stylish blue gloves"
-	icon_state = "bikergloves"
-	item_state = "bikergloves"
-	item_color = "bikergloves"
+	icon_state = "biker"
+	item_state = "biker"
+	item_color = "biker"
 
 /obj/item/clothing/shoes/atmta/biker
 	name = "Biker's shoes"
