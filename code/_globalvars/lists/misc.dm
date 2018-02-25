@@ -25,4 +25,6 @@ var/list/ruin_landmarks = list()
 
 var/list/round_end_sounds = list( // Maps available round end sounds to their duration
 		'sound/misc/theworld.ogg' = 4 SECONDS
+		'sound/misc/nani.ogg' = 5 SECONDS
+		'sound/misc/brb.ogg' = 4 SECONDS
 		)
