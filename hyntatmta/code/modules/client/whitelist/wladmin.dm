@@ -13,7 +13,7 @@
     to_chat(src, "o net forma ne gruzit!")
     return
 
-
+  
 
 /datum/admins/wlAppHolder/proc/load_apps()
   apps = list()
@@ -41,7 +41,7 @@
     return 0
 
   while(query.NextRow())
-    var/whitelist_app/app = new /datum/whitelist_app
+    var/datum/whitelist_app/app = new /datum/whitelist_app
     app.ckey = query.item[1]
     app.game_exp = query.item[2]
     app.lastplayed = query.item[3]
