@@ -245,6 +245,7 @@
 	..()
 	new /obj/item/clothing/suit/space/eva/paramedic(src)
 	new /obj/item/clothing/head/helmet/space/eva/paramedic(src)
+	new /obj/item/clothing/shoes/magboots/para(src)
 	new /obj/item/device/sensor_device(src)
 	new /obj/item/key/ambulance(src)
 	new /obj/item/weapon/pinpointer/crew(src)
