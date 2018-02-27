@@ -83,7 +83,3 @@ obj/item/clothing/shoes/magboots/syndie/advance //For the Syndicate Strike Team
 	name = "captain's greaves"
 	icon_state = "capboots0"
 	magboot_state = "capboots"
-
-/obj/item/clothing/shoes/magboots/advance/captain/examine(mob/user)
-	..(user)
-	to_chat(user, "Its anchoring spikes appear to be [magpulse ? "enabled" : "disabled"].")
