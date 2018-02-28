@@ -35,7 +35,7 @@
 
 		return 0
 	on = !on
-	playsound(user, 'sound/weapons/empty.ogg', 100, 1)
+	playsound(user, 'sound/effects/flashlight.ogg', 75, 1)
 	update_brightness(user)
 	for(var/X in actions)
 		var/datum/action/A = X
@@ -206,6 +206,7 @@ obj/item/device/flashlight/lamp/bananalamp
 	. = ..()
 	// All good, turn it on.
 	if(.)
+		playsound(user, 'sound/effects/flare.ogg', 75, 1)
 		user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>You pull the cord on the flare, activating it!</span>")
 		src.force = on_damage
 		src.damtype = "fire"
