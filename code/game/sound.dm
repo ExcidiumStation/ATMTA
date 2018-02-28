@@ -135,4 +135,6 @@
 							  'sound/machines/terminal_button07.ogg', 'sound/machines/terminal_button08.ogg')
 			if("growls")
 				soundin = pick('sound/goonstation/voice/growl1.ogg', 'sound/goonstation/voice/growl2.ogg', 'sound/goonstation/voice/growl3.ogg')
+			if("fracture")
+				soundin = pick('sound/effects/bonebreak1.ogg', 'sound/effects/bonebreak2.ogg', 'sound/effects/bonebreak3.ogg', 'sound/effects/bonebreak4.ogg')
 	return soundin
