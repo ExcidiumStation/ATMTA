@@ -3,20 +3,39 @@
   set category = "Admin"
   if(!holder && !check_rights(R_ADMIN))
     return
-  globwlAppHolder.showUI()
 
-/datum/admins/wlAppHolder
-  var/list/apps
+  if(!holder)
+    return
+
+  holder.showUI()
 
 /datum/admins/wlAppHolder/proc/showUI()
-  if(!load_apps())
+  var/list/apps = load_apps()
+  if(!apps)
     to_chat(src, "o net forma ne gruzit!")
     return
 
-  
+  var/output = "<div align='center'><table><tr>"
+  output += {"<td width='35%' align='center'><h1>Whitelist Applications</h1></td>
+		<td width='65%' align='center' bgcolor='#f9f9f9'>
+		<form method='GET' action='?src=[UID()]'>
+		<input type='hidden' name='src' value='[UID()]'>
+		<table width='100%'><tr>
+		<td><b>Ckey:</b> <input type='text' name='ckeyname'></td>
+		<td><input type='submit' name='addtowhitelist' value='Add to Whitelist'></td>
+		</form>
+		</tr>
+		</td>
+		</table>
+		<form method='GET' action='?src=[UID()]'><b>Search</b>
+		<input type='hidden' name='src' value='[UID()]'>
+		<b>Ckey:</b> <input type='text' name='whitelistsearchckey' value='[ckeyname]'>
+		<input type='submit' value='search'>
+		</form>"}
+
 
 /datum/admins/wlAppHolder/proc/load_apps()
-  apps = list()
+  var/list/apps = list()
   var/DBQuery/query = dbcon.NewQuery({"SELECT
            ckey,
            game_exp,
@@ -56,4 +75,4 @@
     app.wlanswer_mech = query.item[12]
     apps += app
 
-  return 1
+  return apps
