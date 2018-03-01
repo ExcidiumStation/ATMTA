@@ -95,12 +95,23 @@
 	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
 	icon_state = "beret_hos_black"
 
+/obj/item/clothing/head/HoS/beret/navy
+	name = "head of security's beret"
+	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
+	icon_state = "beret_hos"
+
 /obj/item/clothing/head/warden
 	name = "warden's police hat"
 	desc = "It's a special armored hat issued to the Warden of a security force. Protects the head from impacts."
 	icon_state = "policehelm"
 	armor = list(melee = 30, bullet = 5, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0)
 	strip_delay = 60
+
+/obj/item/clothing/head/beret/sec/warden
+	name = "warden's beret"
+	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
+	icon_state = "beret_warden"
+	armor = list(melee = 30, bullet = 5, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0)
 
 /obj/item/clothing/head/officer
 	name = "officer's cap"
@@ -117,11 +128,9 @@
 	armor = list(melee = 30, bullet = 25, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0)
 	strip_delay = 60
 
-/obj/item/clothing/head/beret/sec/warden
-	name = "warden's beret"
-	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
-	icon_state = "beret_warden"
-	armor = list(melee = 30, bullet = 5, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0)
+/obj/item/clothing/head/beret/sec/navy
+	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
+	icon_state = "beret_officer_navy"
 
 /obj/item/clothing/head/beret/eng
 	name = "engineering beret"
