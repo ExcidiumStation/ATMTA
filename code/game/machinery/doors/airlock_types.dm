@@ -56,7 +56,7 @@
 	Station Airlocks Glass
 */
 
-/obj/machinery/door/airlock/glass
+/obj/machinery/door/airlock/public/glass
 	opacity = 0
 	glass = TRUE
 

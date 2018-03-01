@@ -10,7 +10,7 @@
 	var/base_name = "airlock"
 	var/obj/item/weapon/airlock_electronics/electronics = null
 	var/airlock_type = /obj/machinery/door/airlock //the type path of the airlock once completed
-	var/glass_type = /obj/machinery/door/airlock/glass
+	var/glass_type = /obj/machinery/door/airlock/public/glass
 	var/glass = 0 // 0 = glass can be installed. 1 = glass is already installed.
 	var/created_name = null
 	var/heat_proof_finished = 0 //whether to heat-proof the finished airlock
