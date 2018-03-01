@@ -103,6 +103,7 @@
 	new /obj/item/weapon/cartridge/hos(src)
 	new /obj/item/device/radio/headset/heads/hos/alt(src)
 	new /obj/item/clothing/under/rank/head_of_security(src)
+	new /obj/item/clothing/under/rank/head_of_security/alt(src)
 	new /obj/item/clothing/under/rank/head_of_security/formal(src)
 	new /obj/item/clothing/under/rank/head_of_security/corp(src)
 	new /obj/item/clothing/under/rank/head_of_security/skirt(src)
