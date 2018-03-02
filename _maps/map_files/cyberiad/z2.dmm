@@ -466,7 +466,7 @@
 "iX" = (/turf/unsimulated/wall/fakeglass{icon_state = "fakewindows"; dir = 8},/area/trader_station/sol)
 "iY" = (/turf/unsimulated/wall/fakeglass{tag = "icon-fakewindows2 (WEST)"; icon_state = "fakewindows2"; dir = 8},/area/trader_station/sol)
 "iZ" = (/turf/unsimulated/wall/fakeglass{tag = "icon-fakewindows (NORTHEAST)"; icon_state = "fakewindows"; dir = 5},/area/trader_station/sol)
-"ja" = (/turf/unsimulated/wall{desc = "It opens and closes."; icon = 'icons/obj/doors/Doormining.dmi'; icon_state = "door_closed"; name = "Docking Bay 2"},/area/trader_station/sol)
+"ja" = (/turf/unsimulated/wall{name = "Docking Bay 2"},/area/trader_station/sol)
 "jb" = (/obj/docking_port/stationary/transit{dir = 1; dwidth = 1; height = 4; id = "pod1_transit"; name = "pod 1 in transit"; width = 3},/turf/space/transit,/area/space)
 "jc" = (/obj/docking_port/stationary/transit{dir = 1; dwidth = 1; height = 4; id = "pod2_transit"; name = "pod 2 in transit"; width = 3},/turf/space/transit,/area/space)
 "jd" = (/obj/structure/toilet{dir = 8},/obj/structure/window/reinforced/tinted{dir = 1},/obj/machinery/door/window{dir = 8; name = "Toilet"; opacity = 1; req_access_txt = "0"},/turf/unsimulated/floor{icon_state = "freezerfloor"; dir = 2},/area/trader_station/sol)
@@ -2391,4 +2391,3 @@ abababababababababababababababababababababababababababababababababababababababab
 ababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
 ababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
 "}
-
