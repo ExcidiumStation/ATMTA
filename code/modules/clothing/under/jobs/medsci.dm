@@ -10,6 +10,20 @@
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 10, rad = 0)
 	flags_size = ONESIZEFITSALL
 
+/obj/item/clothing/under/rank/research_director/alt
+	desc = "Maybe you'll engineer your own half-man, half-pig creature some day. Its fabric provides minor protection from biological contaminants."
+	name = "research director's tan suit"
+	icon_state = "rdwhimsy"
+	item_state = "rdwhimsy"
+	item_color = "rdwhimsy"
+
+/obj/item/clothing/under/rank/research_director/turtleneck
+	desc = "A dark purple turtleneck and tan khakis, for a director with a superior sense of style."
+	name = "research director's turtleneck"
+	icon_state = "rdturtle"
+	item_state = "rdturtle"
+	item_color = "rdturtle"
+
 /obj/item/clothing/under/rank/scientist
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
 	name = "scientist's jumpsuit"
