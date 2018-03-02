@@ -87,7 +87,7 @@ proc/isDay(var/month, var/day)
 //Takes a value of time in deciseconds.
 //Returns a text value of that number in hours, minutes, or seconds.
 /proc/DisplayTimeText(time_value)
-	var/second = time_value*0.1
+	var/second = time_value * 0.1
 	var/second_adjusted = null
 	var/second_rounded = FALSE
 	var/minute = null
@@ -97,8 +97,8 @@ proc/isDay(var/month, var/day)
 	if(!second)
 		return "0 seconds"
 	if(second >= 60)
-		minute = round_down(second/60)
-		second = round(second - (minute*60), 0.1)
+		minute = round_down(second / 60)
+		second = round(second - (minute * 60), 0.1)
 		second_rounded = TRUE
 	if(second)	//check if we still have seconds remaining to format, or if everything went into minute.
 		second_adjusted = round(second)	//used to prevent '1 seconds' being shown
@@ -128,8 +128,8 @@ proc/isDay(var/month, var/day)
 	if(!minute)
 		return "[second]"
 	if(minute >= 60)
-		hour = round_down(minute/60,1)
-		minute = (minute - (hour*60))
+		hour = round_down(minute / 60,1)
+		minute = (minute - (hour * 60))
 	if(minute) //alot simpler from here since you don't have to worry about fractions
 		if(minute != 1)
 			if((day || hour) && second)
@@ -151,8 +151,8 @@ proc/isDay(var/month, var/day)
 	if(!hour)
 		return "[minute][second]"
 	if(hour >= 24)
-		day = round_down(hour/24,1)
-		hour = (hour - (day*24))
+		day = round_down(hour / 24,1)
+		hour = (hour - (day * 24))
 	if(hour)
 		if(hour != 1)
 			if(day && (minute || second))

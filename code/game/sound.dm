@@ -137,4 +137,6 @@
 				soundin = pick('sound/goonstation/voice/growl1.ogg', 'sound/goonstation/voice/growl2.ogg', 'sound/goonstation/voice/growl3.ogg')
 			if("fracture")
 				soundin = pick('sound/effects/bonebreak1.ogg', 'sound/effects/bonebreak2.ogg', 'sound/effects/bonebreak3.ogg', 'sound/effects/bonebreak4.ogg')
+			if ("light_bic")
+				soundin = pick('sound/items/lighter1.ogg', 'sound/items/lighter2.ogg', 'sound/items/lighter3.ogg')
 	return soundin
