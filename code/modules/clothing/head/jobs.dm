@@ -43,7 +43,7 @@
 	name = "chaplain's hood"
 	desc = "It's hood that covers the head. It keeps you warm during the space winters."
 	icon_state = "chaplain_hood"
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR | NODROP
 	flags_cover = HEADCOVERSEYES
 
 //Chaplain
@@ -51,7 +51,7 @@
 	name = "nun hood"
 	desc = "Maximum piety in this star system."
 	icon_state = "nun_hood"
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR | NODROP
 	flags_cover = HEADCOVERSEYES
 
 //Chaplain
@@ -59,7 +59,7 @@
 	name = "monk hood"
 	desc = "Wooden board not included."
 	icon_state = "monk_hood"
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR | NODROP
 	flags_cover = HEADCOVERSEYES
 
 /obj/item/clothing/head/witchhunter_hat
