@@ -165,7 +165,7 @@
 	item_state = "officerbluejacket"
 
 /obj/item/clothing/suit/armor/officertanjacket
-	name = "officer's navy jacket"
+	name = "officer's tan jacket"
 	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
 	icon_state = "officertanjacket"
 	item_state = "officertanjacket"
