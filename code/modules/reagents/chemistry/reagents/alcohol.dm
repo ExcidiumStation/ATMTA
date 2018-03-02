@@ -144,6 +144,16 @@
 	drink_name = "Glass of vodka"
 	drink_desc = "The glass contain wodka. Xynta."
 
+/datum/reagent/consumable/ethanol/premiumvodka
+	name = "Premium Vodka"
+	description = "Premium distilled vodka imported directly from the Russia."
+	color = "#aaddff" // rgb: 170, 221, 255 - very light blue.
+	alcohol_perc = 0.3
+	drink_icon = "ginvodkaglass"
+	drink_name = "Glass of premium vodka"
+	drink_desc = "The glass contain wodka. Xynta."
+	taste_message = "clear kvass"
+
 /datum/reagent/consumable/ethanol/sake
 	name = "Sake"
 	id = "sake"
@@ -187,6 +197,17 @@
 	drink_name = "Glass of wine"
 	drink_desc = "A very classy looking drink."
 	taste_message = "wine"
+
+/datum/reagent/consumable/ethanol/premiumwine
+	name = "White Wine"
+	description = "An exceptionally expensive alchoholic beverage made from distilled white grapes."
+	color = "#ffddaa" // rgb: 255, 221, 170 - a light cream
+	dizzy_adj = 2
+	alcohol_perc = 0.2
+	drink_icon = "wineglass"
+	drink_name = "Glass of premium wine"
+	drink_desc = "A very classy looking drink."
+	taste_message = "white velvet"
 
 /datum/reagent/consumable/ethanol/cognac
 	name = "Cognac"
