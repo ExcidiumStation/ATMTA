@@ -338,10 +338,10 @@
 							src.DB_item_unlock("6001",3)
 							src.DB_item_unlock("7001",3)
 					if("0002")
-						if(karma < 30)
+						if(karma < 40)
 							to_chat(usr, "IDIOT! You do not have enough karma!")
 						else
-							src.DB_item_unlock("0002", 30)
+							src.DB_item_unlock("0002", 40)
 
 					if("2")
 						if(karma < 15)
@@ -350,7 +350,7 @@
 							src.DB_item_unlock("0003", 5)
 							src.DB_item_unlock("5002", 5)
 							src.DB_item_unlock("7002", 5)
-					if("5008")
+					if("3")
 						if(karma < 20)
 							to_chat(usr,"You do not have enough karma!")
 						else
@@ -358,6 +358,20 @@
 							src.DB_item_unlock("7003",5)
 							src.DB_item_unlock("0004",5)
 							src.DB_item_unlock("4012",5)
+					if("4")
+						if(karma < 20)
+							to_chat(usr,"You do not have enough karma!")
+						else
+							src.DB_item_unlock("0005",10)
+							src.DB_item_unlock("5010",10)
+					if("5")
+						if(karma < 20)
+							to_chat(usr,"You do not have enough karma!")
+						else
+							src.DB_item_unlock("0006",5)
+							src.DB_item_unlock("5011",5)
+							src.DB_item_unlock("6002",5)
+							src.DB_item_unlock("7004",5)
 					if("5009")
 						if(karma < 10)
 							to_chat(usr,"You do not have enough karma!")
@@ -554,6 +568,8 @@
 		preferences_datums[ckey] = prefs
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
+	if(world.byond_version >= 511 && byond_version >= 511 && prefs.clientfps)
+		fps = prefs.clientfps
 
 	spawn() // Goonchat does some non-instant checks in start()
 		chatOutput.start()

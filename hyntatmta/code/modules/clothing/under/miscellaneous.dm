@@ -34,3 +34,10 @@
 	icon_state = "darkholme"
 	item_state = "darkholme"
 	item_color = "darkholme"
+
+/obj/item/clothing/under/atmta/disco
+	name = "Light blue uniform"
+	desc = "White shirt with red butterfly tie and blue suit. You feel like some kind of disco star in it."
+	icon_state = "disco"
+	item_state = "disco"
+	item_color = "disco"

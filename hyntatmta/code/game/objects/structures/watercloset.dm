@@ -111,7 +111,7 @@
     /obj/item/weapon/scissors/safety = 2,
     /obj/item/weapon/grenade/bananade = 2,
     /obj/item/weapon/grenade/plastic/x4 = 1,
-    /obj/item/weapon/grenade/iedcasing/filled = 1,
+    /obj/item/weapon/grenade/iedcasing = 1,
     /obj/item/weapon/twohanded/spear = 1,
     /obj/item/weapon/storage/box/syndie_kit/space = 1
   )
