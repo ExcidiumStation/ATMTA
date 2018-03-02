@@ -65,6 +65,7 @@
 	windowflashing = sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
 	ghost_anonsay = sanitize_integer(ghost_anonsay, 0, 1, initial(ghost_anonsay))
 	exp	= sanitize_text(exp, initial(exp))
+	clientfps = sanitize_integer(clientfps, 0, 1000, initial(clientfps))
 	return 1
 
 /datum/preferences/proc/save_preferences(client/C)

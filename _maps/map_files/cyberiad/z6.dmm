@@ -381,6 +381,10 @@
 "hr" = (/turf/simulated/floor/plasteel{dir = 8; icon_state = "chapel"},/area/derelict/medical/chapel)
 "hs" = (/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plasteel/airless{icon_state = "white"},/area/derelict/medical)
 "ht" = (/obj/item/weapon/cigbutt,/turf/simulated/floor/plasteel/airless{icon_state = "white"},/area/derelict/medical)
+<<<<<<< HEAD
+=======
+"hu" = (/obj/machinery/door/airlock/public/glass{name = "Med-Sci"; req_access_txt = "9"},/turf/simulated/floor/plating/airless,/area/derelict/medical)
+>>>>>>> master
 "hv" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = ""},/turf/simulated/floor/plasteel/airless,/area/derelict/hallway/primary)
 "hw" = (/obj/structure/closet/emcloset,/turf/simulated/floor/plasteel,/area/derelict/arrival)
 "hx" = (/obj/structure/window/reinforced,/turf/space,/area/space)

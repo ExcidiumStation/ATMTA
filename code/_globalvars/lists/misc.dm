@@ -24,5 +24,8 @@ var/list/mineral_turfs = list()
 var/list/ruin_landmarks = list()
 
 var/list/round_end_sounds = list( // Maps available round end sounds to their duration
-		'sound/misc/theworld.ogg' = 4 SECONDS
+		'sound/misc/theworld.ogg' = 4 SECONDS,
+		'sound/misc/brb.ogg' = 3 SECONDS,
+		'sound/goonstation/misc/newround1.ogg' = 6.9 SECONDS,
+		'sound/goonstation/misc/newround2.ogg' = 14.8 SECONDS
 		)

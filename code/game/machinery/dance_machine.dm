@@ -178,56 +178,56 @@
 		if(t.x == cen.x && t.y > cen.y)
 			var/obj/item/device/flashlight/spotlight/L = new /obj/item/device/flashlight/spotlight(t)
 			L.light_color = "red"
-			L.light_power = 30-(get_dist(src,L)*8)
+			L.light_power = 30 - (get_dist(src, L) * 8)
 			L.range = 1+get_dist(src, L)
 			spotlights+=L
 			continue
 		if(t.x == cen.x && t.y < cen.y)
 			var/obj/item/device/flashlight/spotlight/L = new /obj/item/device/flashlight/spotlight(t)
 			L.light_color = "purple"
-			L.light_power = 30-(get_dist(src,L)*8)
+			L.light_power = 30 - (get_dist(src, L) * 8)
 			L.range = 1+get_dist(src, L)
 			spotlights+=L
 			continue
 		if(t.x > cen.x && t.y == cen.y)
 			var/obj/item/device/flashlight/spotlight/L = new /obj/item/device/flashlight/spotlight(t)
 			L.light_color = "#ffff00"
-			L.light_power = 30-(get_dist(src,L)*8)
+			L.light_power = 30 - (get_dist(src, L) * 8)
 			L.range = 1+get_dist(src, L)
 			spotlights+=L
 			continue
 		if(t.x < cen.x && t.y == cen.y)
 			var/obj/item/device/flashlight/spotlight/L = new /obj/item/device/flashlight/spotlight(t)
 			L.light_color = "green"
-			L.light_power = 30-(get_dist(src,L)*8)
+			L.light_power = 30 - (get_dist(src, L) * 8)
 			L.range = 1+get_dist(src, L)
 			spotlights+=L
 			continue
 		if((t.x+1 == cen.x && t.y+1 == cen.y) || (t.x+2==cen.x && t.y+2 == cen.y))
 			var/obj/item/device/flashlight/spotlight/L = new /obj/item/device/flashlight/spotlight(t)
 			L.light_color = "sw"
-			L.light_power = 30-(get_dist(src,L)*8)
+			L.light_power = 30 - (get_dist(src, L) * 8)
 			L.range = 1.4+get_dist(src, L)
 			spotlights+=L
 			continue
 		if((t.x-1 == cen.x && t.y-1 == cen.y) || (t.x-2==cen.x && t.y-2 == cen.y))
 			var/obj/item/device/flashlight/spotlight/L = new /obj/item/device/flashlight/spotlight(t)
 			L.light_color = "ne"
-			L.light_power = 30-(get_dist(src,L)*8)
+			L.light_power = 30 - (get_dist(src, L) * 8)
 			L.range = 1.4+get_dist(src, L)
 			spotlights+=L
 			continue
 		if((t.x-1 == cen.x && t.y+1 == cen.y) || (t.x-2==cen.x && t.y+2 == cen.y))
 			var/obj/item/device/flashlight/spotlight/L = new /obj/item/device/flashlight/spotlight(t)
 			L.light_color = "se"
-			L.light_power = 30-(get_dist(src,L)*8)
+			L.light_power = 30 - (get_dist(src, L) * 8)
 			L.range = 1.4+get_dist(src, L)
 			spotlights+=L
 			continue
 		if((t.x+1 == cen.x && t.y-1 == cen.y) || (t.x+2==cen.x && t.y-2 == cen.y))
 			var/obj/item/device/flashlight/spotlight/L = new /obj/item/device/flashlight/spotlight(t)
 			L.light_color = "nw"
-			L.light_power = 30-(get_dist(src,L)*8)
+			L.light_power = 30 - (get_dist(src, L) * 8)
 			L.range = 1.4+get_dist(src, L)
 			spotlights+=L
 			continue
@@ -236,7 +236,7 @@
 
 /obj/machinery/disco/proc/hierofunk()
 	for(var/i in 1 to 10)
-		new /obj/effect/temp_visual/hierophant/telegraph/teleport(get_turf(src))
+		new /obj/effect/temp_visual/hierophant/telegraph/edge(get_turf(src))
 		sleep(5)
 
 /obj/machinery/disco/proc/lights_spin()
@@ -333,7 +333,7 @@
 
 /obj/machinery/disco/proc/dance2(mob/living/M)
 	for(var/i = 1, i < 10, i++)
-		for(var/d in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
+		for(var/d in list(NORTH, SOUTH, EAST, WEST, EAST, SOUTH, NORTH, SOUTH, EAST, WEST, EAST, SOUTH))
 			M.setDir(d)
 			if(i == WEST && !M.incapacitated())
 				M.SpinAnimation(7, 1)
@@ -348,23 +348,23 @@
 		switch(i)
 			if(1 to 15)
 				initial_matrix = matrix(M.transform)
-				initial_matrix.Translate(0,1)
+				initial_matrix.Translate(0, 1)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
 			if(16 to 30)
 				initial_matrix = matrix(M.transform)
-				initial_matrix.Translate(1,-1)
+				initial_matrix.Translate(1, -1)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
 			if(31 to 45)
 				initial_matrix = matrix(M.transform)
-				initial_matrix.Translate(-1,-1)
+				initial_matrix.Translate(-1, -1)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
 			if(46 to 60)
 				initial_matrix = matrix(M.transform)
-				initial_matrix.Translate(-1,1)
+				initial_matrix.Translate(-1, 1)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
 			if(61 to 75)
 				initial_matrix = matrix(M.transform)
-				initial_matrix.Translate(1,0)
+				initial_matrix.Translate(1, 0)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
 		M.setDir(turn(M.dir, 90))
 		switch(M.dir)
@@ -389,7 +389,7 @@
 
 
 /obj/machinery/disco/proc/dance4(mob/living/M)
-	var/speed = rand(1,3)
+	var/speed = rand(1, 3)
 	set waitfor = 0
 	var/time = 30
 	while(time)
@@ -462,10 +462,10 @@
 			if(!(M in rangers))
 				rangers[M] = TRUE
 				M.playsound_local(get_turf(M), null, 100, channel = CHANNEL_JUKEBOX, S = song_played)
-			if(prob(5+(allowed(M)*4)) && M.canmove)
+			if(prob(5+(allowed(M) * 4)) && M.canmove)
 				dance(M)
 		for(var/mob/L in rangers)
-			if(get_dist(src,L) > 10)
+			if(get_dist(src, L) > 10)
 				rangers -= L
 				if(!L || !L.client)
 					continue
