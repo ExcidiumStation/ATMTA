@@ -127,6 +127,8 @@
 	if(. && buckled_mob && !handle_buckled_mob_movement(loc, direct)) //movement failed due to buckled mob
 		. = 0
 
+	update_client_hook(loc)
+
 // Called after a successful Move(). By this point, we've already moved
 /atom/movable/proc/Moved(atom/OldLoc, Dir)
 	if(!inertia_moving)
@@ -172,7 +174,23 @@
 	for(var/datum/light_source/L in light_sources)
 		L.source_atom.update_light()
 
+	update_client_hook(destination)
+
 	return 1
+
+/atom/movable/proc/update_client_hook(atom/destination)
+	if(locate(/mob) in src)
+		for(var/client/C in parallax_on_clients)
+			if((get_turf(C.eye) == destination) && (C.mob.hud_used))
+				C.mob.hud_used.update_parallax()
+
+/mob/update_client_hook(atom/destination)
+	if(locate(/mob) in src)
+		for(var/client/C in parallax_on_clients)
+			if((get_turf(C.eye) == destination) && (C.mob.hud_used))
+				C.mob.hud_used.update_parallax()
+	else if(client && hud_used)
+		hud_used.update_parallax()
 
 /mob/living/forceMove(atom/destination)
 	if(buckled)
