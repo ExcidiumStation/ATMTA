@@ -16,7 +16,7 @@
 					lastchangelog,
 					space_parallax,
 					space_dust,
-					parallax_speed
+					parallax_speed,
 					windowflashing,
 					ghost_anonsay,
 					exp,
