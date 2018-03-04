@@ -103,7 +103,7 @@
 					lastchangelog='[lastchangelog]',
 					space_parallax='[space_parallax]',
 					space_dust='[space_dust]',
-					parallax_speed='[parallax_speed]'
+					parallax_speed='[parallax_speed]',
 					windowflashing='[windowflashing]',
 					ghost_anonsay='[ghost_anonsay]',
 					whitelist='[whitelist]'
