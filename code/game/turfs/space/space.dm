@@ -5,6 +5,8 @@
 	dynamic_lighting = 0
 	luminosity = 1
 
+	plane = PLANE_SPACE_BACKGROUND
+
 	temperature = TCMB
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	heat_capacity = 700000
@@ -18,6 +20,11 @@
 
 	if(!istype(src, /turf/space/transit))
 		icon_state = SPACE_ICON_STATE
+		var/image/I = image('icons/turf/space_parallax1.dmi',"[icon_state]")
+		I.plane = PLANE_SPACE_DUST
+		I.alpha = 80
+		I.blend_mode = BLEND_ADD
+		overlays += I
 	update_starlight()
 
 /turf/space/Destroy(force)

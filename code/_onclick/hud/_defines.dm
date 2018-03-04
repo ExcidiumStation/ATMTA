@@ -12,6 +12,10 @@
 	The size of the user's screen is defined by client.view (indirectly by world.view), in our case "15x15".
 	Therefore, the top right corner (except during admin shenanigans) is at "15,15"
 */
+#define PLANE_SPACE_BACKGROUND -10
+#define PLANE_SPACE_PARALLAX (PLANE_SPACE_BACKGROUND + 1)
+#define PLANE_SPACE_DUST (PLANE_SPACE_PARALLAX + 1)
+#define PLANE_BASE 0
 
 //Middle left indicators
 #define ui_alienplasmadisplay "EAST-1:28,CENTER-2:15"

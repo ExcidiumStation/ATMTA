@@ -948,3 +948,12 @@
 	set category = "IC"
 
 	update_flavor_text()
+
+/mob/living/carbon/human/verb/undress()
+	set name = "Undress Your Panties"
+	set desc = "Oopsie! You are without your panties now! Send nudes."
+	set category = "IC"
+
+	underwear = "Nude"
+	undershirt = "Nude"
+	update_body()
