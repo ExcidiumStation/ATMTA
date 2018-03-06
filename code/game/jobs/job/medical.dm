@@ -25,7 +25,7 @@
 	jobtype = /datum/job/cmo
 
 	uniform = /obj/item/clothing/under/rank/chief_medical_officer
-	suit = /obj/item/clothing/suit/storage/labcoat/cmo
+	suit = /obj/item/clothing/suit/storage/labcoat/genetics
 	shoes = /obj/item/clothing/shoes/brown
 	l_ear = /obj/item/device/radio/headset/heads/cmo
 	id = /obj/item/weapon/card/id/cmo
