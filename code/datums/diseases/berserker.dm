@@ -31,7 +31,7 @@
 			if(prob(5))
 				affected_mob.emote(pick("twitch_s", "scream"))
 			if(prob(5))
-				var/speak = pick("AAARRGGHHH!!!!", "GRR!!!", "¡Àﬂﬂﬂ!! —” ¿¿¿!!!", "√–»‘‘»“““““!!", "WROOAAAGHHH!!")
+				var/speak = pick("¿¿¿––√√’’’!!!!", "√––!!!", "¡Àﬂﬂﬂ!! —” ¿¿¿!!!", "√–»‘‘»“““““!!", "””ŒŒŒ¿¿¿√’’!!")
 				affected_mob.say(speak)
 			if(prob(15))
 				affected_mob.visible_message("<span class='danger'>[affected_mob] twitches violently!</span>")
