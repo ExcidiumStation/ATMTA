@@ -146,7 +146,7 @@ var/list/karma_spenders = list()
 	message_admins("[usr.ckey] gave [M.client] good karma.")
 	sql_report_karma(src, M)
 
-/mob/verb/reduce_karma_list()
+/*/mob/verb/reduce_karma_list()
 	set name = "Reduce Karma"
 	set desc = "Let the gods know whether someone's been really bad. Can only be used once per round."
 	set category = "Special Verbs"
