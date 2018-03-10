@@ -58,7 +58,7 @@
 	display_name = "adeptus mechanicus"
 	wl_id = "4003"
 	path = /obj/item/clothing/suit/atmta/mechanicus
-	allowed_roles = list("Chief Engineer", "Station Engineer", "Mechanic", "Life Support Specialist")
+	allowed_roles = list("Chief Engineer", "Station Engineer", "Mechanic", "Life Support Specialist", "Roboticist")
 
 /datum/gear/karma/hev
 	display_name = "H.E.V."
