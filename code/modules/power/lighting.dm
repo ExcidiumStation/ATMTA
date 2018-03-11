@@ -242,8 +242,6 @@
 					icon_state = "[base_state]-burned"
 					on = 0
 					set_light(0)
-			else if(sound_on)
-				playsound(src, sound_on, 75)
 			else
 				use_power = 2
 				set_light(brightness_range, brightness_power, brightness_color)
