@@ -1,6 +1,6 @@
 /datum/event/blob
-	announceWhen	= 60
-	endWhen			= 120
+	announceWhen	= 40
+	endWhen			= 80
 	var/obj/structure/blob/core/Blob
 
 /datum/event/blob/announce()

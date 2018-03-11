@@ -1,10 +1,10 @@
 
 /datum/event/spider_terror
-	announceWhen = 240
+	announceWhen = 120
 	var/spawncount = 1
 
 /datum/event/spider_terror/setup()
-	announceWhen = rand(announceWhen, announceWhen + 30)
+	announceWhen = rand(announceWhen, announceWhen + 15)
 	spawncount = 1
 
 /datum/event/spider_terror/announce()
