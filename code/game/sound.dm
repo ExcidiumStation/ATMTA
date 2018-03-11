@@ -139,4 +139,6 @@
 				soundin = pick('sound/effects/bonebreak1.ogg', 'sound/effects/bonebreak2.ogg', 'sound/effects/bonebreak3.ogg', 'sound/effects/bonebreak4.ogg')
 			if ("light_bic")
 				soundin = pick('sound/items/lighter1.ogg', 'sound/items/lighter2.ogg', 'sound/items/lighter3.ogg')
+			if ("switch")
+				soundin = pick('sound/machines/switch1.ogg', 'sound/machines/switch2.ogg', 'sound/machines/switch3.ogg', 'sound/machines/switch4.ogg')
 	return soundin

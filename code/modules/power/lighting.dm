@@ -242,6 +242,8 @@
 					icon_state = "[base_state]-burned"
 					on = 0
 					set_light(0)
+			else if(sound_on)
+				playsound(src, sound_on, 75)
 			else
 				use_power = 2
 				set_light(brightness_range, brightness_power, brightness_color)
@@ -606,6 +608,7 @@
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
 	var/brightness_color = null
+	var/sound_on
 
 /obj/item/weapon/light/tube
 	name = "light tube"
@@ -614,6 +617,7 @@
 	base_state = "ltube"
 	item_state = "c_tube"
 	brightness_range = 8
+	sound_on = 'sound/machines/lightson.ogg'
 
 /obj/item/weapon/light/tube/large
 	w_class = WEIGHT_CLASS_SMALL

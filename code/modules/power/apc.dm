@@ -49,6 +49,7 @@
 	anchored = 1
 	use_power = 0
 	req_access = list(access_engine_equip)
+	var/needs_powerdown_sound
 	var/spooky=0
 	var/area/area
 	var/areastring = null
@@ -825,6 +826,13 @@
 //		if(area.name == "AI Chamber")
 //			to_chat(world, "[area.power_equip]")
 	area.power_change()
+
+	if(!cell || cell.charge <= 0)
+		if(needs_powerdown_sound == TRUE)
+			playsound(src, 'sound/machines/apc_nopower.ogg', 75, 0)
+			needs_powerdown_sound = FALSE
+		else
+			needs_powerdown_sound = TRUE
 
 /obj/machinery/power/apc/proc/isWireCut(var/wireIndex)
 	return wires.IsIndexCut(wireIndex)
