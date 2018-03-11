@@ -49,6 +49,7 @@
 	anchored = 1
 	use_power = 0
 	req_access = list(access_engine_equip)
+	clicksound = "switch"
 	var/needs_powerdown_sound
 	var/spooky=0
 	var/area/area
