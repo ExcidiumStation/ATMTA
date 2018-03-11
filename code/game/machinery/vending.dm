@@ -42,6 +42,8 @@
 	layer = 2.9
 	anchored = 1
 	density = 1
+	clicksound = "button"
+	clickvol = 40
 
 	var/icon_vend //Icon_state when vending
 	var/icon_deny //Icon_state when denying access

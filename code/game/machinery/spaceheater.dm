@@ -5,6 +5,7 @@
 	icon_state = "sheater0"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	clicksound = "switch"
 	var/obj/item/weapon/stock_parts/cell/cell
 	var/on = 0
 	var/open = 0
