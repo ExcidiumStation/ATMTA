@@ -27,7 +27,7 @@
 "aA" = (/obj/structure/lattice,/turf/space,/area/constructionsite/bridge)
 "aB" = (/obj/effect/spawner/window/reinforced,/turf/simulated/floor/plating/airless,/area/constructionsite/bridge)
 "aC" = (/obj/structure/cable{icon_state = "0-4"; d2 = 4},/obj/machinery/computer/monitor,/turf/simulated/floor/plasteel/airless,/area/constructionsite/bridge)
-"aD" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 24},/turf/simulated/floor/plasteel/airless,/area/constructionsite/bridge)
+"aD" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 32},/turf/simulated/floor/plasteel/airless,/area/constructionsite/bridge)
 "aE" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/simulated/floor/plasteel/airless,/area/constructionsite/bridge)
 "aF" = (/obj/machinery/door/airlock/maintenance_hatch,/turf/simulated/floor/plating/airless,/area/constructionsite/hallway/port)
 "aG" = (/turf/space,/area/solar/constructionsite)
@@ -256,7 +256,7 @@
 "eV" = (/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/port)
 "eW" = (/obj/machinery/door/airlock/public/glass,/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/port)
 "eX" = (/obj/machinery/light{dir = 1; in_use = 1},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/port)
-"eY" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 24},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/fore)
+"eY" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 32},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/fore)
 "eZ" = (/obj/machinery/door/airlock/public/glass,/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/starboard)
 "fa" = (/obj/machinery/light{dir = 1; in_use = 1},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/starboard)
 "fb" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 8},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/fore)
@@ -310,7 +310,7 @@
 "fX" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/plasteel/airless,/area/constructionsite/science)
 "fY" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/plasteel/airless,/area/constructionsite/science)
 "fZ" = (/turf/simulated/wall,/area/constructionsite/engineering)
-"ga" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 24},/turf/simulated/floor/plasteel/airless,/area/constructionsite/science)
+"ga" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 32},/turf/simulated/floor/plasteel/airless,/area/constructionsite/science)
 "gb" = (/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
 "gc" = (/obj/structure/grille,/turf/simulated/floor/plating/airless,/area/constructionsite/science)
 "gd" = (/obj/structure/lattice,/turf/space,/area/constructionsite/engineering)
@@ -377,7 +377,7 @@
 "hm" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/plating/airless,/area/constructionsite/hallway/center)
 "hn" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 8},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/center)
 "ho" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = ""},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8; initialize_directions = 11},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/center)
-"hp" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 24},/turf/simulated/floor/plating/airless,/area/constructionsite/hallway/center)
+"hp" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 32},/turf/simulated/floor/plating/airless,/area/constructionsite/hallway/center)
 "hq" = (/obj/structure/inflatable/door,/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/center)
 "hr" = (/obj/structure/inflatable,/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/center)
 "hs" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = ""},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/center)
@@ -389,7 +389,7 @@
 "hy" = (/obj/effect/spawner/window/reinforced,/turf/simulated/floor/plating/airless,/area/constructionsite/ai)
 "hz" = (/obj/structure/grille,/turf/simulated/floor/plating/airless,/area/constructionsite/ai)
 "hA" = (/obj/machinery/door/airlock/highsecurity{icon_state = "door_closed"; locked = 0; name = "AI Upload"; req_access_txt = "16"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = ""},/turf/simulated/floor/plating/airless,/area/constructionsite/ai)
-"hB" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 24},/turf/simulated/floor/plasteel/airless{tag = "icon-gcircuit"; icon_state = "gcircuit"},/area/constructionsite/ai)
+"hB" = (/obj/machinery/alarm/monitor{locked = 0; pixel_y = 32},/turf/simulated/floor/plasteel/airless{tag = "icon-gcircuit"; icon_state = "gcircuit"},/area/constructionsite/ai)
 "hC" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = ""},/turf/simulated/floor/plating/airless,/area/constructionsite/ai)
 "hD" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 8},/turf/simulated/floor/plating/airless,/area/constructionsite/ai)
 "hE" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8; initialize_directions = 11},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = ""},/turf/simulated/floor/plating/airless,/area/constructionsite/ai)
@@ -472,7 +472,7 @@
 "jd" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 4},/obj/machinery/meter,/turf/simulated/floor/plating/airless,/area/constructionsite/atmospherics)
 "je" = (/obj/machinery/atmospherics/pipe/simple/hidden,/obj/machinery/atmospherics/pipe/simple/hidden{dir = 4},/turf/simulated/floor/plasteel/airless,/area/constructionsite/atmospherics)
 "jf" = (/obj/machinery/pipedispenser,/turf/simulated/floor/plasteel/airless,/area/constructionsite/atmospherics)
-"jg" = (/obj/machinery/alarm/monitor{dir = 1; pixel_y = -24},/turf/simulated/floor/plasteel/airless,/area/constructionsite/atmospherics)
+"jg" = (/obj/machinery/alarm/monitor{pixel_y = -32},/turf/simulated/floor/plasteel/airless,/area/constructionsite/atmospherics)
 "jh" = (/obj/machinery/pipedispenser/disposal,/turf/simulated/floor/plasteel/airless,/area/constructionsite/atmospherics)
 "ji" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 4},/obj/machinery/meter,/turf/simulated/floor/plasteel/airless,/area/constructionsite/atmospherics)
 "jj" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = ""},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/aft)
@@ -482,7 +482,7 @@
 "jn" = (/obj/structure/lattice,/turf/space,/area/constructionsite/storage)
 "jo" = (/turf/simulated/floor/plating/airless,/area/constructionsite/storage)
 "jp" = (/turf/space,/area/constructionsite/storage)
-"jq" = (/obj/machinery/alarm/monitor{dir = 4; locked = 0; pixel_x = -24; pixel_y = 0},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/aft)
+"jq" = (/obj/machinery/alarm/monitor{locked = 0; pixel_x = -32; pixel_y = 0},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/aft)
 "jr" = (/obj/structure/grille,/turf/simulated/floor/plating/airless,/area/constructionsite/storage)
 "js" = (/obj/structure/cable{d2 = 4; icon_state = "0-4"},/obj/machinery/power/apc/noalarm{dir = 8; locked = 0; name = "Construction Site APC"; operating = 0; pixel_x = -24; pixel_y = 0; start_charge = 0},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/aft)
 "jt" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0; tag = ""},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/plasteel/airless,/area/constructionsite/hallway/aft)
@@ -559,7 +559,7 @@
 "kM" = (/obj/machinery/power/apc/noalarm{dir = 8; locked = 0; name = "Construction Site APC"; operating = 0; pixel_x = -24; pixel_y = 0; shock_proof = 1},/obj/structure/cable/yellow{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
 "kN" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable/yellow{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
 "kO" = (/obj/structure/particle_accelerator/end_cap,/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
-"kP" = (/obj/machinery/alarm/monitor{dir = 8; locked = 0; pixel_x = 24; pixel_y = 0},/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
+"kP" = (/obj/machinery/alarm/monitor{locked = 0; pixel_x = 32; pixel_y = 0},/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
 "kQ" = (/obj/machinery/computer/monitor,/obj/structure/cable/yellow{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
 "kR" = (/obj/machinery/particle_accelerator/control_box,/obj/structure/cable/yellow{d1 = 0; d2 = 8; icon_state = "0-8"},/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
 "kS" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable/yellow{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable/yellow{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/plating/airless,/area/constructionsite/engineering)
@@ -715,7 +715,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababaIbgbZ
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaIcEaWbsbsbsbsbsbsbsbsbscFbsbsbsbsbsbsbscGbBbBbUcHbWcIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadadadadaqaqaqaqaqaqaqadaqadaqaqaqaqaqaqaqaqadaqaqaqaqaqaqaqaqaXeVeVeWhahahahahahahahabcbdbdbdhybYbYbdhubdbYbYhzcJcJcJbcgZgZhagZgZgZgZgZeZfdfdczatatatatatatatatatatatatatatatatatatfFagagagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaNabaYcKcLcMcNcOaYcPcQcRbBcScTcUbBbBcUcTcVcWbBbBaWaWaWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacacacadadadadadacacacacacacacacacacacacacacacacacacacacacacacacfpeVgYhbgYgYgYgXgZgXgZbcbcbcbcbcbdbYbdhCbdbYbdbcbcbcbcbcgZgZhagZgYgYgYhbgYatgHaeaeaeaeaeaeaeaefFfFfFfFfFfFfFfFfFfFfFfFfFfFagaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNabaYdbbBbBdcddaYdededfbBdgbsbsbsbsbsaWaWaWcXbUhIbWhIaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabababababababababababababababababababababababababababababababababababacadaqeVeVaXgZgZgZhggZgZgZgZbcbchvhvbcbcbYbYhCbYbYbcbchvhvbcbcgZgZgZgZhggZgZgZczfdfdatataefFfFfFfFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNabaYdkbBbBdcdlaYdmdmdnbBbBaYdodpdqdraYabaWaWaWaWaWaWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaababacadaceVeVacgYgYgZgYgYhkgXgZgXbchvhvhvbcbchzhAhybcbchvhvhvbcgZgZhahmgYgYgZgYgYaefdfdaeataeabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNabaYdkbBbBdcdlaYdmdmdnbBbBaYdodpdqdraYabbubuaWaWaWaWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaababacadaceVeVacgYgYgZgYgYhkgXgZgXbchvhvhvbcbchzhAhybcbchvhvhvbcgZgZhahmgYgYgZgYgYaefdfdaeataeabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNabaYdubBbBbBdvaYdwdwdxbBbBaYdydzdAdAaYabaaaadBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaababacadaceVeVaigXgYgZgZhjgZgZgZgZbcbchvhvhvbcbdhubdbchvhvhvbcbcgZgZhagZhjgZgZgYgXajfdfdaeataeabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNabaYdDdEdFdGdHdIcWbBbBbBbBdJdzdzdzdKaYabaaaaaNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaababababababacadaceVeVaigXgYgZgZhjgZgXgZgXgZbcbchvhvbchwhubdbchvhvbcbcgZgZgZgZgZhjgZgZgYgXajatfdaeataeabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaNabaWaWdLdMbsdNbsbsdObBbBdPaYdQdzdRdSaYabaaaaaNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaababacadaceVaqaigXgYgZgZgYgYgZgZgZgZgZbcbcbcbchJhKbdbcbcbcbcbdhahahagZgYgYgZgZgYgXajatataeataeabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
