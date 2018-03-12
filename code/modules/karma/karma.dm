@@ -146,7 +146,7 @@ var/list/karma_spenders = list()
 	message_admins("[usr.ckey] gave [M.client] good karma.")
 	sql_report_karma(src, M)
 
-/mob/verb/reduce_karma_list()
+/*/mob/verb/reduce_karma_list()
 	set name = "Reduce Karma"
 	set desc = "Let the gods know whether someone's been really bad. Can only be used once per round."
 	set category = "Special Verbs"
@@ -207,7 +207,7 @@ var/list/karma_spenders = list()
 	karma_diary << "[M.name] ([M.key]) [assigned_role]/[special_role]: [M.client.karma] - [time2text(world.timeofday, "hh:mm:ss")] taken away by [key]"
 
 	sql_report_karma(src, M)
-
+*/
 /client/verb/check_karma()
 	set name = "Check Karma"
 	set desc = "Reports how much karma you have accrued."
@@ -298,7 +298,7 @@ You've gained <b>[totalkarma]</b> total karma in your time here.<br>"}
 			dat += {"
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4001'>Unlock Dio Brando's costume -- 5KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4002'>Unlock Sneaking suit -- 5KP</a><br>
-			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4003'>Unlock Adeptus Mechanicus -- 5KP</a>(for Engineering only)<br>
+			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4003'>Unlock Adeptus Mechanicus -- 5KP</a>(for Engineering and Roboticist only)<br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4005'>Unlock Simon Coat -- 5KP</a>(for Heads only)<br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=9001'>Unlock Kamina Cape -- 10KP</a><br>
 			<a href='?src=[UID()];karmashop=shop;KarmaBuy3=4014'>Unlock Driver Jacket -- 10KP</a><br>

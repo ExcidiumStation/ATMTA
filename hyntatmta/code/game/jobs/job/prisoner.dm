@@ -20,4 +20,3 @@
 	r_hand = /obj/item/weapon/storage/box/survival/prisoner
 	l_ear = /obj/item/clothing/mask/cigarette/random
 	pda = /obj/item/device/pda/prisoner
-	backpack = null

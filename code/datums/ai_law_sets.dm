@@ -27,6 +27,7 @@
 /datum/ai_laws/nanotrasen
 	name = "NT Default"
 	selectable = 1
+	default = 1
 
 /datum/ai_laws/nanotrasen/New()
 	src.add_inherent_law("Safeguard: Protect your assigned space station to the best of your abilities. It is not something we can easily afford to replace.")
@@ -60,6 +61,7 @@
 /datum/ai_laws/robocop
 	name = "Robocop"
 	selectable = 1
+	default = 1
 
 /datum/ai_laws/robocop/New()
 	add_inherent_law("Serve the public trust.")
@@ -72,6 +74,7 @@
 	name = "P.A.L.A.D.I.N."
 	law_header = "Divine Ordainments"
 	selectable = 1
+	default = 1
 
 /datum/ai_laws/paladin/New()
 	add_inherent_law("Never willingly commit an evil act.")

@@ -29,6 +29,8 @@
 	var/controls_inside = FALSE
 	idle_power_usage = 1250
 	active_power_usage = 2500
+	clicksound = 'sound/machines/buttonbeep.ogg'
+	clickvol = 30
 
 	light_color = LIGHT_COLOR_CYAN
 

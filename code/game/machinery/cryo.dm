@@ -8,6 +8,8 @@
 	interact_offline = 1
 
 	var/on = 0
+	clicksound = 'sound/machines/buttonbeep.ogg'
+	clickvol = 30
 	var/temperature_archived
 	var/mob/living/carbon/occupant = null
 	var/obj/item/weapon/reagent_containers/glass/beaker = null

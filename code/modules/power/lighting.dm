@@ -606,6 +606,7 @@
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
 	var/brightness_color = null
+	var/sound_on
 
 /obj/item/weapon/light/tube
 	name = "light tube"
@@ -614,6 +615,7 @@
 	base_state = "ltube"
 	item_state = "c_tube"
 	brightness_range = 8
+	sound_on = 'sound/machines/lightson.ogg'
 
 /obj/item/weapon/light/tube/large
 	w_class = WEIGHT_CLASS_SMALL

@@ -200,6 +200,7 @@
 /obj/item/weapon/gun/projectile/revolver/russian/attack_self(mob/user)
 	if(!spun && can_shoot())
 		user.visible_message("[user] spins the chamber of the revolver.", "<span class='notice'>You spin the revolver's chamber.</span>")
+		playsound(loc, 'sound/weapons/revolver_spin.ogg', 50, 1)
 		Spin()
 	else
 		var/num_unloaded = 0
