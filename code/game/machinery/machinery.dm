@@ -118,6 +118,8 @@ Class Procs:
 	var/list/settagwhitelist = list()//WHITELIST OF VARIABLES THAT THE set_tag HREF CAN MODIFY, DON'T PUT SHIT YOU DON'T NEED ON HERE, AND IF YOU'RE GONNA USE set_tag (format_tag() proc), ADD TO THIS LIST.
 	atom_say_verb = "beeps"
 	var/speed_process = 0 // Process as fast as possible?
+	var/clicksound			// sound played on succesful interface use by a carbon lifeform
+	var/clickvol = 40		// sound played on succesful interface use
 
 /obj/machinery/initialize()
 	addAtProcessing()
@@ -587,3 +589,8 @@ Class Procs:
 		emp_act(2)
 	else
 		ex_act(2)
+
+/obj/machinery/CouldUseTopic(var/mob/user)
+	..()
+	if(clicksound && istype(user, /mob/living/carbon))
+		playsound(src, clicksound, clickvol)

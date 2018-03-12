@@ -24,6 +24,8 @@
 	use_power = 1
 	idle_power_usage = 10
 	active_power_usage = 100
+	clicksound = "keyboard"
+	clickvol = 30
 	var/busy = 0
 	var/prod_coeff
 	var/datum/wires/autolathe/wires = null

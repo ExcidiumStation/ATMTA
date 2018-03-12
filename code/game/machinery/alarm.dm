@@ -80,6 +80,8 @@
 	active_power_usage = 8
 	power_channel = ENVIRON
 	req_one_access = list(access_atmospherics, access_engine_equip)
+	clicksound = "button"
+	clickvol = 30
 	var/alarm_id = null
 	var/frequency = 1439
 	//var/skipprocess = 0 //Experimenting

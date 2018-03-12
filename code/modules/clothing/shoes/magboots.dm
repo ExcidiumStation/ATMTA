@@ -20,7 +20,7 @@
 		slowdown = slowdown_active
 	magpulse = !magpulse
 	icon_state = "[magboot_state][magpulse]"
-	playsound(src.loc, 'sound/effects/magnetclamp.ogg', 20, 1)
+	playsound(get_turf(src), 'sound/effects/magnetclamp.ogg', 20)
 	to_chat(user, "You [magpulse ? "enable" : "disable"] the mag-pulse traction system.")
 	user.update_inv_shoes()	//so our mob-overlays update
 	user.update_gravity(user.mob_has_gravity())

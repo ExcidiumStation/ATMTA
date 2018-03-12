@@ -1,11 +1,11 @@
 /var/global/sent_spiders_to_station = 0
 
 /datum/event/spider_infestation
-	announceWhen	= 400
+	announceWhen	= 200
 	var/spawncount = 1
 
 /datum/event/spider_infestation/setup()
-	announceWhen = rand(announceWhen, announceWhen + 50)
+	announceWhen = rand(announceWhen, announceWhen + 25)
 	spawncount = round(num_players() * 0.8)
 	sent_spiders_to_station = 1
 
