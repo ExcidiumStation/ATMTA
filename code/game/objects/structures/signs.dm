@@ -230,3 +230,13 @@
 	name = "Escape Arm"
 	desc = "A direction sign, pointing out which way escape shuttle dock is."
 	icon_state = "direction_evac"
+
+/obj/structure/sign/directions/command
+	name = "command department"
+	desc = "A direction sign, pointing out which way the Command department is."
+	icon_state = "direction_brdg"
+
+/obj/structure/sign/directions/supply
+	name = "cargo bay"
+	desc = "A direction sign, pointing out which way the Cargo Bay is."
+	icon_state = "direction_supp"
