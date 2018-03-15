@@ -82,6 +82,7 @@
 //		feedback_set_details("revision","[revdata.revision]")
 	feedback_set_details("server_ip","[world.internet_address]:[world.port]")
 	generate_station_goals()
+	world << "post_setup() - generate station goals finished"
 	start_state = new /datum/station_state()
 	start_state.count()
 	return 1
@@ -539,10 +540,10 @@ proc/display_roundstart_logout_report()
 		goal_weights += initial(picked.weight)
 		station_goals += new picked
 
-	if(station_goals.len)
+	/*if(station_goals.len)
 		send_station_goals_message()
 
-/datum/game_mode/proc/send_station_goals_message()
+/*/datum/game_mode/proc/send_station_goals_message()
 	var/message_text = "<div style='text-align:center;'><img src='ntlogo.png'>"
 	message_text += "<h3>[command_name()] Orders</h3></div><hr>"
 	message_text += "<b>Special Orders for [station_name()]:</b><br><br>"
@@ -553,12 +554,11 @@ proc/display_roundstart_logout_report()
 		message_text += "<hr>"
 
 	print_command_report(message_text, "[command_name()] Orders")
-
+*/*/
 /datum/game_mode/proc/declare_station_goal_completion()
 	for(var/V in station_goals)
 		var/datum/station_goal/G = V
 		G.print_result()
-
 
 /datum/game_mode/proc/inform_collab(mob/living/carbon/human/M)
 	if(!M)
