@@ -1,18 +1,23 @@
 // So you can be all 10 SECONDS
+#define SECOND *10
 #define SECONDS *10
 
-#define MINUTES SECONDS*60
+#define MINUTE *600
+#define MINUTES *600
 
-#define HOURS MINUTES*60
+#define HOUR *36000
+#define HOURS *36000
 
-#define TICKS *world.tick_lag
-
-#define DS2TICKS(DS) ((DS)/world.tick_lag)
-
-#define TICKS2DS(T) ((T) TICKS)
+#define DAY *864000
+#define DAYS *864000
 
 #define TimeOfGame (get_game_time())
 #define TimeOfTick (world.tick_usage*0.01*world.tick_lag)
+
+#define duration2stationtime(time) time2text(station_time_in_ticks + time, "hh:mm")
+#define worldtime2stationtime(time) time2text(roundstart_hour HOURS + time, "hh:mm")
+#define round_duration_in_ticks (round_start_time ? world.time - round_start_time : 0)
+#define station_time_in_ticks (roundstart_hour HOURS + round_duration_in_ticks)
 
 /proc/get_game_time()
 	var/global/time_offset = 0
@@ -53,7 +58,7 @@
 
 /* This is used for displaying the "station time" equivelent of a world.time value
  Calling it with no args will give you the current time, but you can specify a world.time-based value as an argument
- - You can use this, for example, to do "This will expire at [station_time_at(world.time + 500)]" to display a "station time" expiration date 
+ - You can use this, for example, to do "This will expire at [station_time_at(world.time + 500)]" to display a "station time" expiration date
    which is much more useful for a player)*/
 /proc/station_time(time=world.time, display_only=FALSE)
 	return ((((time - round_start_time)) + GLOB.gametime_offset) % 864000) - (display_only ? GLOB.timezoneOffset : 0)

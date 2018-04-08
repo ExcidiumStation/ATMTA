@@ -163,8 +163,6 @@
 		else
 			occupant.client.RemoveViewMod("mecha")
 
-
-
 /obj/mecha/combat/marauder/get_stats_part()
 	var/output = ..()
 	output += {"<b>Smoke:</b> [smoke]

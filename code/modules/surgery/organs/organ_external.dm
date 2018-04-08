@@ -613,6 +613,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(owner.species && !(NO_PAIN in owner.species.species_traits))
 			owner.emote("scream")
 
+	playsound(src.loc, "fracture", 100, 1, -2)
 	status |= ORGAN_BROKEN
 	broken_description = pick("broken","fracture","hairline fracture")
 	perma_injury = brute_dam

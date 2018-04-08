@@ -6,6 +6,7 @@
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100)
+	clicksound = "switch"
 	var/obj/item/weapon/stock_parts/cell/cell
 	var/on = 0
 	var/open = 0

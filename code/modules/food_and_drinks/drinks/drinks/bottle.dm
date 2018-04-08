@@ -24,7 +24,7 @@
 		user.put_in_active_hand(B)
 	B.icon_state = icon_state
 
-	var/icon/I = new('icons/obj/drinks.dmi', icon_state)
+	var/icon/I = new(src.icon, src.icon_state)
 	I.Blend(B.broken_outline, ICON_OVERLAY, rand(5), 1)
 	I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
 	B.icon = I
@@ -248,6 +248,22 @@
 	icon_state = "hcider"
 	volume = 50
 	list_reagents = list("suicider" = 50)
+
+//////////////////////////PREMIUM ALCOHOL ///////////////////////
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka
+	name = "Four Stripes Quadruple Distilled"
+	desc = "Premium distilled vodka imported directly from the Russia."
+	icon_state = "premiumvodka"
+	volume = 100
+	list_reagents = list("premiumvodka" = 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumwine
+	name = "Uve De Blanc"
+	desc = "You feel pretentious just looking at it."
+	icon_state = "premiumwine"
+	volume = 100
+	list_reagents = list("premiumwine" = 100)
 
 //////////////////////////JUICES AND STUFF ///////////////////////
 

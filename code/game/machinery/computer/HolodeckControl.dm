@@ -38,6 +38,7 @@
 	dat += "<A href='?src=[UID()];theatre=1'>((Theatre)</font>)</A><BR>"
 	dat += "<A href='?src=[UID()];meetinghall=1'>((Meeting Hall)</font>)</A><BR>"
 	dat += "<A href='?src=[UID()];knightarena=1'>((Knight Arena)</font>)</A><BR>"
+	dat += "<A href='?src=[UID()];lounge=1'>((Lounge)</font>)</A><BR>"
 //		dat += "<A href='?src=[UID()];turnoff=1'>((Shutdown System)</font>)</A><BR>"
 
 	dat += "Please ensure that only holographic weapons are used in the holodeck if a combat simulation has been loaded.<BR>"
@@ -125,6 +126,11 @@
 
 	else if(href_list["knightarena"])
 		target = locate(/area/holodeck/source_knightarena)
+		if(target)
+			loadProgram(target)
+
+	else if(href_list["lounge"])
+		target = locate(/area/holodeck/source_lounge)
 		if(target)
 			loadProgram(target)
 

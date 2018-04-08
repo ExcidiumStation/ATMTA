@@ -96,7 +96,7 @@
 ///////////////////////
 
 /obj/item/weapon/gun/projectile/shotgun/boltaction
-	name = "\improper Mosin Nagant"
+	name = "Mosin Nagant"
 	desc = "This piece of junk looks like something that could have been used 700 years ago."
 	icon_state = "moistnugget"
 	item_state = "moistnugget"
@@ -174,6 +174,15 @@
 	origin_tech = "combat=6"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/com
 	w_class = WEIGHT_CLASS_HUGE
+
+/obj/item/weapon/gun/projectile/shotgun/automatic/combat/attackby(obj/item/A, mob/user, params)
+	..()
+	if(istype(A, /obj/item/weapon/circular_saw) || istype(A, /obj/item/weapon/gun/energy/plasmacutter))
+		sawoff(user)
+	if(istype(A, /obj/item/weapon/melee/energy))
+		var/obj/item/weapon/melee/energy/W = A
+		if(W.active)
+			sawoff(user)
 
 //Dual Feed Shotgun
 

@@ -70,3 +70,15 @@
 	materials = list (MAT_METAL = 150, MAT_GLASS = 100)
 	build_path = /obj/item/device/radio/beacon
 	category = list("Bluespace")
+
+
+/datum/design/beacon/rig_teleporter
+
+	name = "Teleportation module"
+	desc = "A complex, sleek-looking, hardsuit-integrated teleportation module."
+	id = "rig_teleporter"
+	req_tech = list("bluespace" = 7, "programming" = 5)
+	build_type = PROTOLATHE
+	materials = list (MAT_METAL = 4000, MAT_GLASS = 2000, MAT_DIAMOND = 3000)
+	build_path = /obj/item/rig_module/teleporter
+	category = list("Bluespace")

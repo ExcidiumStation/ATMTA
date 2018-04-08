@@ -1500,7 +1500,7 @@ window "mainwindow"
 		is-default = true
 		is-maximized = true
 		title = "Space Station 13"
-		icon = 'icons\\ss13_64.png'
+		icon = 'icons\\excidium_64.png'
 		menu = "menu"
 		macro = "macro"
 		saved-params = "pos;size;is-minimized;is-maximized"

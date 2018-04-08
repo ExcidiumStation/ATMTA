@@ -49,6 +49,8 @@
 	anchored = 1
 	use_power = 0
 	req_access = list(access_engine_equip)
+	clicksound = "switch"
+	var/needs_powerdown_sound
 	var/spooky=0
 	var/area/area
 	var/areastring = null
@@ -109,7 +111,7 @@
 	var/last_nightshift_switch = 0
 
 /obj/machinery/power/apc/worn_out
-	name = "\improper Worn out APC"
+	name = "Worn out APC"
 	keep_preset_name = 1
 	locked = 0
 	environ = 0
@@ -213,10 +215,10 @@
 		// no-op, keep the name
 	else if(isarea(A) && src.areastring == null)
 		area = A
-		name = "\improper [area.name] APC"
+		name = "[area.name] APC"
 	else
 		area = get_area_name(areastring)
-		name = "\improper [area.name] APC"
+		name = "[area.name] APC"
 	area.apc |= src
 	update_icon()
 
@@ -833,6 +835,13 @@
 //		if(area.name == "AI Chamber")
 //			to_chat(world, "[area.power_equip]")
 	area.power_change()
+
+	if(!cell || cell.charge <= 0)
+		if(needs_powerdown_sound == TRUE)
+			playsound(src, 'sound/machines/apc_nopower.ogg', 75, 0)
+			needs_powerdown_sound = FALSE
+		else
+			needs_powerdown_sound = TRUE
 
 /obj/machinery/power/apc/proc/isWireCut(var/wireIndex)
 	return wires.IsIndexCut(wireIndex)

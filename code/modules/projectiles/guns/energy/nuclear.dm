@@ -47,8 +47,8 @@
 		overlays += "mini-light"
 
 /obj/item/weapon/gun/energy/gun/hos
-	name = "\improper X-01 MultiPhase Energy Gun"
-	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
+	name = "X-01 MultiPhase Energy Gun"
+	desc = "This is a expensive, modern recreation of a antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
 	icon_state = "hoslaser"
 	origin_tech = null
 	force = 10
@@ -90,3 +90,10 @@
 	ammo_x_offset = 1
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/disabler)
 	selfcharge = 1
+
+/obj/item/weapon/gun/energy/gun/stun
+	name = "tactical energy gun"
+	desc = "Military issue energy gun, is able to fire stun rounds."
+	icon_state = "energytac"
+	ammo_x_offset = 2
+	ammo_type = list(/obj/item/ammo_casing/energy/electrode/spec, /obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)

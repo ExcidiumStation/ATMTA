@@ -78,4 +78,7 @@ GLOBAL_VAR_INIT(timezoneOffset, 0) // The difference betwen midnight (of the hos
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.
 var/fileaccess_timer = 0
 
-GLOBAL_VAR_INIT(gametime_offset, 432000) // 12:00 in seconds
+//SPACE PARALLAX
+var/parallax_initialized = 0
+var/space_color = "#050505"
+var/list/parallax_icon[27]

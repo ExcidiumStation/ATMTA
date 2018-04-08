@@ -254,6 +254,7 @@
 			full_law_reset()
 			show_laws()
 
+
 /mob/living/silicon/robot/drone/proc/shut_down(force=FALSE)
 	if(stat == 2)
 		return

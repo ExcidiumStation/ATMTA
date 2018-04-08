@@ -11,7 +11,6 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/show_player_panel,
 	/client/proc/player_panel,			/*shows an interface for all players, with links to various panels (old style)*/
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
-	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
 	/datum/admins/proc/toggleenter,		/*toggles whether people can join the current game*/
 	/datum/admins/proc/toggleguests,	/*toggles whether guests can join the current game*/
 	/datum/admins/proc/announce,		/*priority announce something to all clients.*/
@@ -30,17 +29,10 @@ var/list/admin_verbs_admin = list(
 	/client/proc/giveruntimelog,		/*allows us to give access to runtime logs to somebody*/
 	/client/proc/getruntimelog,			/*allows us to access runtime logs to somebody*/
 	/client/proc/getserverlog,			/*allows us to fetch server logs (diary) for other days*/
-	/client/proc/jumptocoord,			/*we ghost and jump to a coordinate*/
-	/client/proc/Getmob,				/*teleports a mob to our location*/
-	/client/proc/Getkey,				/*teleports a mob with a certain ckey to our location*/
 	/client/proc/Jump,
-	/client/proc/jumptokey,				/*allows us to jump to the location of a mob with a certain ckey*/
-	/client/proc/jumptomob,				/*allows us to jump to a specific mob*/
-	/client/proc/jumptoturf,			/*allows us to jump to a specific turf*/
 	/client/proc/admin_call_shuttle,	/*allows us to call the emergency shuttle*/
 	/client/proc/admin_cancel_shuttle,	/*allows us to cancel the emergency shuttle, sending it back to centcomm*/
 	/client/proc/check_ai_laws,			/*shows AI and borg laws*/
-	/client/proc/manage_silicon_laws,	/* Allows viewing and editing silicon laws. */
 	/client/proc/admin_memo,			/*admin memo system. show/delete/write. +SERVER needed to delete admin memos of others*/
 	/client/proc/dsay,					/*talk in deadchat using our ckey/fakekey*/
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
@@ -72,15 +64,15 @@ var/list/admin_verbs_admin = list(
 	/client/proc/freezemecha,
 	/client/proc/alt_check,
 	/client/proc/secrets,
-	/client/proc/change_human_appearance_admin,	/* Allows an admin to change the basic appearance of human-based mobs */
-	/client/proc/change_human_appearance_self,	/* Allows the human-based mob itself change its basic appearance */
 	/client/proc/debug_variables,
 	/client/proc/show_snpc_verbs,
 	/client/proc/reset_all_tcs,			/*resets all telecomms scripts*/
 	/client/proc/toggle_mentor_chat,
+	/client/proc/response_team,
 	/client/proc/toggle_advanced_interaction, /*toggle admin ability to interact with not only machines, but also atoms such as buttons and doors*/
-	/client/proc/list_ssds,
-)
+	/client/proc/list_ssds
+	)
+
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
 	/client/proc/jobbans,
@@ -105,7 +97,7 @@ var/list/admin_verbs_event = list(
 	/client/proc/cmd_admin_add_random_ai_law,
 	/client/proc/make_sound,
 	/client/proc/toggle_random_events,
-	/client/proc/toggle_random_events,
+	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
 	/client/proc/toggle_ert_calling,
 	/client/proc/cmd_admin_change_custom_event,
 	/client/proc/cmd_admin_custom_event_info,
@@ -113,10 +105,18 @@ var/list/admin_verbs_event = list(
 	/datum/admins/proc/access_news_network,	/*allows access of newscasters*/
 	/client/proc/cmd_admin_direct_narrate,	/*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
-	/client/proc/response_team, // Response Teams admin verb
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/fax_panel,
 	/client/proc/event_manager_panel,
+	/client/proc/jumptocoord,			/*we ghost and jump to a coordinate*/
+	/client/proc/Getmob,				/*teleports a mob to our location*/
+	/client/proc/Getkey,				/*teleports a mob with a certain ckey to our location*/
+	/client/proc/jumptokey,				/*allows us to jump to the location of a mob with a certain ckey*/
+	/client/proc/jumptomob,				/*allows us to jump to a specific mob*/
+	/client/proc/jumptoturf,			/*allows us to jump to a specific turf*/
+	/client/proc/change_human_appearance_admin,	/* Allows an admin to change the basic appearance of human-based mobs */
+	/client/proc/change_human_appearance_self,	/* Allows the human-based mob itself change its basic appearance */
+	/client/proc/manage_silicon_laws,	/* Allows viewing and editing silicon laws. */
 	/client/proc/modify_goals
 	)
 
@@ -144,7 +144,8 @@ var/list/admin_verbs_server = list(
 	/client/proc/toggle_antagHUD_use,
 	/client/proc/toggle_antagHUD_restrictions,
 	/client/proc/set_ooc,
-	/client/proc/reset_ooc
+	/client/proc/reset_ooc,
+	/client/proc/bwhitelist_panel_open
 	)
 var/list/admin_verbs_debug = list(
 	/client/proc/cmd_admin_list_open_jobs,
@@ -159,6 +160,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/restart_controller,
 	/client/proc/enable_debug_verbs,
 	/client/proc/toggledebuglogs,
+	/client/proc/qdel_toggle,
+	/client/proc/reestablish_db_connection,
 	/client/proc/cmd_display_del_log,
 	/client/proc/cmd_display_del_log_simple,
 	/client/proc/debugNatureMapGenerator,
@@ -182,7 +185,8 @@ var/list/admin_verbs_possess = list(
 var/list/admin_verbs_permissions = list(
 	/client/proc/edit_admin_permissions,
 	/client/proc/create_poll,
-	/client/proc/big_brother
+	/client/proc/big_brother,
+	/client/proc/give_karma_list
 	)
 var/list/admin_verbs_rejuv = list(
 	/client/proc/respawn_character,
@@ -720,52 +724,33 @@ var/list/admin_verbs_ticket = list(
 
 	var/datum/admins/D = admin_datums[ckey]
 	var/rank = null
-	if(config.admin_legacy_system)
-		//load text from file
-		var/list/Lines = file2list("config/admins.txt")
-		for(var/line in Lines)
-			var/list/splitline = splittext(line, " - ")
-			if(n_lower(splitline[1]) == ckey)
-				if(splitline.len >= 2)
-					rank = ckeyEx(splitline[2])
-				break
-			continue
-	else
-		if(!dbcon.IsConnected())
-			message_admins("Warning, MySQL database is not connected.")
-			to_chat(src, "Warning, MYSQL database is not connected.")
-			return
-		var/sql_ckey = sanitizeSQL(ckey)
-		var/DBQuery/query = dbcon.NewQuery("SELECT rank FROM [format_table_name("admin")] WHERE ckey = '[sql_ckey]'")
-		query.Execute()
-		while(query.NextRow())
-			rank = ckeyEx(query.item[1])
+	//load text from file
+	var/list/Lines = file2list("config/admins.txt")
+
+	//process each line seperately
+	for(var/line in Lines)
+		if(!length(line))				continue
+		if(copytext(line,1,2) == "#")	continue
+
+		//Split the line at every "-"
+		var/list/List = splittext(line, "-")
+		if(!List.len)					continue
+
+		//ckey is before the first "-"
+		var/txtckey = ckey(List[1])
+		if(!ckey)						continue
+		if(ckey == txtckey)
+		//rank follows the first "-"
+			if(List.len >= 2)
+				rank = ckeyEx(List[2])
+			break
+		continue
 	if(!D)
-		if(config.admin_legacy_system)
-			if(admin_ranks[rank] == null)
-				error("Error while re-adminning [src], admin rank ([rank]) does not exist.")
-				to_chat(src, "Error while re-adminning, admin rank ([rank]) does not exist.")
-				return
-
-			D = new(rank, admin_ranks[rank], ckey)
-		else
-			var/sql_ckey = sanitizeSQL(ckey)
-			var/DBQuery/query = dbcon.NewQuery("SELECT ckey, rank, flags FROM [format_table_name("admin")] WHERE ckey = '[sql_ckey]'")
-			query.Execute()
-			while(query.NextRow())
-				var/admin_ckey = query.item[1]
-				var/admin_rank = query.item[2]
-				var/flags = query.item[3]
-				if(!admin_ckey)
-					to_chat(src, "Error while re-adminning, ckey [admin_ckey] was not found in the admin database.")
-					return
-				if(admin_rank == "Removed") //This person was de-adminned. They are only in the admin list for archive purposes.
-					to_chat(src, "Error while re-adminning, ckey [admin_ckey] is not an admin.")
-					return
-
-				if(istext(flags))
-					flags = text2num(flags)
-				D = new(admin_rank, flags, ckey)
+		if(admin_ranks[rank] == null)
+			error("Error while re-adminning [src], admin rank ([rank]) does not exist.")
+			to_chat(src, "Error while re-adminning, admin rank ([rank]) does not exist.")
+			return
+		D = new(rank, admin_ranks[rank], ckey)
 
 		var/client/C = directory[ckey]
 		D.associate(C)

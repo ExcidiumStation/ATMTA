@@ -10,6 +10,8 @@
 	icon_state = "dispenser"
 	use_power = 0
 	idle_power_usage = 40
+	clicksound = "button"
+	clickvol = 20
 	var/ui_title = "Chem Dispenser 5000"
 	var/energy = 100
 	var/max_energy = 100

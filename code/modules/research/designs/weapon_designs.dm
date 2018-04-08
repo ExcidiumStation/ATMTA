@@ -257,3 +257,27 @@
 	build_path = /obj/item/weapon/gun/energy/immolator
 	locked = 1
 	category = list("Weapons")
+
+
+/datum/design/beacon/rig_egun
+
+	name = "mounted energy gun"
+	desc = "A forearm-mounted energy projector."
+	id = "rig_egun"
+	req_tech = list("combat" = 4, "magnets" = 5, "powerstorage" = 5)
+	build_type = PROTOLATHE
+	materials = list (MAT_METAL = 4000, MAT_SILVER = 3000, MAT_PLASMA = 2000)
+	build_path = /obj/item/rig_module/mounted/egun
+	locked = 1
+	category = list("Weapons")
+
+/datum/design/beacon/rig_self_destruct
+
+	name = "self-destruct module"
+	desc = "Oh my God, Captain. A bomb."
+	id = "rig_self_destruct"
+	req_tech = list("combat" = 5)
+	build_type = PROTOLATHE
+	materials = list (MAT_METAL = 5000, MAT_GLASS = 500)
+	build_path = /obj/item/rig_module/self_destruct
+	category = list("Weapons")

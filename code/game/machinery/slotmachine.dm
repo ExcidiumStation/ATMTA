@@ -47,9 +47,9 @@
 		if(operation == 1) // Play
 			if(working == 1)
 				return
-			if(!account || account.money < 10)
+			if(!account || account.money < 100)
 				return
-			if(!account.charge(10, transaction_purpose = "Bet", dest_name = name))
+			if(!account.charge(100, transaction_purpose = "Bet", dest_name = name))
 				return
 			plays += 1
 			working = 1

@@ -81,6 +81,8 @@
 	power_channel = ENVIRON
 	req_one_access = list(access_atmospherics, access_engine_equip)
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 100, bomb = 0, bio = 100, rad = 100)
+	clicksound = "button"
+	clickvol = 30
 	var/alarm_id = null
 	var/frequency = 1439
 	//var/skipprocess = 0 //Experimenting
@@ -687,7 +689,7 @@
 		data["remote_connection"] = href_list["remote_connection"]
 		data["remote_access"] = href_list["remote_access"]
 
-	data["name"] = sanitize(name)
+	data["name"] = sanitize_local(name)
 	data["air"] = ui_air_status()
 	data["alarmActivated"] = alarmActivated || danger_level == ATMOS_ALARM_DANGER
 	data["thresholds"] = generate_thresholds_menu()
@@ -730,7 +732,7 @@
 			if(!vent_data)
 				continue
 			vent_info["id_tag"]=id_tag
-			vent_info["name"]=sanitize(long_name)
+			vent_info["name"]=sanitize_local(long_name)
 			vent_info += vent_data
 			vents+=list(vent_info)
 	data["vents"]=vents
@@ -743,18 +745,18 @@
 			if(!scrubber_data)
 				continue
 			scrubber_data["id_tag"]=id_tag
-			scrubber_data["name"]=sanitize(long_name)
+			scrubber_data["name"]=sanitize_local(long_name)
 			scrubbers+=list(scrubber_data)
 	data["scrubbers"]=scrubbers
 	return data
 
 /obj/machinery/alarm/proc/get_nano_data_console(mob/user)
 	var/data[0]
-	data["name"] = sanitize(name)
+	data["name"] = sanitize_local(name)
 	data["ref"] = "\ref[src]"
 	data["danger"] = max(danger_level, alarm_area.atmosalm)
 	var/area/Area = get_area(src)
-	data["area"] = sanitize(Area.name)
+	data["area"] = sanitize_local(Area.name)
 	var/turf/pos = get_turf(src)
 	data["x"] = pos.x
 	data["y"] = pos.y

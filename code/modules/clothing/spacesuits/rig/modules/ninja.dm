@@ -68,6 +68,8 @@
 	redundant = 1
 	usable = 1
 	selectable = 1
+	materials = list(MAT_METAL = 4000, MAT_GLASS = 2000, MAT_DIAMOND = 3000)
+	origin_tech = "materials=5;bluespace=7"
 
 	engage_string = "Emergency Leap"
 

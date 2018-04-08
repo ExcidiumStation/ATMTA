@@ -47,6 +47,8 @@
 
 	R.update_icons()
 	R.update_headlamp()
+	R.sight_mode = null
+	R.update_sight()
 
 	R.speed = 0 // Remove upgrades.
 	R.ionpulse = 0

@@ -21,7 +21,7 @@
 
 /obj/machinery/poolcontroller/New() //This proc automatically happens on world start
 	if(!linked_area)
-		for(var/turf/simulated/floor/beach/water/W in range(srange,src)) //Search for /turf/simulated/floor/beach/water in the range of var/srange
+		for(var/turf/simulated/floor/beach/pool/W in range(srange,src)) //Search for /turf/simulated/floor/beach/pool in the range of var/srange
 			linkedturfs += W //Add found pool turfs to the central list.
 	..() //Changed to call parent as per MarkvA's recommendation
 

@@ -35,7 +35,7 @@ RCD
 	var/one_access
 	var/locked = 1
 	var/static/list/allowed_door_types = list(
-		/obj/machinery/door/airlock = "Standard", /obj/machinery/door/airlock/glass = "Standard (Glass)",
+		/obj/machinery/door/airlock = "Standard", /obj/machinery/door/airlock/public/glass = "Standard (Glass)",
 		/obj/machinery/door/airlock/command = "Command", /obj/machinery/door/airlock/command/glass = "Command (Glass)",
 		/obj/machinery/door/airlock/security = "Security", /obj/machinery/door/airlock/security/glass = "Security (Glass)",
 		/obj/machinery/door/airlock/engineering = "Engineering", /obj/machinery/door/airlock/engineering/glass = "Engineering (Glass)",

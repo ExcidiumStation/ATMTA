@@ -378,3 +378,12 @@
 	if(physical && physical != src)
 		return physical.Adjacent(neighbor)
 	return ..()
+
+
+/obj/item/device/modular_computer/CouldUseTopic(var/mob/user)
+	..()
+	if(istype(user, /mob/living/carbon))
+		if(prob(50))
+			playsound(src, "keyboard", 40)
+		else
+			playsound(src, "keystroke", 40)

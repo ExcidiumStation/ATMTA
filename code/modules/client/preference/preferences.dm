@@ -94,8 +94,13 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 	var/show_ghostitem_attack = TRUE
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
+	var/space_parallax = 1
+	var/space_dust = 1
+	var/parallax_speed = 1
 	var/windowflashing = TRUE
 	var/clientfps = 0
+
+	var/whitelist = 0
 
 	//ghostly preferences
 	var/ghost_anonsay = 0
@@ -295,8 +300,8 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 			dat += "<a href='byond://?_src_=prefs;preference=flavor_text;task=input'>Set Flavor Text</a><br>"
 			if(lentext(flavor_text) <= 40)
 				if(!lentext(flavor_text))	dat += "\[...\]<br>"
-				else						dat += "[flavor_text]<br>"
-			else dat += "[TextPreview(flavor_text)]...<br>"
+				else						dat += "[lhtml_encode(flavor_text)]<br>"
+			else dat += "[TextPreview(lhtml_encode(flavor_text))]...<br>"
 
 			dat += "<h2>Hair & Accessories</h2>"
 
@@ -423,6 +428,9 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 		if(TAB_GAME) // General Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>General Settings</h2>"
+			dat += "<b>Space Parallax:</b> <a href='?_src_=prefs;preference=parallax'><b>[space_parallax ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<b>Parallax Speed:</b> <a href='?_src_=prefs;preference=p_speed'><b>[parallax_speed]</b></a><br>"
+			dat += "<b>Space Dust:</b> <a href='?_src_=prefs;preference=dust'><b>[space_dust ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Fancy NanoUI:</b> <a href='?_src_=prefs;preference=nanoui'>[(nanoui_fancy) ? "Yes" : "No"]</a><br>"
 			dat += "<b>Ghost-Item Attack Animation:</b> <a href='?_src_=prefs;preference=ghost_att_anim'>[(show_ghostitem_attack) ? "Yes" : "No"]</a><br>"
 			dat += "<b>Window Flashing:</b> <a href='?_src_=prefs;preference=winflash'>[(windowflashing) ? "Yes" : "No"]</a><br>"
@@ -516,6 +524,9 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 			dat += "<tr><td colspan=4><hr></td></tr>"
 			for(var/gear_name in LC.gear)
 				var/datum/gear/G = LC.gear[gear_name]
+				if(G.wl_id)
+					if(!is_item_whitelisted(user.key,G.wl_id))
+						continue
 				var/ticked = (G.display_name in gear)
 				dat += "<tr style='vertical-align:top;'><td width=15%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?_src_=prefs;preference=gear;toggle_gear=[G.display_name]'>[G.display_name]</a></td>"
 				dat += "<td width = 5% style='vertical-align:top'>[G.cost]</td><td>"
@@ -589,6 +600,8 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 	for(var/datum/job/job in job_master.occupations)
 
 		if(job.admin_only)
+			continue
+		if (job.prisonlist_job)
 			continue
 
 		index += 1
@@ -856,23 +869,23 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 	HTML += "<a href=\"byond://?_src_=prefs;preference=records;task=med_record\">Medical Records</a><br>"
 
 	if(lentext(med_record) <= 40)
-		HTML += "[med_record]"
+		HTML += "[lhtml_encode(med_record)]"
 	else
-		HTML += "[copytext(med_record, 1, 37)]..."
+		HTML += "[lhtml_encode(copytext(med_record, 1, 37))]..."
 
 	HTML += "<br><a href=\"byond://?_src_=prefs;preference=records;task=gen_record\">Employment Records</a><br>"
 
 	if(lentext(gen_record) <= 40)
-		HTML += "[gen_record]"
+		HTML += "[lhtml_encode(gen_record)]"
 	else
-		HTML += "[copytext(gen_record, 1, 37)]..."
+		HTML += "[lhtml_encode(copytext(gen_record, 1, 37))]..."
 
 	HTML += "<br><a href=\"byond://?_src_=prefs;preference=records;task=sec_record\">Security Records</a><br>"
 
 	if(lentext(sec_record) <= 40)
-		HTML += "[sec_record]<br>"
+		HTML += "[lhtml_encode(sec_record)]<br>"
 	else
-		HTML += "[copytext(sec_record, 1, 37)]...<br>"
+		HTML += "[lhtml_encode(copytext(sec_record, 1, 37))]...<br>"
 
 	HTML += "<a href=\"byond://?_src_=prefs;preference=records;records=-1\">\[Done\]</a>"
 	HTML += "</center></tt>"
@@ -1099,30 +1112,30 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 		else
 			user << browse(null, "window=records")
 		if(href_list["task"] == "med_record")
-			var/medmsg = input(usr,"Set your medical notes here.","Medical Records",html_decode(med_record)) as message
+			var/medmsg = input(usr,"Set your medical notes here.","Medical Records",lhtml_decode(med_record)) as message
 
 			if(medmsg != null)
 				medmsg = copytext(medmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				medmsg = html_encode(medmsg)
+				medmsg = lhtml_encode(medmsg)
 
 				med_record = medmsg
 				SetRecords(user)
 
 		if(href_list["task"] == "sec_record")
-			var/secmsg = input(usr,"Set your security notes here.","Security Records",html_decode(sec_record)) as message
+			var/secmsg = input(usr,"Set your security notes here.","Security Records",lhtml_decode(sec_record)) as message
 
 			if(secmsg != null)
 				secmsg = copytext(secmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				secmsg = html_encode(secmsg)
+				secmsg = lhtml_encode(secmsg)
 
 				sec_record = secmsg
 				SetRecords(user)
 		if(href_list["task"] == "gen_record")
-			var/genmsg = input(usr,"Set your employment notes here.","Employment Records",html_decode(gen_record)) as message
+			var/genmsg = input(usr,"Set your employment notes here.","Employment Records",lhtml_decode(gen_record)) as message
 
 			if(genmsg != null)
 				genmsg = copytext(genmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				genmsg = html_encode(genmsg)
+				genmsg = lhtml_encode(genmsg)
 
 				gen_record = genmsg
 				SetRecords(user)
@@ -1264,7 +1277,7 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 					if(new_age)
 						age = max(min(round(text2num(new_age)), AGE_MAX),AGE_MIN)
 				if("species")
-					var/list/new_species = list("Human", "Tajaran", "Skrell", "Unathi", "Diona", "Vulpkanin")
+					var/list/new_species = list("Human")
 					var/prev_species = species
 //						var/whitelisted = 0
 
@@ -1387,7 +1400,7 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
 					if(new_metadata)
-						metadata = sanitize(copytext(new_metadata,1,MAX_MESSAGE_LEN))
+						metadata = sanitize_local(copytext(new_metadata,1,MAX_MESSAGE_LEN))
 
 				if("b_type")
 					var/new_b_type = input(user, "Choose your character's blood-type:", "Character Preference") as null|anything in list( "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" )
@@ -1736,11 +1749,10 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 						nanotrasen_relation = new_relation
 
 				if("flavor_text")
-					var/msg = input(usr,"Set the flavor text in your 'examine' verb. The flavor text should be a physical descriptor of your character at a glance. SFW Drawn Art of your character is acceptable.","Flavor Text",html_decode(flavor_text)) as message
-
+					var/msg = input(usr,"Set the flavor text in your 'examine' verb. The flavor text should be a physical descriptor of your character at a glance. SFW Drawn Art of your character is acceptable.","Flavor Text",lhtml_decode(flavor_text)) as message
 					if(msg != null)
 						msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-						msg = html_encode(msg)
+						msg = lhtml_encode(msg)
 
 						flavor_text = msg
 
@@ -1992,6 +2004,21 @@ var/global/list/special_role_times = list( //minimum age (in days) for accounts 
 					if(ishuman(usr)) //mid-round preference changes, for aesthetics
 						var/mob/living/carbon/human/H = usr
 						H.remake_hud()
+
+				if("parallax")
+					space_parallax = !space_parallax
+
+					if(usr && usr.hud_used)
+						usr.hud_used.update_parallax_and_dust()
+
+				if("dust")
+					space_dust = !space_dust
+
+					if(usr && usr.hud_used)
+						usr.hud_used.update_parallax_and_dust()
+
+				if("p_speed")
+					parallax_speed = min(max(input(user, "Enter a number between 0 and 5 included (default=2)","Parallax Speed Preferences",parallax_speed),0),5)
 
 				if("be_special")
 					var/r = href_list["role"]

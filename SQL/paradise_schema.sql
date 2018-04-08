@@ -261,10 +261,14 @@ CREATE TABLE `player` (
   `nanoui_fancy` smallint(4) DEFAULT '1',
   `show_ghostitem_attack` smallint(4) DEFAULT '1',
   `lastchangelog` varchar(32) NOT NULL DEFAULT '0',
+  `lastchangelog` varchar(32) NOT NULL,
+  `space_parallax` smallint(4) DEFAULT '1',
+  `space_dust` smallint(4) DEFAULT '1',
+  `parallax_speed` float(24) DEFAULT '2',
   `windowflashing` smallint(4) DEFAULT '1',
   `ghost_anonsay` tinyint(1) NOT NULL DEFAULT '0',
   `exp` mediumtext,
-  `clientfps` smallint(4) DEFAULT '0',
+  `whitelist` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32446 DEFAULT CHARSET=latin1;
@@ -452,6 +456,7 @@ CREATE TABLE `whitelist` (
   `ckey` text NOT NULL,
   `job` text,
   `species` text,
+  `item_id` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=877 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;

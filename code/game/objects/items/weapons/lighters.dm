@@ -58,6 +58,7 @@
 							H.UpdateDamageIcon()
 							H.updatehealth()
 					user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
+				playsound(src.loc, "light_bic", 100, 1, -4)
 
 			set_light(2)
 			processing_objects.Add(src)

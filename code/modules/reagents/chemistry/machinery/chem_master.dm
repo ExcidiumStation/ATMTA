@@ -1,11 +1,13 @@
 /obj/machinery/chem_master
-	name = "\improper ChemMaster 3000"
+	name = "ChemMaster 3000"
 	density = 1
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	use_power = 1
 	idle_power_usage = 20
+	clicksound = "button"
+	clickvol = 20
 	var/obj/item/weapon/reagent_containers/beaker = null
 	var/obj/item/weapon/storage/pill_bottle/loaded_pill_bottle = null
 	var/mode = 0
@@ -374,7 +376,7 @@
 	return all_safe
 
 /obj/machinery/chem_master/condimaster
-	name = "\improper CondiMaster 3000"
+	name = "CondiMaster 3000"
 	condi = 1
 
 /obj/machinery/chem_master/constructable

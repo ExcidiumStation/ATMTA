@@ -105,6 +105,7 @@
 	new /obj/item/weapon/cartridge/hos(src)
 	new /obj/item/device/radio/headset/heads/hos/alt(src)
 	new /obj/item/clothing/under/rank/head_of_security(src)
+	new /obj/item/clothing/under/rank/head_of_security/alt(src)
 	new /obj/item/clothing/under/rank/head_of_security/formal(src)
 	new /obj/item/clothing/under/rank/head_of_security/corp(src)
 	new /obj/item/clothing/under/rank/head_of_security/skirt(src)
@@ -123,6 +124,7 @@
 	new /obj/item/weapon/gun/energy/gun/hos(src)
 	new /obj/item/weapon/door_remote/head_of_security(src)
 	new /obj/item/weapon/reagent_containers/food/drinks/mug/hos(src)
+	new /obj/item/weapon/storage/lockbox/saber(src)
 
 
 /obj/structure/closet/secure_closet/warden
@@ -256,7 +258,7 @@
 
 
 /obj/structure/closet/secure_closet/ntrep
-	name = "\improper Nanotrasen Representative's locker"
+	name = "Nanotrasen Representative's locker"
 	req_access = list(access_ntrep)
 	icon_state = "ntsecure1"
 	icon_closed = "ntsecure"

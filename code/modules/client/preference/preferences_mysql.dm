@@ -14,10 +14,13 @@
 					nanoui_fancy,
 					show_ghostitem_attack,
 					lastchangelog,
+					space_parallax,
+					space_dust,
+					parallax_speed,
 					windowflashing,
 					ghost_anonsay,
 					exp,
-					clientfps
+					whitelist
 					FROM [format_table_name("player")]
 					WHERE ckey='[C.ckey]'"}
 					)
@@ -44,10 +47,13 @@
 		nanoui_fancy = text2num(query.item[11])
 		show_ghostitem_attack = text2num(query.item[12])
 		lastchangelog = query.item[13]
-		windowflashing = text2num(query.item[14])
-		ghost_anonsay = text2num(query.item[15])
-		exp = query.item[16]
-		clientfps = text2num(query.item[17])
+		space_parallax = text2num(query.item[14])
+		space_dust = text2num(query.item[15])
+		parallax_speed = text2num(query.item[16])
+		windowflashing = text2num(query.item[17])
+		ghost_anonsay = text2num(query.item[18])
+		exp = query.item[19]
+		whitelist = text2num(query.item[20])
 
 	//Sanitize
 	ooccolor		= sanitize_hexcolor(ooccolor, initial(ooccolor))
@@ -62,6 +68,9 @@
 	nanoui_fancy	= sanitize_integer(nanoui_fancy, 0, 1, initial(nanoui_fancy))
 	show_ghostitem_attack = sanitize_integer(show_ghostitem_attack, 0, 1, initial(show_ghostitem_attack))
 	lastchangelog	= sanitize_text(lastchangelog, initial(lastchangelog))
+	space_parallax	= sanitize_integer(space_parallax, 0, 1, initial(space_parallax))
+	space_dust		= sanitize_integer(space_dust, 0, 1, initial(space_dust))
+	parallax_speed	= sanitize_integer(parallax_speed, 0, 5, initial(parallax_speed))
 	windowflashing = sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
 	ghost_anonsay = sanitize_integer(ghost_anonsay, 0, 1, initial(ghost_anonsay))
 	exp	= sanitize_text(exp, initial(exp))
@@ -91,9 +100,13 @@
 					nanoui_fancy='[nanoui_fancy]',
 					show_ghostitem_attack='[show_ghostitem_attack]',
 					lastchangelog='[lastchangelog]',
+					lastchangelog='[lastchangelog]',
+					space_parallax='[space_parallax]',
+					space_dust='[space_dust]',
+					parallax_speed='[parallax_speed]',
 					windowflashing='[windowflashing]',
 					ghost_anonsay='[ghost_anonsay]',
-					clientfps='[clientfps]'
+					whitelist='[whitelist]'
 					WHERE ckey='[C.ckey]'"}
 					)
 
@@ -473,6 +486,20 @@
 		load_character(C)
 		return 0
 	load_character(C,pick(saves))
+	return 1
+
+/datum/preferences/proc/update_whitelist_status(client/C)
+	if(whitelist)
+		whitelist = FALSE
+	else
+		whitelist = TRUE
+	var/DBQuery/query = dbcon.NewQuery("UPDATE [format_table_name("player")] SET whitelist='[whitelist]' WHERE ckey='[C.ckey]'")
+	if(!query.Execute())
+		var/err = query.ErrorMsg()
+		log_game("SQL ERROR during lastchangelog updating. Error : \[[err]\]\n")
+		message_admins("SQL ERROR during lastchangelog updating. Error : \[[err]\]\n")
+		to_chat(C, "Couldn't update your last seen changelog, please try again later.")
+		return
 	return 1
 
 /datum/preferences/proc/SetChangelog(client/C,hash)

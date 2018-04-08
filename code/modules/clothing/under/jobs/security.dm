@@ -125,27 +125,68 @@
 	item_color = "jensen"
 	flags_size = ONESIZEFITSALL
 
+/obj/item/clothing/under/rank/head_of_security/alt
+	name = "head of security's turtleneck"
+	desc = "A stylish alternative to the normal head of security jumpsuit, complete with tactical pants."
+	icon_state = "hosalt"
+	item_state = "hoaslt"
+	item_color = "hosalt"
+
 //Paradise Station
 
 /obj/item/clothing/suit/armor/hos/hosnavyjacket
 	name = "head of security navy jacket"
-	icon_state = "hosdnavyjacket"
-	item_state = "hosdnavyjacket"
+	desc = "This piece of clothing was specifically designed for asserting superior authority."
+	icon_state = "hosnavyjacket"
+	item_state = "hosnavyjacket"
 
 /obj/item/clothing/suit/armor/hos/hosbluejacket
 	name = "head of security blue jacket"
+	desc = "This piece of clothing was specifically designed for asserting superior authority."
 	icon_state = "hosbluejacket"
 	item_state = "hosbluejacket"
 
-/obj/item/clothing/suit/armor/hos/officernavyjacket
+/obj/item/clothing/suit/armor/hos/hostanjacket
+	name = "head of security tan jacket"
+	desc = "This piece of clothing was specifically designed for asserting superior authority."
+	icon_state = "hostanjacket"
+	item_state = "hostanjacket"
+
+/obj/item/clothing/suit/armor/officernavyjacket
 	name = "officer's navy jacket"
+	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
 	icon_state = "officernavyjacket"
 	item_state = "officernavyjacket"
 
-/obj/item/clothing/suit/armor/hos/officerbluejacket
+/obj/item/clothing/suit/armor/officerbluejacket
 	name = "officer's blue jacket"
+	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
 	icon_state = "officerbluejacket"
 	item_state = "officerbluejacket"
+
+/obj/item/clothing/suit/armor/officertanjacket
+	name = "officer's tan jacket"
+	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
+	icon_state = "officertanjacket"
+	item_state = "officertanjacket"
+
+/obj/item/clothing/suit/armor/vest/warden/wardennavyjacket
+	name = "warden's navy jacket"
+	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
+	icon_state = "wardennavyjacket"
+	item_state = "wardennavyjacket"
+
+/obj/item/clothing/suit/armor/vest/warden/wardenbluejacket
+	name = "warden's blue jacket"
+	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
+	icon_state = "wardenbluejacket"
+	item_state = "wardenbluejacket"
+
+/obj/item/clothing/suit/armor/vest/warden/wardentanjacket
+	name = "warden's tan jacket"
+	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
+	icon_state = "wardentanjacket"
+	item_state = "wardentanjacket"
 
 //TG Station
 
@@ -199,3 +240,70 @@
 	icon_state = "pod_pilot"
 	item_state = "pod_pilot"
 	item_color = "pod_pilot"
+
+/*
+ * Blue, navy and tan uniforms
+ */
+
+/obj/item/clothing/under/rank/security/blue
+	name = "security officer's formal uniform"
+	desc = "The latest in fashionable security outfits."
+	icon_state = "officerblueclothes"
+	item_state = "officerblueclothes"
+	item_color = "officerblueclothes"
+
+/obj/item/clothing/under/rank/security/navy
+	name = "security officer's formal uniform"
+	desc = "The latest in fashionable security outfits."
+	icon_state = "officernavyclothes"
+	item_state = "officernavyclothes"
+	item_color = "officernavyclothes"
+
+/obj/item/clothing/under/rank/security/tan
+	name = "security officer's formal uniform"
+	desc = "The latest in fashionable security outfits."
+	icon_state = "officertanclothes"
+	item_state = "officertanclothes"
+	item_color = "officertanclothes"
+
+/obj/item/clothing/under/rank/head_of_security/blue
+	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
+	name = "head of security's formal uniform"
+	icon_state = "hosblueclothes"
+	item_state = "hosblueclothes"
+	item_color = "hosblueclothes"
+
+/obj/item/clothing/under/rank/head_of_security/navy
+	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
+	name = "head of security's formal uniform"
+	icon_state = "hosnavyclothes"
+	item_state = "hosnavyclothes"
+	item_color = "hosnavyclothes"
+
+/obj/item/clothing/under/rank/head_of_security/tan
+	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
+	name = "head of security's formal uniform"
+	icon_state = "hostanclothes"
+	item_state = "hostanclothes"
+	item_color = "hostanclothes"
+
+/obj/item/clothing/under/rank/warden/blue
+	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
+	name = "warden's formal uniform"
+	icon_state = "wardenblueclothes"
+	item_state = "wardenblueclothes"
+	item_color = "wardenblueclothes"
+
+/obj/item/clothing/under/rank/warden/navy
+	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
+	name = "warden's formal uniform"
+	icon_state = "wardennavyclothes"
+	item_state = "wardennavyclothes"
+	item_color = "wardennavyclothes"
+
+/obj/item/clothing/under/rank/warden/tan
+	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
+	name = "warden's formal uniform"
+	icon_state = "wardentanclothes"
+	item_state = "wardentanclothes"
+	item_color = "wardentanclothes"

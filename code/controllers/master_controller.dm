@@ -61,10 +61,18 @@ var/global/pipe_processing_killed = 0
 	setupfactions()
 	setup_economy()
 
+	var/watch = start_watch()
+	log_startup_progress("Caching space parallax simulation...")
+	cachespaceparallax()
+	log_startup_progress("  Finished caching space parallax simulation in [stop_watch(watch)]s.")
+
 	for(var/i=0, i<max_secret_rooms, i++)
 		make_mining_asteroid_secret()
 
 	populate_spawn_points()
+
+	if(config.sql_enabled)
+		db_reconnect = new
 
 /datum/controller/game_controller/proc/setup_objects()
 	var/watch = start_watch()

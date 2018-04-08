@@ -42,7 +42,6 @@ var/round_start_time = 0
 
 /datum/controller/gameticker/proc/pregame()
 	login_music = pick(\
-	'sound/music/THUNDERDOME.ogg',\
 	'sound/music/space.ogg',\
 	'sound/music/Title1.ogg',\
 	'sound/music/Title2.ogg',\
@@ -99,21 +98,19 @@ var/round_start_time = 0
 		src.mode = config.pick_mode(master_mode)
 	if(!src.mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
-		mode = null
-		current_state = GAME_STATE_PREGAME
+		mode = new /datum/game_mode/extended
+		/*current_state = GAME_STATE_PREGAME
 		job_master.ResetOccupations()
-		Master.SetRunLevel(RUNLEVEL_LOBBY)
-		return 0
-
+		return 0*/
 	//Configure mode and assign player to special mode stuff
 	src.mode.pre_pre_setup()
 	var/can_continue
 	can_continue = src.mode.pre_setup()//Setup special modes
 	job_master.DivideOccupations() //Distribute jobs
 	if(!can_continue)
-		qdel(mode)
 		current_state = GAME_STATE_PREGAME
 		to_chat(world, "<B>Error setting up [master_mode].</B> Reverting to pre-game lobby.")
+		mode = new /datum/game_mode/extended
 		job_master.ResetOccupations()
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		return 0
@@ -382,7 +379,7 @@ var/round_start_time = 0
 		return 0
 
 	mode.process()
-	mode.process_job_tasks()
+	//mode.process_job_tasks()
 
 	//emergency_shuttle.process() DONE THROUGH PROCESS SCHEDULER
 
@@ -459,7 +456,6 @@ var/round_start_time = 0
 
 	if(dronecount)
 		to_chat(world, "<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] this round.")
-
 	mode.declare_completion()//To declare normal completion.
 
 	//calls auto_declare_completion_* for all modes

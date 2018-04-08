@@ -222,3 +222,17 @@
 /obj/effect/spawner/lootdrop/three_course_meal/New()
 	loot = list(pick(soups) = 1,pick(salads) = 1,pick(mains) = 1)
 	. = ..()
+
+/obj/effect/spawner/lootdrop/instruments
+	name = "single musical instrument spawner"
+
+	loot = list(
+			/obj/item/device/instrument/violin,
+			/obj/item/device/instrument/guitar,
+			/obj/item/device/instrument/glockenspiel,
+			/obj/item/device/instrument/accordion,
+			/obj/item/device/instrument/saxophone,
+			/obj/item/device/instrument/trombone,
+			/obj/item/device/instrument/recorder,
+			/obj/item/device/instrument/harmonica
+			)

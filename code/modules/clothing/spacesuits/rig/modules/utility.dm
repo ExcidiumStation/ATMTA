@@ -229,10 +229,11 @@
 	desc = "A complex web of tubing and needles suitable for hardsuit use."
 
 	charges = list(
-		list("synaptizine",   "synaptizine",   0, 30),
-		list("hydrocodone",   "hydrocodone",   0, 30),
+		list("Salicylic Acid",   "sal_acid",   0, 30),
+		list("omnizine",   "omnizine",   0, 30),
 		list("nutrients",     "nutriment",     0, 80),
-		)
+		list("saline-glucose",   "salglu_solution", 0, 30),
+	)
 
 	interface_name = "combat chem dispenser"
 	interface_desc = "Dispenses loaded chemicals directly into the bloodstream."
@@ -295,7 +296,7 @@
 			voice_holder.active = 0
 			to_chat(usr, "<font color='blue'>You disable the speech synthesiser.</font>")
 		if("Set Name")
-			var/raw_choice = sanitize(input(usr, "Please enter a new name.")  as text|null, MAX_NAME_LEN)
+			var/raw_choice = sanitize_local(input(usr, "Please enter a new name.")  as text|null, MAX_NAME_LEN)
 			if(!raw_choice)
 				return 0
 			voice_holder.voice = raw_choice
