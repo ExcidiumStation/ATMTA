@@ -144,7 +144,7 @@
 	drink_name = "Glass of vodka"
 	drink_desc = "The glass contain wodka. Xynta."
 
-/datum/reagent/consumable/ethanol/premiumvodka
+/datum/reagent/consumable/ethanol/vodka/premium
 	name = "Premium Vodka"
 	description = "Premium distilled vodka imported directly from the Russia."
 	color = "#aaddff" // rgb: 170, 221, 255 - very light blue.
@@ -198,7 +198,7 @@
 	drink_desc = "A very classy looking drink."
 	taste_message = "wine"
 
-/datum/reagent/consumable/ethanol/premiumwine
+/datum/reagent/consumable/ethanol/wine/premium
 	name = "White Wine"
 	description = "An exceptionally expensive alchoholic beverage made from distilled white grapes."
 	color = "#ffddaa" // rgb: 255, 221, 170 - a light cream
