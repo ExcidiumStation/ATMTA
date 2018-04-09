@@ -42,13 +42,10 @@
 	layer = 2.9
 	anchored = 1
 	density = 1
-<<<<<<< HEAD
 	armor = list(melee = 20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
-=======
 	clicksound = "button"
 	clickvol = 40
 
->>>>>>> master
 	var/icon_vend //Icon_state when vending
 	var/icon_deny //Icon_state when denying access
 
