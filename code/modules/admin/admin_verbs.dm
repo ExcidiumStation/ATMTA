@@ -160,7 +160,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/restart_controller,
 	/client/proc/enable_debug_verbs,
 	/client/proc/toggledebuglogs,
-	/client/proc/qdel_toggle,
 	/client/proc/reestablish_db_connection,
 	/client/proc/cmd_display_del_log,
 	/client/proc/cmd_display_del_log_simple,
