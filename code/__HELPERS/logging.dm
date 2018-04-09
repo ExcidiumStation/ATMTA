@@ -15,9 +15,12 @@
 /proc/warning(msg)
 	log_to_dd("## WARNING: [msg]")
 
-//print a testing-mode debug message to world.log
-/proc/testing(msg)
-	log_to_dd("## TESTING: [msg]")
+//print a testing-mode debug message to world.log and world
+#ifdef TESTING
+#define testing(msg) log_to_dd("## TESTING: [msg]"); to_chat(world, "## TESTING: [msg]")
+#else
+#define testing(msg)
+#endif
 
 /proc/log_admin(text)
 	admin_log.Add(text)

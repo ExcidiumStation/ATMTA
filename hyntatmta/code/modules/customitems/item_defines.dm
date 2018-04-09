@@ -175,4 +175,4 @@
 			to_chat(user, "ERROR: RCD in MODE: [mode] attempted use by [user]. Send this text #coderbus or an admin.")
 			return 0
 
-	nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)

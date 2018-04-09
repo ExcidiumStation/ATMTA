@@ -251,19 +251,19 @@
 
 //////////////////////////PREMIUM ALCOHOL ///////////////////////
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumvodka
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/premium
 	name = "Four Stripes Quadruple Distilled"
 	desc = "Premium distilled vodka imported directly from the Russia."
 	icon_state = "premiumvodka"
 	volume = 100
-	list_reagents = list("premiumvodka" = 100)
+	list_reagents = list("vodka/premium" = 100)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/premiumwine
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine/premium
 	name = "Uve De Blanc"
 	desc = "You feel pretentious just looking at it."
 	icon_state = "premiumwine"
 	volume = 100
-	list_reagents = list("premiumwine" = 100)
+	list_reagents = list("wine/premium" = 100)
 
 //////////////////////////JUICES AND STUFF ///////////////////////
 

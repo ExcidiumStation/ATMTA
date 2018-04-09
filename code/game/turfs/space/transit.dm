@@ -1,4 +1,5 @@
 /turf/space/transit
+	flags = null
 	plane = 0
 	var/pushdirection // push things that get caught in the transit tile this direction
 
