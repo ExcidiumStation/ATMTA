@@ -22,4 +22,4 @@ var/datum/controller/db_reconnect/db_reconnect
 			timerbuffer += (6000)
 
 /datum/controller/db_reconnect/proc/time_till_auto_recconect()
-	return timerbuffer - classic_worldtime2text(time = world.time) - (600)
+	return timerbuffer - (round_start_time ? world.time - round_start_time : 0) - (600)
