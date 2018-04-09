@@ -1209,11 +1209,7 @@
 	component_parts += new /obj/item/weapon/vending_refill/autodrobe(0)
 
 /obj/machinery/vending/dinnerware
-<<<<<<< HEAD
-	name = "\improper Plasteel Chef's Dinnerware Vendor"
-=======
 	name = "Dinnerware"
->>>>>>> master
 	desc = "A kitchen and restaurant equipment vendor."
 	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
 	icon_state = "dinnerware"
