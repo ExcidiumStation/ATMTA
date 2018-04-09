@@ -77,7 +77,7 @@
 				var/obj/item/weapon/reagent_containers/glass/X = src.beaker
 				var/datum/reagents/U = X.reagents
 				if(!U)
-					if(!X.QDELETED(src))
+					if(!X.QDELETED(X))
 						X.create_reagents(X.volume)
 					else
 						qdel(X)
