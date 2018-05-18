@@ -18,7 +18,7 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/device/maneuvering_jets,
 		/obj/item/rig_module/datajack,
 		)
 
@@ -31,8 +31,8 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/plasmacutter,
+		/obj/item/rig_module/device/maneuvering_jets,
+		/obj/item/rig_module/device/plasmacutter,
 		// /obj/item/rig_module/rcd
 		)
 
@@ -44,9 +44,9 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/healthscanner,
-		/obj/item/rig_module/chem_dispenser/injector
+		/obj/item/rig_module/device/maneuvering_jets,
+		/obj/item/rig_module/device/healthscanner,
+		/obj/item/rig_module/device/chem_dispenser/injector
 		)
 
 /obj/item/rig/ert/security
@@ -57,9 +57,9 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/grenade_launcher,
-		/obj/item/rig_module/mounted/egun,
+		/obj/item/rig_module/device/maneuvering_jets,
+		/obj/item/rig_module/device/grenade_launcher,
+		/obj/item/rig_module/device/mounted/egun,
 		)
 
 /obj/item/rig/ert/assetprotection
@@ -70,12 +70,12 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/grenade_launcher,
+		/obj/item/rig_module/device/maneuvering_jets,
+		/obj/item/rig_module/device/grenade_launcher,
 		/obj/item/rig_module/vision/multi,
-		/obj/item/rig_module/mounted/egun,
-		/obj/item/rig_module/chem_dispenser/injector,
-		/obj/item/rig_module/plasmacutter,
+		/obj/item/rig_module/device/mounted/egun,
+		/obj/item/rig_module/device/chem_dispenser/injector,
+		/obj/item/rig_module/device/plasmacutter,
 		// /obj/item/rig_module/rcd,
 		/obj/item/rig_module/datajack
 		)

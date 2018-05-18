@@ -190,33 +190,6 @@
 
 	visor.engage()
 
-/obj/item/rig/verb/alter_voice()
-	set name = "Configure Voice Synthesiser"
-	set desc = "Toggles or configures your voice synthesizer."
-	set category = "Hardsuit"
-	set src = usr.contents
-
-	if(malfunction_check(usr))
-		return
-
-	if(!(flags & NODROP))
-		to_chat(usr, "<span class='warning'>The suit is not active.</span>")
-		return
-
-	if(!istype(wearer) || !wearer.back == src)
-		to_chat(usr, "<span class='warning'>The hardsuit is not being worn.</span>")
-		return
-
-	if(!speech)
-		to_chat(usr, "<span class='warning'>The hardsuit does not have a speech synthesiser.</span>")
-		return
-
-	var/mob/M = usr
-	if(M.incapacitated())
-		return
-
-	speech.engage()
-
 /obj/item/rig/verb/select_module()
 	set name = "Select Module"
 	set desc = "Selects a module as your primary system."

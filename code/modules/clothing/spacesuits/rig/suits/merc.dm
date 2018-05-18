@@ -14,14 +14,14 @@
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/gun,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword,/obj/item/restraints/handcuffs)
 
 	initial_modules = list(
-		/obj/item/rig_module/mounted,
+		/obj/item/rig_module/device/mounted,
 		/obj/item/rig_module/vision/thermal,
-		/obj/item/rig_module/grenade_launcher,
+		/obj/item/rig_module/device/grenade_launcher,
 		/obj/item/rig_module/ai_container,
 		// /obj/item/rig_module/power_sink,
 		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/chem_dispenser/combat,
-		// /obj/item/rig_module/fabricator/energy_net
+		/obj/item/rig_module/device/chem_dispenser/combat,
+		// /obj/item/rig_module/device/fabricator/energy_net
 		)
 
 //Has most of the modules removed

@@ -267,7 +267,7 @@
 	req_tech = list("combat" = 4, "magnets" = 5, "powerstorage" = 5)
 	build_type = PROTOLATHE
 	materials = list (MAT_METAL = 4000, MAT_SILVER = 3000, MAT_PLASMA = 2000)
-	build_path = /obj/item/rig_module/mounted/egun
+	build_path = /obj/item/rig_module/device/mounted/egun
 	locked = 1
 	category = list("Weapons")
 

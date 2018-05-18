@@ -695,7 +695,7 @@
 	name = "HoNkER BlAsT 5000"
 	id = "mech_honker"
 	build_type = MECHFAB
-	build_path = /obj/item/mecha_parts/mecha_equipment/honker
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/honker
 	materials = list(MAT_METAL=20000,MAT_BANANIUM=10000)
 	construction_time = 500
 	category = list("Exosuit Equipment")

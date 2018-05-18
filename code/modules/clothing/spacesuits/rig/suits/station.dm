@@ -36,10 +36,10 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/flash,
-		/obj/item/rig_module/paperdispenser,
-		/obj/item/rig_module/pen,
-		/obj/item/rig_module/stamp
+		/obj/item/rig_module/device/flash,
+		/obj/item/rig_module/device/paperdispenser,
+		/obj/item/rig_module/device/pen,
+		/obj/item/rig_module/device/stamp
 		)
 
 	glove_type = null
@@ -68,9 +68,9 @@
 /obj/item/rig/industrial/equipped
 
 	initial_modules = list(
-		/obj/item/rig_module/plasmacutter,
-		/obj/item/rig_module/drill,
-		/obj/item/rig_module/orescanner,
+		/obj/item/rig_module/device/plasmacutter,
+		/obj/item/rig_module/device/drill,
+		/obj/item/rig_module/device/orescanner,
 		// /obj/item/rig_module/rcd,
 		/obj/item/rig_module/vision/meson
 		)
@@ -94,8 +94,8 @@
 /obj/item/rig/eva/equipped
 
 	initial_modules = list(
-		/obj/item/rig_module/plasmacutter,
-		/obj/item/rig_module/maneuvering_jets,
+		/obj/item/rig_module/device/plasmacutter,
+		/obj/item/rig_module/device/maneuvering_jets,
 		// /obj/item/rig_module/rcd,
 		/obj/item/rig_module/vision/meson
 		)
@@ -129,8 +129,8 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/plasmacutter,
+		/obj/item/rig_module/device/maneuvering_jets,
+		/obj/item/rig_module/device/plasmacutter,
 		// /obj/item/rig_module/rcd,
 		/obj/item/rig_module/vision/meson
 		)
@@ -167,7 +167,7 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets)
+		/obj/item/rig_module/device/maneuvering_jets)
 
 /obj/item/rig/medical
 
@@ -189,9 +189,9 @@
 /obj/item/rig/medical/equipped
 
 	initial_modules = list(
-		/obj/item/rig_module/chem_dispenser/injector,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/healthscanner,
+		/obj/item/rig_module/device/chem_dispenser/injector,
+		/obj/item/rig_module/device/maneuvering_jets,
+		/obj/item/rig_module/device/healthscanner,
 		/obj/item/rig_module/vision/medhud
 		)
 
@@ -217,7 +217,7 @@
 
 	initial_modules = list(
 		/obj/item/rig_module/vision/sechud,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/grenade_launcher,
-		/obj/item/rig_module/mounted/taser
+		/obj/item/rig_module/device/maneuvering_jets,
+		/obj/item/rig_module/device/grenade_launcher,
+		/obj/item/rig_module/device/mounted/taser
 		)

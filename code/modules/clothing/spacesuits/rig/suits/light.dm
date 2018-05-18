@@ -50,7 +50,7 @@
 		// /obj/item/rig_module/power_sink,
 		/obj/item/rig_module/datajack,
 		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/voice,
+		/obj/item/rig_module/device/voice,
 		/obj/item/rig_module/vision,
 		)
 
@@ -87,12 +87,12 @@
 	initial_modules = list(
 		/obj/item/rig_module/teleporter,
 		/obj/item/rig_module/stealth_field,
-		/obj/item/rig_module/mounted/energy_blade,
+		/obj/item/rig_module/device/mounted/energy_blade,
 		/obj/item/rig_module/vision,
-		/obj/item/rig_module/voice,
-		/obj/item/rig_module/chem_dispenser,
-		/obj/item/rig_module/grenade_launcher,
-		/obj/item/rig_module/fabricator,
+		/obj/item/rig_module/device/voice,
+		/obj/item/rig_module/device/chem_dispenser,
+		/obj/item/rig_module/device/grenade_launcher,
+		/obj/item/rig_module/device/fabricator,
 		/obj/item/rig_module/ai_container,
 		// /obj/item/rig_module/power_sink,
 		/obj/item/rig_module/datajack,

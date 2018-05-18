@@ -2,7 +2,7 @@
  * Contains
  * /obj/item/rig_module/stealth_field
  * /obj/item/rig_module/teleporter
- * /obj/item/rig_module/fabricator/energy_net
+ * /obj/item/rig_module/device/fabricator/energy_net
  * /obj/item/rig_module/self_destruct
  */
 
@@ -131,7 +131,7 @@
 	return 1
 
 /*
-/obj/item/rig_module/fabricator/energy_net
+/obj/item/rig_module/device/fabricator/energy_net
 
 	name = "net projector"
 	desc = "Some kind of complex energy projector with a hardsuit mount."
@@ -145,7 +145,7 @@
 	fabrication_type = /obj/item/energy_net
 	use_power_cost = 70
 
-/obj/item/rig_module/fabricator/energy_net/engage(atom/target)
+/obj/item/rig_module/device/fabricator/energy_net/engage(atom/target)
 
 	if(holder && holder.wearer)
 		if(..(target) && target)
