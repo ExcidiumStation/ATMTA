@@ -580,7 +580,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			FC.body = cominput
 			FC.time_stamp = worldtime2text()
 			FM.comments += FC
-			log_comment("[usr]/([usr.ckey]) as [scanned_user] commented on message [FM.body] -- [FC.body]")
 		updateUsrDialog()
 
 	else if(href_list["refresh"])

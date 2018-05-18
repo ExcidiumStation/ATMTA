@@ -232,7 +232,7 @@ mob/living/carbon/human/proc/cum(mob/living/carbon/human/H as mob, mob/living/ca
 	H.druggy = 60
 	H.multiorgasms += 1
 	if (H.multiorgasms == 1)
-		add_logs(H, P, "came on")
+		add_attack_logs(H, P, "came on")
 	H.erpcooldown = rand(200, 450)
 	if (H.multiorgasms > H.potenzia / 3)
 		if (H.staminaloss < P.potenzia * 4)
@@ -260,7 +260,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 			if (H.lastfucked != P || H.lfhole != hole)
 				H.lastfucked = P
 				H.lfhole = hole
-				add_logs(H, P, "licked")
+				add_attack_logs(H, P, "licked")
 
 			if (prob(5) && P.stat != DEAD)
 				H.visible_message("<font color=purple><B>[H] [message]</B></font>")
@@ -290,7 +290,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 			if (H.lastfucked != P || H.lfhole != hole)
 				H.lastfucked = P
 				H.lfhole = hole
-				add_logs(H, P, "fingered")
+				add_attack_logs(H, P, "fingered")
 
 			if (prob(5) && P.stat != DEAD)
 				H.visible_message("<font color=purple><B>[H] [message]</B></font>")
@@ -319,7 +319,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 						message = pick("�[ya]��� ����������� ���� [P] ������.", "���������� ������ ���� [P].")
 						H.lastfucked = P
 						H.lfhole = hole
-						add_logs(H, P, "sucked")
+						add_attack_logs(H, P, "sucked")
 
 				if("Unathi")
 					message = pick("���������� ���� [P].", "����������� ����� [P] [ya]�����.", "��� ���� [P] � ���� [ya]���.", "������������ ���� [P] ���� � �����, �����[ya]�� �� �������� ��� ������.", "����������� ���� [P] [ya]�����.")
@@ -329,7 +329,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 						message = pick("�������� [ya]���� �������[ya] ����� [P].", "���������� ���������� ���� [P].")
 						H.lastfucked = P
 						H.lfhole = hole
-						add_logs(H, P, "sucked")
+						add_attack_logs(H, P, "sucked")
 
 				if("Tajaran", "Vulpkanin")
 					message = pick("���������� ���� [P].", "������� ����� �������� [ya]������ ������ ����� [P].", "������������ ���� [P] ���� � �����, �����[ya]�� �� �������� ��� ������.", "����������� ���� [P] [ya]�����.")
@@ -339,7 +339,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 						message = pick("�������� [ya]���� �������[ya] ����� [P].", "���������� ���������� ���� [P].")
 						H.lastfucked = P
 						H.lfhole = hole
-						add_logs(H, P, "sucked")
+						add_attack_logs(H, P, "sucked")
 
 				if("Vox", "Vox Armalis")
 					message = pick("���������� ���� [P].", "����������� ����� [P] [ya]�����.", "��� ���� [P] � ���� [ya]���.", "������������ ���� [P] ���� � ������, �����[ya]�� �� �������� ��� ������.", "����������� ���� [P] [ya]�����.")
@@ -349,7 +349,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 						message = pick("�������� [ya]���� �������[ya] ����� [P].", "���������� ���������� ���� [P].")
 						H.lastfucked = P
 						H.lfhole = hole
-						add_logs(H, P, "sucked")
+						add_attack_logs(H, P, "sucked")
 
 				if("Slime People")
 					message = pick("���������� [P].", "����� ���� [P].", "����������� ���� [P] [ya]�����.")
@@ -359,7 +359,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 						message = pick("�[ya]��� ����������� ���� [P] ������, ����������[ya] ��� ������.", "���������� ������ ���� [P].")
 						H.lastfucked = P
 						H.lfhole = hole
-						add_logs(H, P, "sucked")
+						add_attack_logs(H, P, "sucked")
 
 				if("Diona")
 					return
@@ -411,7 +411,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				message = pick("��������� ���� ���� �� ����� [ya]��� � [P].", "������ ���� ����� ����� � ���� [P].", "��������� ���� ������ ������ ������ [P].", "��������� � [P].")
 				H.lastfucked = P
 				H.lfhole = hole
-				add_logs(H, P, "fucked")
+				add_attack_logs(H, P, "fucked")
 
 			if (prob(5) && P.stat != DEAD)
 				H.visible_message("<font color=purple><B>[H] [message]</B></font>")
@@ -457,7 +457,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				message = pick(" ����������� ��������� �������� ��������� [P].", "��������� ���� [P] � ����.")
 				H.lastfucked = P
 				H.lfhole = hole
-				add_logs(H, P, "fucked in anus")
+				add_attack_logs(H, P, "fucked in anus")
 
 			if (prob(5) && P.stat != DEAD)
 				H.visible_message("<font color=purple><B>[H] [message]</B></font>")
@@ -504,7 +504,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				message = pick(" ������������ ������������ ���� ���� [P] � ������.")
 				H.lastfucked = P
 				H.lfhole = hole
-				add_logs(H, P, "fucked in mouth")
+				add_attack_logs(H, P, "fucked in mouth")
 
 			if (prob(5) && H.stat != DEAD)
 				H.visible_message("<font color=purple><B>[H][message]</B></font>")
@@ -539,7 +539,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				message = pick("��������� �����������[ya] �� ������� ����� [P]")
 				H.lastfucked = P
 				H.lfhole = hole
-				add_logs(H, P, "fucked")
+				add_attack_logs(H, P, "fucked")
 
 			if (prob(5) && P.stat != DEAD)
 				H.visible_message("<font color=purple><B>[H] [message].</B></font>")

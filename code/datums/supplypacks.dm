@@ -486,14 +486,6 @@ var/list/all_supply_groups = list(supply_emergency,supply_security,supply_engine
 	cost = 30
 	containername = "tranquilizer rifle ammo crate"
 
-/datum/supply_packs/security/armory/tranqpistol
-	name = "Tranquilizer Pistol Crate"
-	contains = list(/obj/item/gun/projectile/revolver/tranqpistol,
-					/obj/item/gun/projectile/revolver/tranqpistol,
-					/obj/item/gun/projectile/revolver/tranqpistol)
-	cost = 20
-	containername = "tranquilizer pistol crate"
-
 /////// Implants & etc
 
 /datum/supply_packs/security/armory/mindshield
