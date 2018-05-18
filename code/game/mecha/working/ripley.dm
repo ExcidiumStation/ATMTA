@@ -106,7 +106,7 @@
 
 	//Add possible plasma cutter
 	if(prob(25))
-		var/obj/item/mecha_parts/mecha_equipment/M = new /obj/item/mecha_parts/mecha_equipment/energy/plasma
+		var/obj/item/mecha_parts/mecha_equipment/M = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma
 		M.attach(src)
 
 	//Add ore box to cargo

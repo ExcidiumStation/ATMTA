@@ -65,7 +65,6 @@
 	modules += new /obj/item/pen(src)
 	modules += new /obj/item/restraints/handcuffs/cable/zipties/cyborg(src)
 	modules += new /obj/item/gun/energy/gun/cyborg(src)
-	modules += new /obj/item/taperoll/police(src)
 	modules += new /obj/item/pickaxe/drill/jackhammer(src)
 	modules += new /obj/item/melee/energy/sword/cyborg(src)
 	modules += new /obj/item/storage/bag/ore/cyborg(src)

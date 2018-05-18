@@ -21,9 +21,9 @@
 	..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/honker
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/banana_mortar
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/banana_mortar
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/mousetrap_mortar
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/mousetrap_mortar
 	ME.attach(src)
 
 /obj/mecha/combat/honker/get_stats_part()

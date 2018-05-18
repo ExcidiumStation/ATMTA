@@ -1,20 +1,20 @@
 /* Contains:
- * /obj/item/rig_module/device
- * /obj/item/rig_module/plasmacutter
- * /obj/item/rig_module/healthscanner
- * /obj/item/rig_module/drill
- * /obj/item/rig_module/orescanner
- * /obj/item/rig_module/rcd
- * /obj/item/rig_module/anomaly_scanner
- * /obj/item/rig_module/maneuvering_jets
- * /obj/item/rig_module/foam_sprayer
- * /obj/item/rig_module/broadcaster
- * /obj/item/rig_module/chem_dispenser
- * /obj/item/rig_module/chem_dispenser/injector
- * /obj/item/rig_module/voice
- * /obj/item/rig_module/paperdispenser
- * /obj/item/rig_module/pen
- * /obj/item/rig_module/stamp
+ * /obj/item/rig_module/device/device
+ * /obj/item/rig_module/device/plasmacutter
+ * /obj/item/rig_module/device/healthscanner
+ * /obj/item/rig_module/device/drill
+ * /obj/item/rig_module/device/orescanner
+ * /obj/item/rig_module/device/rcd
+ * /obj/item/rig_module/device/anomaly_scanner
+ * /obj/item/rig_module/device/maneuvering_jets
+ * /obj/item/rig_module/device/foam_sprayer
+ * /obj/item/rig_module/device/broadcaster
+ * /obj/item/rig_module/device/chem_dispenser
+ * /obj/item/rig_module/device/chem_dispenser/injector
+ * /obj/item/rig_module/device/voice
+ * /obj/item/rig_module/device/paperdispenser
+ * /obj/item/rig_module/device/pen
+ * /obj/item/rig_module/device/stamp
  */
 
 /obj/item/rig_module/device
@@ -28,7 +28,7 @@
 	var/device_type
 	var/obj/item/device
 
-/obj/item/rig_module/plasmacutter
+/obj/item/rig_module/device/plasmacutter
 	name = "hardsuit plasma cutter"
 	desc = "A lethal-looking industrial cutter."
 	icon_state = "plasmacutter"
@@ -39,7 +39,7 @@
 
 	device_type = /obj/item/gun/energy/plasmacutter
 
-/obj/item/rig_module/healthscanner
+/obj/item/rig_module/device/healthscanner
 	name = "health scanner module"
 	desc = "A hardsuit-mounted health scanner."
 	icon_state = "scanner"
@@ -48,7 +48,7 @@
 
 	device_type = /obj/item/healthanalyzer
 
-/obj/item/rig_module/drill
+/obj/item/rig_module/device/drill
 	name = "hardsuit drill mount"
 	desc = "A very heavy diamond-tipped drill."
 	icon_state = "drill"
@@ -58,7 +58,7 @@
 	suit_overlay_inactive = "mounted-drill"
 	device_type = /obj/item/pickaxe/diamonddrill
 
-/obj/item/rig_module/orescanner
+/obj/item/rig_module/device/orescanner
 	name = "ore scanner module"
 	desc = "A clunky old ore scanner."
 	icon_state = "scanner"
@@ -69,7 +69,7 @@
 	selectable = 0
 	device_type = /obj/item/mining_scanner
 /*
-/obj/item/rig_module/rcd
+/obj/item/rig_module/device/rcd
 	name = "RCD mount"
 	desc = "A cell-powered rapid construction device for a hardsuit."
 	icon_state = "rcd"
@@ -80,13 +80,13 @@
 
 	device_type = /obj/item/rcd/mounted
 */
-/obj/item/rig_module/New()
+/obj/item/rig_module/device/New()
 	..()
 	if(device_type)
 		device = new device_type(src)
 		device.flags |= ABSTRACT //Abstract in the sense that it's not an item that stands alone, but rather is just there to let the module act like it.
 
-/obj/item/rig_module/engage(atom/target)
+/obj/item/rig_module/device/engage(atom/target)
 	if(!..() || !device)
 		return 0
 
@@ -105,7 +105,7 @@
 
 
 
-/obj/item/rig_module/chem_dispenser
+/obj/item/rig_module/device/chem_dispenser
 	name = "mounted chemical dispenser"
 	desc = "A complex web of tubing and needles suitable for hardsuit use."
 	icon_state = "injector"
@@ -132,7 +132,7 @@
 
 	var/max_reagent_volume = 80 //Used when refilling.
 
-/obj/item/rig_module/chem_dispenser/ninja
+/obj/item/rig_module/device/chem_dispenser/ninja
 	interface_desc = "Dispenses loaded chemicals directly into the wearer's bloodstream. This variant is made to be extremely light and flexible."
 
 	//just over a syringe worth of each. Want more? Go refill. Gives the ninja another reason to have to show their face.
@@ -148,7 +148,7 @@
 		)
 
 
-/obj/item/rig_module/chem_dispenser/accepts_item(var/obj/item/input_item, var/mob/living/user)
+/obj/item/rig_module/device/chem_dispenser/accepts_item(var/obj/item/input_item, var/mob/living/user)
 
 	if(!input_item.is_open_container())
 		return 0
@@ -181,7 +181,7 @@
 		to_chat(user, "<span class='danger'>None of the reagents seem suitable.</span>")
 	return 1
 
-/obj/item/rig_module/chem_dispenser/engage(atom/target)
+/obj/item/rig_module/device/chem_dispenser/engage(atom/target)
 
 	if(!..())
 		return 0
@@ -223,7 +223,7 @@
 
 	return 1
 
-/obj/item/rig_module/chem_dispenser/combat
+/obj/item/rig_module/device/chem_dispenser/combat
 
 	name = "combat chemical injector"
 	desc = "A complex web of tubing and needles suitable for hardsuit use."
@@ -239,7 +239,7 @@
 	interface_desc = "Dispenses loaded chemicals directly into the bloodstream."
 
 
-/obj/item/rig_module/chem_dispenser/injector
+/obj/item/rig_module/device/chem_dispenser/injector
 
 	name = "mounted chemical injector"
 	desc = "A complex web of tubing and a large needle suitable for hardsuit use."
@@ -250,7 +250,7 @@
 	interface_name = "mounted chem injector"
 	interface_desc = "Dispenses loaded chemicals via an arm-mounted injector."
 
-/obj/item/rig_module/voice
+/obj/item/rig_module/device/voice
 
 	name = "hardsuit voice synthesiser"
 	desc = "A speaker box and sound processor."
@@ -267,16 +267,16 @@
 
 	var/obj/item/voice_changer/voice_holder
 
-/obj/item/rig_module/voice/New()
+/obj/item/rig_module/device/voice/New()
 	..()
 	voice_holder = new(src)
 	voice_holder.active = 0
 
-/obj/item/rig_module/voice/installed()
+/obj/item/rig_module/device/voice/installed()
 	..()
 	holder.speech = src
 
-/obj/item/rig_module/voice/engage()
+/obj/item/rig_module/device/voice/engage()
 
 	if(!..())
 		return 0
@@ -303,7 +303,7 @@
 			to_chat(usr, "<font color='blue'>You are now mimicking <B>[voice_holder.voice]</B>.</font>")
 	return 1
 
-/obj/item/rig_module/maneuvering_jets
+/obj/item/rig_module/device/maneuvering_jets
 
 	name = "hardsuit maneuvering jets"
 	desc = "A compact gas thruster system for a hardsuit."
@@ -325,13 +325,13 @@
 
 	var/obj/item/tank/jetpack/rig/jets
 
-/obj/item/rig_module/maneuvering_jets/engage()
+/obj/item/rig_module/device/maneuvering_jets/engage()
 	if(!..())
 		return 0
 	jets.toggle_stabilization(usr)
 	return 1
 
-/obj/item/rig_module/maneuvering_jets/activate()
+/obj/item/rig_module/device/maneuvering_jets/activate()
 
 	if(active)
 		return 0
@@ -348,29 +348,29 @@
 	jets.turn_on()
 	return 1
 
-/obj/item/rig_module/maneuvering_jets/deactivate()
+/obj/item/rig_module/device/maneuvering_jets/deactivate()
 	if(!..())
 		return 0
 	jets.turn_off()
 	return 1
 
-/obj/item/rig_module/maneuvering_jets/New()
+/obj/item/rig_module/device/maneuvering_jets/New()
 	..()
 	jets = new(src)
 
-/obj/item/rig_module/maneuvering_jets/installed()
+/obj/item/rig_module/device/maneuvering_jets/installed()
 	..()
 	jets.holder = holder
 	jets.ion_trail.set_up(holder)
 
-/obj/item/rig_module/maneuvering_jets/removed()
+/obj/item/rig_module/device/maneuvering_jets/removed()
 	..()
 	jets.holder = null
 	jets.ion_trail.set_up(jets)
 
-/obj/item/rig_module/foam_sprayer
+/obj/item/rig_module/device/foam_sprayer
 
-/obj/item/rig_module/paperdispenser
+/obj/item/rig_module/device/paperdispenser
 	name = "hardsuit paper dispenser"
 	desc = "Crisp sheets."
 	icon_state = "paper"
@@ -381,7 +381,7 @@
 	selectable = 0
 	device_type = /obj/item/paper_bin
 
-/obj/item/rig_module/paperdispenser/engage(atom/target)
+/obj/item/rig_module/device/paperdispenser/engage(atom/target)
 
 	if(!..() || !device)
 		return 0
@@ -390,7 +390,7 @@
 		device.attack_hand(holder.wearer)
 		return 1
 
-/obj/item/rig_module/pen
+/obj/item/rig_module/device/pen
 	name = "mounted pen"
 	desc = "For mecha John Hancocks."
 	icon_state = "pen"
@@ -400,7 +400,7 @@
 	usable = 1
 	device_type = /obj/item/pen/multi
 
-/obj/item/rig_module/stamp
+/obj/item/rig_module/device/stamp
 	name = "mounted internal affairs stamp"
 	desc = "DENIED."
 	icon_state = "stamp"
@@ -411,7 +411,7 @@
 	var/obj/iastamp			//Theese were just vars, but any device would need to be an object
 	var/obj/deniedstamp //Stops assigning non-objects to theese vars, which probably would break quite a bit.
 
-/obj/item/rig_module/stamp/New()
+/obj/item/rig_module/device/stamp/New()
 	..()
 	iastamp = new /obj/item/stamp/law(src)
 	deniedstamp = new /obj/item/stamp/denied(src)
@@ -419,7 +419,7 @@
 	deniedstamp.flags |= ABSTRACT
 	device = iastamp
 
-/obj/item/rig_module/stamp/engage(atom/target)
+/obj/item/rig_module/device/stamp/engage(atom/target)
 	if(!..() || !device)
 		return 0
 
@@ -432,7 +432,7 @@
 			to_chat(holder.wearer, "<span class='notice'>Switched to internal affairs stamp.</span>")
 		return 1
 
-/obj/item/rig_module/welding_tank
+/obj/item/rig_module/device/welding_tank
 	name = "welding fuel tank"
 	desc = "A bluespace welding fuel storage tank for a rigsuit."
 	icon_state = "welding_tank"
@@ -443,13 +443,13 @@
 
 	var/max_fuel = 300
 
-/obj/item/rig_module/welding_tank/New()
+/obj/item/rig_module/device/welding_tank/New()
 	..()
 
 	create_reagents(max_fuel)
 	reagents.add_reagent("fuel", max_fuel)
 
-/obj/item/rig_module/welding_tank/engage(atom/target)
+/obj/item/rig_module/device/welding_tank/engage(atom/target)
 	if(!..() || !reagents)
 		return 0
 
@@ -467,7 +467,7 @@
 	else
 		to_chat(holder.wearer, "<span class='notice'>You need to have a welding tool in one of your hands to dispense fuel.</span>")
 
-/obj/item/rig_module/welding_tank/proc/fill_welder(var/obj/item/weldingtool/W)
+/obj/item/rig_module/device/welding_tank/proc/fill_welder(var/obj/item/weldingtool/W)
 	if(!istype(W))
 		return 0
 
@@ -480,5 +480,5 @@
 			to_chat(holder.wearer, "<span class='notice'>You hear a faint dripping as your hardsuit welding tank completely empties.</span>")
 		W.update_icon()
 
-/obj/item/rig_module/welding_tank/proc/get_fuel()
+/obj/item/rig_module/device/welding_tank/proc/get_fuel()
 	return reagents.get_reagent_amount("fuel")

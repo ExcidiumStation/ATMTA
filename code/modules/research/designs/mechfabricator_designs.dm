@@ -667,7 +667,7 @@
 	id = "mech_taser"
 	build_type = MECHFAB
 	req_tech = list("combat" = 3)
-	build_path = /obj/item/mecha_parts/mecha_equipment/energy/taser
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser
 	materials = list(MAT_METAL=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -677,7 +677,7 @@
 	id = "mech_lmg"
 	build_type = MECHFAB
 	req_tech = list("combat" = 4)
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/lmg
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
 	materials = list(MAT_METAL=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -686,7 +686,7 @@
 	name = "H.O.N.K Banana Mortar"
 	id = "mech_banana_mortar"
 	build_type = MECHFAB
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/banana_mortar
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/banana_mortar
 	materials = list(MAT_METAL=20000,MAT_BANANIUM=5000)
 	construction_time = 300
 	category = list("Exosuit Equipment")
@@ -704,7 +704,7 @@
 	name = "H.O.N.K Mousetrap Mortar"
 	id = "mech_mousetrap_mortar"
 	build_type = MECHFAB
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/mousetrap_mortar
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/mousetrap_mortar
 	materials = list(MAT_METAL=20000,MAT_BANANIUM=5000)
 	construction_time = 300
 	category = list("Exosuit Equipment")
@@ -713,7 +713,7 @@
 	name = "S.H.H. \"Quietus\" Carbine"
 	id = "mech_silentgun"
 	build_type = MECHFAB
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/carbine/silenced
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine/silenced
 	materials = list(MAT_METAL=20000,MAT_TRANQUILLITE=10000)
 	construction_time = 500
 	category = list("Exosuit Equipment")
@@ -832,7 +832,7 @@
 	id = "clusterbang_launcher"
 	build_type = MECHFAB
 	req_tech = list("combat"= 5, "materials" = 5, "syndicate" = 3)
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/flashbang/clusterbang
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang/clusterbang
 	materials = list(MAT_METAL=20000,MAT_GOLD=10000,MAT_URANIUM=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -843,7 +843,7 @@
 	id = "mech_bola"
 	build_type = MECHFAB
 	req_tech = list("combat" = 3)
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/bola
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bola
 	materials = list(MAT_METAL=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -877,7 +877,7 @@
 	id = "mech_laser_heavy"
 	build_type = MECHFAB
 	req_tech = list("combat" = 4, "magnets" = 4, "engineering" = 4)
-	build_path = /obj/item/mecha_parts/mecha_equipment/energy/laser/heavy
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy
 	materials = list(MAT_METAL=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -888,7 +888,7 @@
 	id = "mech_laser"
 	build_type = MECHFAB
 	req_tech = list("combat" = 3, "magnets" = 3, "engineering" = 3)
-	build_path = /obj/item/mecha_parts/mecha_equipment/energy/laser
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	materials = list(MAT_METAL=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -899,7 +899,7 @@
 	id = "mech_disabler"
 	build_type = MECHFAB
 	req_tech = list("combat" = 3)
-	build_path = /obj/item/mecha_parts/mecha_equipment/energy/laser/disabler
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/disabler
 	materials = list(MAT_METAL=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -910,7 +910,7 @@
 	id = "mech_carbine"
 	build_type = MECHFAB
 	req_tech = list("combat" = 5, "materials" = 4)
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/carbine
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine
 	materials = list(MAT_METAL=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -921,7 +921,7 @@
 	id = "mech_scattershot"
 	build_type = MECHFAB
 	req_tech = list("combat" = 4)
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/scattershot
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot
 	materials = list(MAT_METAL=10000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -932,7 +932,7 @@
 	id = "mech_ion"
 	build_type = MECHFAB
 	req_tech = list("combat" = 6, "magnets" = 5, "materials" = 5)
-	build_path = /obj/item/mecha_parts/mecha_equipment/energy/ion
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/ion
 	materials = list(MAT_METAL=20000,MAT_SILVER=6000,MAT_URANIUM=2000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -943,7 +943,7 @@
 	id = "mech_grenade_launcher"
 	build_type = MECHFAB
 	req_tech = list("combat" = 4, "engineering" = 4)
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/flashbang
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang
 	materials = list(MAT_METAL=22000,MAT_GOLD=6000,MAT_SILVER=8000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -954,7 +954,7 @@
 	id = "mech_missile_rack"
 	build_type = MECHFAB
 	req_tech = list("combat" = 6, "materials" = 5, "engineering" = 5)
-	build_path = /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack
 	materials = list(MAT_METAL=22000,MAT_GOLD=6000,MAT_SILVER=8000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -965,7 +965,7 @@
 	id = "mech_plasma_cutter"
 	build_type = MECHFAB
 	req_tech = list("engineering" = 3, "materials" = 3, "plasmatech" = 4)
-	build_path = /obj/item/mecha_parts/mecha_equipment/energy/plasma
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma
 	materials = list(MAT_METAL = 8000, MAT_GLASS = 1000, MAT_PLASMA = 2000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -976,7 +976,7 @@
 	id = "mech_tesla"
 	build_type = MECHFAB
 	req_tech = list("combat" = 6, "magnets" = 5, "materials" = 5)
-	build_path = /obj/item/mecha_parts/mecha_equipment/energy/tesla
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/tesla
 	materials = list(MAT_METAL=20000,MAT_SILVER=8000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
@@ -987,7 +987,7 @@
 	id = "mech_immolator"
 	build_type = MECHFAB
 	req_tech = list("combat" = 6, "magnets" = 5, "materials" = 5)
-	build_path = /obj/item/mecha_parts/mecha_equipment/energy/immolator
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/immolator
 	materials = list(MAT_METAL = 10000, MAT_SILVER = 8000, MAT_PLASMA = 8000)
 	construction_time = 100
 	category = list("Exosuit Equipment")
