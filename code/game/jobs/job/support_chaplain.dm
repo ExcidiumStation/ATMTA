@@ -20,10 +20,10 @@
 
 	uniform = /obj/item/clothing/under/rank/chaplain
 	shoes = /obj/item/clothing/shoes/black
-	l_ear = /obj/item/device/radio/headset/headset_service
-	pda = /obj/item/device/pda/chaplain
+	l_ear = /obj/item/radio/headset/headset_service
+	pda = /obj/item/pda/chaplain
 	backpack_contents = list(
-		/obj/item/device/camera/spooky = 1
+		/obj/item/camera/spooky = 1
 	)
 
 /datum/outfit/job/chaplain/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -32,13 +32,13 @@
 	if(visualsOnly)
 		return
 
-	var/obj/item/weapon/storage/bible/B = new /obj/item/weapon/storage/bible(H)
+	var/obj/item/storage/bible/B = new /obj/item/storage/bible(H)
 
 	spawn()
 		H.equip_to_slot_or_del(B, slot_l_hand)
 
 		var/religion_name = "Christianity"
-		var/new_religion = sanitize(copytext(input(H, "You are the crew services officer. Would you like to change your religion? Default is Christianity, in SPACE.", "Name change", religion_name),1,MAX_NAME_LEN))
+		var/new_religion = sanitize_local(copytext(input(H, "You are the crew services officer. Would you like to change your religion? Default is Christianity, in SPACE.", "Name change", religion_name),1,MAX_NAME_LEN))
 
 		if(!new_religion)
 			new_religion = religion_name
@@ -72,7 +72,7 @@
 		feedback_set_details("religion_name","[new_religion]")
 
 		var/deity_name = "Space Jesus"
-		var/new_deity = sanitize(copytext(input(H, "Would you like to change your deity? Default is Space Jesus.", "Name change", deity_name),1,MAX_NAME_LEN))
+		var/new_deity = sanitize_local(copytext(input(H, "Would you like to change your deity? Default is Space Jesus.", "Name change", deity_name),1,MAX_NAME_LEN))
 
 		if((length(new_deity) == 0) || (new_deity == "Space Jesus") )
 			new_deity = deity_name

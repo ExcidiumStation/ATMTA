@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/wine
+/obj/item/reagent_containers/food/drinks/drinkingglass/wine
 	name = "Wine glass"
 	desc = "A glass on a foot used to drink and taste wine"
 	icon = 'hyntatmta/icons/obj/reagent_containers.dmi'
@@ -6,7 +6,7 @@
 	volume = 30
 	materials = list(MAT_GLASS=100)
 
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/wine/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/drinkingglass/wine/on_reagent_change()
 	overlays.Cut()
 
 	if(reagents.total_volume)

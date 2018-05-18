@@ -172,7 +172,7 @@
 	desc = "A lightweight foamed metal wall."
 	var/metal = MFOAM_ALUMINUM
 
-/obj/structure/foamedmetal/initialize()
+/obj/structure/foamedmetal/Initialize()
 	..()
 	air_update_turf(1)
 
@@ -214,8 +214,8 @@
 /obj/structure/foamedmetal/attackby(obj/item/I, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src)
-	if(istype(I, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = I
+	if(istype(I, /obj/item/grab))
+		var/obj/item/grab/G = I
 		G.affecting.loc = src.loc
 		user.visible_message("<span class='warning'>[G.assailant] smashes [G.affecting] through the foamed metal wall.</span>")
 		qdel(I)

@@ -1,4 +1,4 @@
-/obj/machinery/portableowl //Код переносных флешеров довольно интересный
+/obj/machinery/portableowl //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	name = "Owl"
 	desc = "Ehh, This is not a real owl..."
 	icon = 'hyntatmta/icons/obj/owls.dmi'
@@ -24,14 +24,14 @@
 		if (iscarbon(AM))
 			var/mob/living/carbon/M = AM
 			if ((M.m_intent != "walk") && (src.anchored))
-				if (M.client) //Чтобы не орали на мобов без клиентов, очевидно.
+				if (M.client) //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 					if (prob(flash_prob))
 						src.flash()
 
-//Сову можно спиздить и переставить!! The future is now, old man.
+//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!! The future is now, old man.
 
 	attackby(obj/item/W as obj, mob/user as mob)
-		if (istype(W, /obj/item/weapon/wrench))
+		if (istype(W, /obj/item/wrench))
 			add_fingerprint(user)
 			src.anchored = !src.anchored
 
@@ -68,11 +68,11 @@
 		if (prob(10))
 			var/list/mobsnearby = list()
 			for (var/mob/M in view(7,src))
-				if (isobserver(M)) //Мы не хотим чтобы сова орала на гостов.
+				if (isobserver(M)) //пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ.
 					continue
 				mobsnearby.Add("[M.name]")
 			var/mob/M1 = null
 			if (mobsnearby.len > 0)
 				M1 = pick(mobsnearby)
 			if (M1 && prob(50))
-				src.visible_message("<span style=\"color:red\"><b>[src]</b> frowns at [M1].</span>") //КАР КАР КАР КАР КАР КАР КАР КАР КАР КАР КАР
+				src.visible_message("<span style=\"color:red\"><b>[src]</b> frowns at [M1].</span>") //пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ

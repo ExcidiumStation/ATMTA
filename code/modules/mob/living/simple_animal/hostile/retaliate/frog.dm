@@ -19,7 +19,7 @@
 	response_harm   = "splats"
 	density = 0
 	ventcrawler = 2
-	butcher_results = list(/obj/item/weapon/reagent_containers/food/snacks/meat = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 1)
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_SMALL
 	gold_core_spawnable = CHEM_MOB_SPAWN_HOSTILE
@@ -30,4 +30,4 @@
 	icon_state = "rare_frog"
 	icon_living = "rare_frog"
 	icon_dead = "rare_frog_dead"
-	butcher_results = list(/obj/item/weapon/reagent_containers/food/snacks/meat = 5)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 5)

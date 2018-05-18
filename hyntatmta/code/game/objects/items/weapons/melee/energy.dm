@@ -1,4 +1,4 @@
-/obj/item/weapon/melee/energy/sword/saber/hos
+/obj/item/melee/energy/sword/saber/hos
 	name = "Nano Saber"
 	desc = "An energised saber. Is it a coal on handle?"
 	icon = 'hyntatmta/icons/obj/melee.dmi'
@@ -6,7 +6,7 @@
 	icon_state_on = "nano_saber1"
 	lefthand_file = 'hyntatmta/icons/mob/items_lefthand.dmi'
 	righthand_file = 'hyntatmta/icons/mob/items_righthand.dmi'
-	slot_flags = SLOT_BELT //Иконка для слота на поясе остается в исходном belt.dmi, потому что нет глобальной переменной вроде belt_file
+	slot_flags = SLOT_BELT //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ belt.dmi, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ belt_file
 	force = 12
 	force_on = 25
 	throwforce = 8
@@ -20,7 +20,7 @@
 	attack_verb = list("attacked", "stabbed")
 	sharp = 1
 
-/obj/item/weapon/melee/energy/sword/saber/hos/attack_self(mob/living/carbon/user)
+/obj/item/melee/energy/sword/saber/hos/attack_self(mob/living/carbon/user)
 	if(user.disabilities & CLUMSY && prob(50))
 		to_chat(user, "<span class='warning'>You accidentally cut yourself with [src], like a doofus!</span>")
 		user.take_organ_damage(5,5)
@@ -49,11 +49,11 @@
 	add_fingerprint(user)
 	return
 
-/obj/item/weapon/melee/energy/sword/saber/hos/suicide_act(mob/user)
+/obj/item/melee/energy/sword/saber/hos/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] swings the [src.name] towards \his head! It looks like \he's trying to commit suicide.</span>")
 	return (BRUTELOSS|FIRELOSS)
 
-/obj/item/weapon/storage/lockbox/saber
+/obj/item/storage/lockbox/saber
 	name = "Nano Saber lockbox"
 	icon_state = "lockbox_saber"
 	item_state = "syringe_kit"
@@ -61,9 +61,9 @@
 	icon_locked = "lockbox_saber"
 	icon_closed= "lockbox_saber_open"
 	desc = "Open only in emergency situation"
-	can_hold=list(/obj/item/weapon/melee/energy/sword/saber/hos)
+	can_hold=list(/obj/item/melee/energy/sword/saber/hos)
 	req_access = list(access_security)
 
-/obj/item/weapon/storage/lockbox/saber/New()
+/obj/item/storage/lockbox/saber/New()
 	..()
-	new /obj/item/weapon/melee/energy/sword/saber/hos(src)
+	new /obj/item/melee/energy/sword/saber/hos(src)

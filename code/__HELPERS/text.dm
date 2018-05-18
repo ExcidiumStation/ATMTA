@@ -91,7 +91,7 @@
 
 	if(encode)
 		// The below \ escapes have a space inserted to attempt to enable Travis auto-checking of span class usage. Please do not remove the space.
-		//In addition to processing html, html_encode removes byond formatting codes like "\ red", "\ i" and other.
+		//In addition to processing html, lhtml_decode removes byond formatting codes like "\ red", "\ i" and other.
 		//It is important to avoid double-encode text, it can "break" quotes and some other characters.
 		//Also, keep in mind that escaped characters don't work in the interface (window titles, lower left corner of the main window, etc.)
 		input = lhtml_encode(input)
@@ -105,14 +105,14 @@
 		input = trim(input)
 	return input
 
-/proc/paranoid_sanitize(t)
+/proc/paranoid_sanitize_local(t)
 	var/regex/alphanum_only = regex("\[^a-zA-Z0-9# ,.?!:;()]", "g")
 	return alphanum_only.Replace(t, "#")
 
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize_local() calls byond's lhtml_encode()
 /proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
-	return copytext((sanitize(strip_html_simple(t))),1,limit)
+	return copytext((sanitize_local(strip_html_simple(t))),1,limit)
 
 // Used to get a properly sanitized multiline input, of max_length
 /proc/stripped_multiline_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN, no_trim=FALSE)
@@ -404,7 +404,7 @@ proc/checkhtml(var/t)
 			break
 	if(max_length)
 		input = copytext(input,1,max_length)
-	return sanitize(input, allow_lines ? list("\t" = " ") : list("\n" = " ", "\t" = " "))
+	return sanitize_local(input, allow_lines ? list("\t" = " ") : list("\n" = " ", "\t" = " "))
 
 /proc/trim_strip_html_properly(var/input, var/max_length = MAX_MESSAGE_LEN, allow_lines = 0)
     return trim(strip_html_properly(input, max_length, allow_lines))
@@ -429,7 +429,7 @@ proc/checkhtml(var/t)
 //If you have a problem with sanitize_local() in chat, when quotes and >, < are displayed as html entites -
 //this is a problem of double-encode(when & becomes &amp;), use sanitize_local() with encode=0, but not the sanitizeSafe()!
 /proc/sanitizeSafe(var/input, var/max_length = MAX_MESSAGE_LEN, var/encode = 1, var/trim = 1, var/extra = 1)
-	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra)
+	return sanitize_local(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra)
 
 
 //Replace BYOND text macros with span classes for to_chat
@@ -523,8 +523,8 @@ proc/checkhtml(var/t)
 		else if(a == 184)
 			t += ascii2text(168)
 		else t += ascii2text(a)
-	t = replacetext(t,"&#1103;","ÿ")
-	t = replacetext(t, "ÿ", "ß")
+	t = replacetext(t,"&#1103;","ï¿½")
+	t = replacetext(t, "ï¿½", "ï¿½")
 	return t
 
 
@@ -537,12 +537,12 @@ proc/checkhtml(var/t)
 		else if(a == 168)
 			t += ascii2text(184)
 		else t += ascii2text(a)
-	t = replacetext(t,"ÿ","&#1103;")
+	t = replacetext(t,"ï¿½","&#1103;")
 	return t
 
 
 // Pencode
-/proc/pencode_to_html(text, mob/user, obj/item/weapon/pen/P = null, format = 1, sign = 1, fields = 1, deffont = PEN_FONT, signfont = SIGNFONT, crayonfont = CRAYON_FONT)
+/proc/pencode_to_html(text, mob/user, obj/item/pen/P = null, format = 1, sign = 1, fields = 1, deffont = PEN_FONT, signfont = SIGNFONT, crayonfont = CRAYON_FONT)
 	text = replacetext(text, "\[b\]",		"<B>")
 	text = replacetext(text, "\[/b\]",		"</B>")
 	text = replacetext(text, "\[i\]",		"<I>")

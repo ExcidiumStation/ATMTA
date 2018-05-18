@@ -1,12 +1,10 @@
 /turf/space
 	icon = 'icons/turf/space.dmi'
-	name = "space"
+	name = "\proper space"
 	icon_state = "0"
 	dynamic_lighting = 0
 	flags = RPD_ALLOWED_HERE
 	luminosity = 1
-
-	plane = PLANE_SPACE_BACKGROUND
 
 	temperature = TCMB
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
@@ -21,12 +19,10 @@
 
 	if(!istype(src, /turf/space/transit))
 		icon_state = SPACE_ICON_STATE
-		var/image/I = image('icons/turf/space_parallax1.dmi',"[icon_state]")
-		I.plane = PLANE_SPACE_DUST
-		I.alpha = 80
-		I.blend_mode = BLEND_ADD
-		overlays += I
-	update_starlight()
+	if(update_starlight() && is_station_level(z))
+	// before you ask: Yes, this is fucking stupid, but looping through turf/space in world is how you make the server freeze 
+	// so I don't see a better way of doing this
+		LAZYADD(GLOB.station_level_space_turfs, src)
 
 /turf/space/Destroy(force)
 	if(force)
@@ -50,11 +46,13 @@
 
 /turf/space/proc/update_starlight()
 	if(!config.starlight)
-		return
+		return FALSE
 	if(locate(/turf/simulated) in orange(src,1))
 		set_light(config.starlight)
+		return TRUE
 	else
 		set_light(0)
+		return FALSE
 
 /turf/space/attackby(obj/item/C as obj, mob/user as mob, params)
 	..()

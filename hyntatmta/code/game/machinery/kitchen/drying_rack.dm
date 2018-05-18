@@ -35,8 +35,8 @@
 		updateUsrDialog()
 		return 1
 
-	if(istype(O, /obj/item/weapon/storage/bag))
-		var/obj/item/weapon/storage/P = O
+	if(istype(O, /obj/item/storage/bag))
+		var/obj/item/storage/P = O
 		var/loaded = 0
 		for(var/obj/G in P.contents)
 			if(contents.len >= max_n_of_items)
@@ -70,7 +70,7 @@
 
 
 /obj/machinery/drying_rack/proc/accept_check(obj/item/O)
-	if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/) || istype(O,/obj/item/seeds/) || istype(O,/obj/item/weapon/grown/))
+	if(istype(O,/obj/item/reagent_containers/food/snacks/) || istype(O,/obj/item/seeds/) || istype(O,/obj/item/grown/))
 		return 1
 	return 0
 
@@ -80,8 +80,8 @@
 		if(!M.unEquip(O))
 			usr << "<span class='warning'>\the [O] is stuck to your hand, you cannot put it in \the [src]!</span>"
 			return
-	else if(istype(O.loc,/obj/item/weapon/storage))
-		var/obj/item/weapon/storage/S = O.loc
+	else if(istype(O.loc,/obj/item/storage))
+		var/obj/item/storage/S = O.loc
 		S.remove_from_storage(O,src)
 
 	O.loc = src
@@ -171,8 +171,8 @@
 			update_icon()
 
 /obj/machinery/drying_rack/accept_check(obj/item/O)
-	if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/))
-		var/obj/item/weapon/reagent_containers/food/snacks/S = O
+	if(istype(O,/obj/item/reagent_containers/food/snacks/))
+		var/obj/item/reagent_containers/food/snacks/S = O
 		if(S.dried_type)
 			return 1
 	return 0
@@ -185,7 +185,7 @@
 	update_icon()
 
 /obj/machinery/drying_rack/proc/rack_dry()
-	for(var/obj/item/weapon/reagent_containers/food/snacks/S in contents)
+	for(var/obj/item/reagent_containers/food/snacks/S in contents)
 		if(S.dried_type == S.type)//if the dried type is the same as the object's type, don't bother creating a whole new item...
 			S.color = "#ad7257"
 			S.dry = 1

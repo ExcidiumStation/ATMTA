@@ -21,7 +21,7 @@
 	var/weapon_type
 	var/weapon_name_simple
 
-/obj/effect/proc_holder/changeling/weapon/try_to_sting(var/mob/user, var/mob/target)
+/obj/effect/proc_holder/changeling/try_to_sting(var/mob/user, var/mob/target)
 	if(istype(user.l_hand, weapon_type)) //Not the nicest way to do it, but eh
 		qdel(user.l_hand)
 		if(!silent)
@@ -36,7 +36,7 @@
 		return
 	..(user, target)
 
-/obj/effect/proc_holder/changeling/weapon/sting_action(var/mob/user)
+/obj/effect/proc_holder/changeling/sting_action(var/mob/user)
 	if(!user.drop_item())
 		to_chat(user, "The [user.get_active_hand()] is stuck to your hand, you cannot grow a [weapon_name_simple] over it!")
 		return
@@ -107,7 +107,7 @@
 /***************************************\
 |***************ARM BLADE***************|
 \***************************************/
-/obj/effect/proc_holder/changeling/weapon/arm_blade
+/obj/effect/proc_holder/changeling/arm_blade
 	name = "Arm Blade"
 	desc = "We reform one of our arms into a deadly blade."
 	helptext = "Cannot be used while in lesser form."
@@ -116,13 +116,12 @@
 	genetic_damage = 10
 	req_human = 1
 	max_genetic_damage = 20
-	weapon_type = /obj/item/weapon/melee/arm_blade
+	weapon_type = /obj/item/melee/arm_blade
 	weapon_name_simple = "blade"
 
-/obj/item/weapon/melee/arm_blade
+/obj/item/melee/arm_blade
 	name = "arm blade"
 	desc = "A grotesque blade made out of bone and flesh that cleaves through people as a hot knife through butter"
-	icon = 'icons/obj/weapons.dmi'
 	icon_state = "arm_blade"
 	item_state = "arm_blade"
 	flags = ABSTRACT | NODROP | DROPDEL
@@ -133,16 +132,16 @@
 	throw_range = 0
 	throw_speed = 0
 
-/obj/item/weapon/melee/arm_blade/New()
+/obj/item/melee/arm_blade/New()
 	..()
 	if(ismob(loc))
 		loc.visible_message("<span class='warning'>A grotesque blade forms around [loc.name]\'s arm!</span>", "<span class='warning'>Our arm twists and mutates, transforming it into a deadly blade.</span>", "<span class='warning'>You hear organic matter ripping and tearing!</span>")
 
-/obj/item/weapon/melee/arm_blade/dropped(mob/user)
+/obj/item/melee/arm_blade/dropped(mob/user)
 	user.visible_message("<span class='warning'>With a sickening crunch, [user] reforms his blade into an arm!</span>", "<span class='notice'>We assimilate the blade back into our body.</span>", "<span class='warning>You hear organic matter ripping and tearing!</span>")
 	. = ..()
 
-/obj/item/weapon/melee/arm_blade/afterattack(atom/target, mob/user, proximity)
+/obj/item/melee/arm_blade/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
 	if(istype(target, /obj/structure/table))
@@ -178,7 +177,7 @@
 |***********COMBAT TENTACLES*************|
 \***************************************/
 
-/obj/effect/proc_holder/changeling/weapon/tentacle
+/obj/effect/proc_holder/changeling/tentacle
 	name = "Tentacle"
 	desc = "We ready a tentacle to grab items or victims with."
 	helptext = "We can use it once to retrieve a distant item. If used on living creatures, the effect depends on the intent: \
@@ -189,14 +188,13 @@
 	genetic_damage = 5
 	req_human = 1
 	max_genetic_damage = 10
-	weapon_type = /obj/item/weapon/gun/magic/tentacle
+	weapon_type = /obj/item/gun/magic/tentacle
 	weapon_name_simple = "tentacle"
 	silent = TRUE
 
-/obj/item/weapon/gun/magic/tentacle
+/obj/item/gun/magic/tentacle
 	name = "tentacle"
 	desc = "A fleshy tentacle that can stretch out and grab things or people."
-	icon = 'icons/obj/weapons.dmi'
 	icon_state = "tentacle"
 	item_state = "tentacle"
 	flags = ABSTRACT | NODROP | NOBLUDGEON | DROPDEL
@@ -209,7 +207,7 @@
 	throw_range = 0
 	throw_speed = 0
 
-/obj/item/weapon/gun/magic/tentacle/New(location,silent)
+/obj/item/gun/magic/tentacle/New(location,silent)
 	..()
 	if(ismob(loc))
 		if(!silent)
@@ -217,10 +215,10 @@
 		else
 			to_chat(loc, "<span class='notice'>You prepare to extend a tentacle.</span>")
 
-/obj/item/weapon/gun/magic/tentacle/shoot_with_empty_chamber(mob/living/user as mob|obj)
+/obj/item/gun/magic/tentacle/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	to_chat(user, "<span class='warning'>The [name] is not ready yet.<span>")
 
-/obj/item/weapon/gun/magic/tentacle/suicide_act(mob/user)
+/obj/item/gun/magic/tentacle/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] coils [src] tightly around \his neck! It looks like \he's trying to commit suicide.</span>")
 	return (OXYLOSS)
 
@@ -230,9 +228,9 @@
 	projectile_type = /obj/item/projectile/tentacle
 	caliber = "tentacle"
 	icon_state = "tentacle_end"
-	var/obj/item/weapon/gun/magic/tentacle/gun //the item that shot it
+	var/obj/item/gun/magic/tentacle/gun //the item that shot it
 
-/obj/item/ammo_casing/magic/tentacle/New(obj/item/weapon/gun/magic/tentacle/tentacle_gun)
+/obj/item/ammo_casing/magic/tentacle/New(obj/item/gun/magic/tentacle/tentacle_gun)
 	gun = tentacle_gun
 	..()
 
@@ -266,7 +264,7 @@
 
 /mob/proc/tentacle_grab(mob/living/carbon/C)
 	if(Adjacent(C))
-		var/obj/item/weapon/grab/G = C.grabbedby(src,1)
+		var/obj/item/grab/G = C.grabbedby(src,1)
 		if(istype(G))
 			G.state = GRAB_AGGRESSIVE //Instant aggressive grab
 
@@ -346,7 +344,7 @@
 /***************************************\
 |****************SHIELD*****************|
 \***************************************/
-/obj/effect/proc_holder/changeling/weapon/shield
+/obj/effect/proc_holder/changeling/shield
 	name = "Organic Shield"
 	desc = "We reform one of our arms into a hard shield."
 	helptext = "Organic tissue cannot resist damage forever, the shield will break after it is hit too much. The more genomes we absorb, the stronger it is. Cannot be used while in lesser form."
@@ -356,36 +354,35 @@
 	req_human = 1
 	max_genetic_damage = 20
 
-	weapon_type = /obj/item/weapon/shield/changeling
+	weapon_type = /obj/item/shield/changeling
 	weapon_name_simple = "shield"
 
-/obj/effect/proc_holder/changeling/weapon/shield/sting_action(var/mob/user)
+/obj/effect/proc_holder/changeling/shield/sting_action(var/mob/user)
 	var/datum/changeling/changeling = user.mind.changeling //So we can read the absorbedcount.
 	if(!changeling)
 		return
 
-	var/obj/item/weapon/shield/changeling/S = ..(user)
+	var/obj/item/shield/changeling/S = ..(user)
 	if(!S)
 		return
 	S.remaining_uses = round(changeling.absorbedcount * 3)
 	return 1
 
-/obj/item/weapon/shield/changeling
+/obj/item/shield/changeling
 	name = "shield-like mass"
 	desc = "A mass of tough, boney tissue. You can still see the fingers as a twisted pattern in the shield."
 	flags = NODROP | DROPDEL
-	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ling_shield"
 	block_chance = 50
 
 	var/remaining_uses //Set by the changeling ability.
 
-/obj/item/weapon/shield/changeling/New()
+/obj/item/shield/changeling/New()
 	..()
 	if(ismob(loc))
 		loc.visible_message("<span class='warning'>The end of [loc.name]\'s hand inflates rapidly, forming a huge shield-like mass!</span>", "<span class='warning'>We inflate our hand into a strong shield.</span>", "<span class='warning'>You hear organic matter ripping and tearing!</span>")
 
-/obj/item/weapon/shield/changeling/hit_reaction()
+/obj/item/shield/changeling/hit_reaction()
 	if(remaining_uses < 1)
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = loc
@@ -423,7 +420,7 @@
 	icon_state = "lingspacesuit"
 	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
 	flags = STOPSPRESSUREDMAGE | NODROP | DROPDEL
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/emergency_oxygen, /obj/item/weapon/tank/oxygen)
+	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency_oxygen, /obj/item/tank/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0) //No armor at all.
 
 /obj/item/clothing/suit/space/changeling/New()

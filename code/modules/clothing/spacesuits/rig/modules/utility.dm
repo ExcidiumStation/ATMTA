@@ -1,20 +1,20 @@
 /* Contains:
  * /obj/item/rig_module/device
- * /obj/item/rig_module/device/plasmacutter
- * /obj/item/rig_module/device/healthscanner
- * /obj/item/rig_module/device/drill
- * /obj/item/rig_module/device/orescanner
- * /obj/item/rig_module/device/rcd
- * /obj/item/rig_module/device/anomaly_scanner
+ * /obj/item/rig_module/plasmacutter
+ * /obj/item/rig_module/healthscanner
+ * /obj/item/rig_module/drill
+ * /obj/item/rig_module/orescanner
+ * /obj/item/rig_module/rcd
+ * /obj/item/rig_module/anomaly_scanner
  * /obj/item/rig_module/maneuvering_jets
  * /obj/item/rig_module/foam_sprayer
- * /obj/item/rig_module/device/broadcaster
+ * /obj/item/rig_module/broadcaster
  * /obj/item/rig_module/chem_dispenser
  * /obj/item/rig_module/chem_dispenser/injector
  * /obj/item/rig_module/voice
- * /obj/item/rig_module/device/paperdispenser
- * /obj/item/rig_module/device/pen
- * /obj/item/rig_module/device/stamp
+ * /obj/item/rig_module/paperdispenser
+ * /obj/item/rig_module/pen
+ * /obj/item/rig_module/stamp
  */
 
 /obj/item/rig_module/device
@@ -28,7 +28,7 @@
 	var/device_type
 	var/obj/item/device
 
-/obj/item/rig_module/device/plasmacutter
+/obj/item/rig_module/plasmacutter
 	name = "hardsuit plasma cutter"
 	desc = "A lethal-looking industrial cutter."
 	icon_state = "plasmacutter"
@@ -37,18 +37,18 @@
 	suit_overlay_active = "plasmacutter"
 	suit_overlay_inactive = "plasmacutter"
 
-	device_type = /obj/item/weapon/gun/energy/plasmacutter
+	device_type = /obj/item/gun/energy/plasmacutter
 
-/obj/item/rig_module/device/healthscanner
+/obj/item/rig_module/healthscanner
 	name = "health scanner module"
 	desc = "A hardsuit-mounted health scanner."
 	icon_state = "scanner"
 	interface_name = "health scanner"
 	interface_desc = "Shows an informative health readout when used on a subject."
 
-	device_type = /obj/item/device/healthanalyzer
+	device_type = /obj/item/healthanalyzer
 
-/obj/item/rig_module/device/drill
+/obj/item/rig_module/drill
 	name = "hardsuit drill mount"
 	desc = "A very heavy diamond-tipped drill."
 	icon_state = "drill"
@@ -56,9 +56,9 @@
 	interface_desc = "A diamond-tipped industrial drill."
 	suit_overlay_active = "mounted-drill"
 	suit_overlay_inactive = "mounted-drill"
-	device_type = /obj/item/weapon/pickaxe/diamonddrill
+	device_type = /obj/item/pickaxe/diamonddrill
 
-/obj/item/rig_module/device/orescanner
+/obj/item/rig_module/orescanner
 	name = "ore scanner module"
 	desc = "A clunky old ore scanner."
 	icon_state = "scanner"
@@ -67,9 +67,9 @@
 	engage_string = "Begin Scan"
 	usable = 1
 	selectable = 0
-	device_type = /obj/item/device/mining_scanner
+	device_type = /obj/item/mining_scanner
 /*
-/obj/item/rig_module/device/rcd
+/obj/item/rig_module/rcd
 	name = "RCD mount"
 	desc = "A cell-powered rapid construction device for a hardsuit."
 	icon_state = "rcd"
@@ -78,15 +78,15 @@
 	usable = 1
 	engage_string = "Configure RCD"
 
-	device_type = /obj/item/weapon/rcd/mounted
+	device_type = /obj/item/rcd/mounted
 */
-/obj/item/rig_module/device/New()
+/obj/item/rig_module/New()
 	..()
 	if(device_type)
 		device = new device_type(src)
 		device.flags |= ABSTRACT //Abstract in the sense that it's not an item that stands alone, but rather is just there to let the module act like it.
 
-/obj/item/rig_module/device/engage(atom/target)
+/obj/item/rig_module/engage(atom/target)
 	if(!..() || !device)
 		return 0
 
@@ -323,7 +323,7 @@
 	interface_name = "maneuvering jets"
 	interface_desc = "An inbuilt EVA maneuvering system that runs off the rig air supply."
 
-	var/obj/item/weapon/tank/jetpack/rig/jets
+	var/obj/item/tank/jetpack/rig/jets
 
 /obj/item/rig_module/maneuvering_jets/engage()
 	if(!..())
@@ -370,7 +370,7 @@
 
 /obj/item/rig_module/foam_sprayer
 
-/obj/item/rig_module/device/paperdispenser
+/obj/item/rig_module/paperdispenser
 	name = "hardsuit paper dispenser"
 	desc = "Crisp sheets."
 	icon_state = "paper"
@@ -379,9 +379,9 @@
 	engage_string = "Dispense"
 	usable = 1
 	selectable = 0
-	device_type = /obj/item/weapon/paper_bin
+	device_type = /obj/item/paper_bin
 
-/obj/item/rig_module/device/paperdispenser/engage(atom/target)
+/obj/item/rig_module/paperdispenser/engage(atom/target)
 
 	if(!..() || !device)
 		return 0
@@ -390,7 +390,7 @@
 		device.attack_hand(holder.wearer)
 		return 1
 
-/obj/item/rig_module/device/pen
+/obj/item/rig_module/pen
 	name = "mounted pen"
 	desc = "For mecha John Hancocks."
 	icon_state = "pen"
@@ -398,9 +398,9 @@
 	interface_desc = "Signatures with style(tm)."
 	engage_string = "Change color"
 	usable = 1
-	device_type = /obj/item/weapon/pen/multi
+	device_type = /obj/item/pen/multi
 
-/obj/item/rig_module/device/stamp
+/obj/item/rig_module/stamp
 	name = "mounted internal affairs stamp"
 	desc = "DENIED."
 	icon_state = "stamp"
@@ -411,15 +411,15 @@
 	var/obj/iastamp			//Theese were just vars, but any device would need to be an object
 	var/obj/deniedstamp //Stops assigning non-objects to theese vars, which probably would break quite a bit.
 
-/obj/item/rig_module/device/stamp/New()
+/obj/item/rig_module/stamp/New()
 	..()
-	iastamp = new /obj/item/weapon/stamp/law(src)
-	deniedstamp = new /obj/item/weapon/stamp/denied(src)
+	iastamp = new /obj/item/stamp/law(src)
+	deniedstamp = new /obj/item/stamp/denied(src)
 	iastamp.flags |= ABSTRACT
 	deniedstamp.flags |= ABSTRACT
 	device = iastamp
 
-/obj/item/rig_module/device/stamp/engage(atom/target)
+/obj/item/rig_module/stamp/engage(atom/target)
 	if(!..() || !device)
 		return 0
 
@@ -455,7 +455,7 @@
 
 	if(!target)
 		if(get_fuel() >= 0)
-			var/obj/item/weapon/weldingtool/W = holder.wearer.get_active_hand()
+			var/obj/item/weldingtool/W = holder.wearer.get_active_hand()
 			if(istype(W))
 				fill_welder(W)
 			else
@@ -467,7 +467,7 @@
 	else
 		to_chat(holder.wearer, "<span class='notice'>You need to have a welding tool in one of your hands to dispense fuel.</span>")
 
-/obj/item/rig_module/welding_tank/proc/fill_welder(var/obj/item/weapon/weldingtool/W)
+/obj/item/rig_module/welding_tank/proc/fill_welder(var/obj/item/weldingtool/W)
 	if(!istype(W))
 		return 0
 

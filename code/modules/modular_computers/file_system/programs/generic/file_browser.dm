@@ -29,8 +29,8 @@
 /datum/computer_file/program/filemanager/ui_data(mob/user)
 	var/list/data = get_header_data()
 
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/RHDD = computer.all_components[MC_SDD]
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
+	var/obj/item/computer_hardware/hard_drive/portable/RHDD = computer.all_components[MC_SDD]
 	if(error)
 		data["error"] = error
 	if(open_file)
@@ -76,9 +76,9 @@
 	if(..())
 		return 1
 
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
-	var/obj/item/weapon/computer_hardware/hard_drive/RHDD = computer.all_components[MC_SDD]
-	var/obj/item/weapon/computer_hardware/printer/printer = computer.all_components[MC_PRINT]
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.all_components[MC_HDD]
+	var/obj/item/computer_hardware/hard_drive/RHDD = computer.all_components[MC_SDD]
+	var/obj/item/computer_hardware/printer/printer = computer.all_components[MC_PRINT]
 
 	switch(href_list["action"])
 		if("PRG_openfile")
@@ -150,7 +150,7 @@
 			if(F.do_not_edit && (alert("WARNING: This file is not compatible with editor. Editing it may result in permanently corrupted formatting or damaged data consistency. Edit anyway?", "Incompatible File", "No", "Yes") == "No"))
 				return 1
 			// 16384 is the limit for file length in characters. Currently, papers have value of 2048 so this is 8 times as long, since we can't edit parts of the file independently.
-			var/newtext = stripped_multiline_input(usr, "Editing file [open_file]. You may use most tags used in paper formatting:", "Text Editor", html_decode(F.stored_data), 16384, TRUE)
+			var/newtext = stripped_multiline_input(usr, "Editing file [open_file]. You may use most tags used in paper formatting:", "Text Editor", lhtml_decode(F.stored_data), 16384, TRUE)
 			if(!newtext)
 				return
 			if(F)

@@ -47,7 +47,7 @@
 		overlays = null
 		overlays += image("icon" = "mecha.dmi", "icon_state" = "ripley-g-full")
 
-/obj/mecha/working/ripley/mmi_moved_inside(var/obj/item/device/mmi/mmi_as_oc as obj,mob/user as mob)
+/obj/mecha/working/ripley/mmi_moved_inside(var/obj/item/mmi/mmi_as_oc as obj,mob/user as mob)
 	..()
 	if(damage_absorption.["brute"] < 0.6 && damage_absorption.["brute"] > 0.3)
 		overlays = null
@@ -106,7 +106,7 @@
 
 	//Add possible plasma cutter
 	if(prob(25))
-		var/obj/item/mecha_parts/mecha_equipment/M = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma
+		var/obj/item/mecha_parts/mecha_equipment/M = new /obj/item/mecha_parts/mecha_equipment/energy/plasma
 		M.attach(src)
 
 	//Add ore box to cargo

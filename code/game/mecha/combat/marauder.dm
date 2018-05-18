@@ -27,11 +27,11 @@
 
 /obj/mecha/combat/marauder/loaded/New()
 	..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/energy/pulse
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack
+	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/xray(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/energy/xray(src)
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src)
 	ME.attach(src)
@@ -54,7 +54,7 @@
 	max_equip = 8
 
 /obj/mecha/combat/marauder/seraph/add_cell()
-	cell = new /obj/item/weapon/stock_parts/cell/bluespace(src)
+	cell = new /obj/item/stock_parts/cell/bluespace(src)
 	cell.charge = 40000
 	cell.maxcharge = 40000
 
@@ -65,11 +65,11 @@
 		for(ME in equipment)
 			equipment -= ME
 			qdel(ME)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/heavy(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/heavy(src)
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/xray/triple(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/energy/xray/triple(src)
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/dual(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/lmg/dual(src)
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/teleporter/precise(src)
 	ME.attach(src)
@@ -89,11 +89,11 @@
 
 /obj/mecha/combat/marauder/mauler/loaded/New()
 	..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg(src)
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/lmg(src)
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/scattershot(src)
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack(src)
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src)
 	ME.attach(src)

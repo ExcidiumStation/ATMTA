@@ -21,9 +21,9 @@
 
 /obj/mecha/combat/gygax/loaded/New()
 	..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/energy/taser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang
+	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/flashbang
 	ME.attach(src)
 
 /obj/mecha/combat/gygax/dark
@@ -43,9 +43,9 @@
 
 /obj/mecha/combat/gygax/dark/loaded/New()
 	..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/carbine
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang
+	ME = new /obj/item/mecha_parts/mecha_equipment/ballistic/missile_rack/flashbang
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/teleporter/precise
 	ME.attach(src)
@@ -53,7 +53,7 @@
 	ME.attach(src)
 
 /obj/mecha/combat/gygax/dark/add_cell()
-	cell = new /obj/item/weapon/stock_parts/cell/bluespace(src)
+	cell = new /obj/item/stock_parts/cell/bluespace(src)
 	cell.charge = 30000
 	cell.maxcharge = 30000
 

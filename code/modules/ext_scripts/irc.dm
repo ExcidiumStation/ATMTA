@@ -3,7 +3,7 @@
 		for(var/IP in config.irc_bot_host)
 			spawn(0)
 				// I have no means of trusting you, cmd
-				ext_python("ircbot_message.py", "[config.comms_password] [IP] [channel] [paranoid_sanitize(msg)]")
+				ext_python("ircbot_message.py", "[config.comms_password] [IP] [channel] [paranoid_sanitize_local(msg)]")
 	return
 
 /proc/send2mainirc(var/msg)
