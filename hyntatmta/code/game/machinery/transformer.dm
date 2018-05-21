@@ -51,33 +51,33 @@
 /obj/machinery/transformer/xray/southnorth/scan(var/obj/item/I)
 	var/badcount = 0
 	var/storagecount = 0
-	if(istype(I, /obj/item/weapon/gun))
+	if(istype(I, /obj/item/gun))
 		badcount++
-	if(istype(I, /obj/item/device/transfer_valve))
+	if(istype(I, /obj/item/transfer_valve))
 		badcount++
-	if(istype(I, /obj/item/weapon/kitchen/knife))
+	if(istype(I, /obj/item/kitchen/knife))
 		badcount++
-	if(istype(I, /obj/item/weapon/grenade))
+	if(istype(I, /obj/item/grenade))
 		badcount++
-	if(istype(I, /obj/item/weapon/melee))
+	if(istype(I, /obj/item/melee))
 		badcount++
-	if(istype(I, /obj/item/weapon/storage))
+	if(istype(I, /obj/item/storage))
 		for(var/obj/item/IT in I.contents)
-			if(istype(IT, /obj/item/weapon/gun))
+			if(istype(IT, /obj/item/gun))
 				badcount++
 			if(istype(IT, /obj/item/ammo_box))
 				badcount++
 			if(istype(IT, /obj/item/ammo_casing))
 				badcount++
-			if(istype(IT, /obj/item/device/transfer_valve))
+			if(istype(IT, /obj/item/transfer_valve))
 				badcount++
-			if(istype(IT, /obj/item/weapon/kitchen/knife))
+			if(istype(IT, /obj/item/kitchen/knife))
 				badcount++
-			if(istype(IT, /obj/item/weapon/grenade))
+			if(istype(IT, /obj/item/grenade))
 				badcount++
-			if(istype(IT, /obj/item/weapon/melee))
+			if(istype(IT, /obj/item/melee))
 				badcount++
-			if(istype(IT, /obj/item/weapon/storage))
+			if(istype(IT, /obj/item/storage))
 				storagecount++
 
 	if(badcount)

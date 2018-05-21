@@ -77,12 +77,12 @@ var/global/sent_doomstrike_team = 0
 //Spawns the rest of the commando gear.
 	for (var/obj/effect/landmark/L in landmarks_list)
 		if(L.name == "Commando_Manual")
-			//new /obj/item/weapon/gun/energy/pulse_rifle(L.loc)
-			var/obj/item/weapon/paper/P = new(L.loc)
+			//new /obj/item/gun/energy/pulse_rifle(L.loc)
+			var/obj/item/paper/P = new(L.loc)
 			P.info = "<p><b>Good morning soldier!</b>. This compact guide will familiarize you with standard operating procedure. There are three basic rules to follow:<br>#1 Work hard.<br>#2 Accomplish your objective at all costs.<br>#3 Leave no witnesses.<br>You are fully equipped and stocked for your mission--before departing on the Spec. Ops. Shuttle due South, make sure that you are ready. Actual mission objective will be relayed to you by Central Command through your headsets.</p><p>In the event that the team does not accomplish their assigned objective in a timely manner, or finds no other way to do so, attached below are instructions on how to operate a Nanotrasen Nuclear Device. <b>YOU</b> provided with a nuclear authentication disk and a pin-pointer for this reason. The nuclear device itself will be present somewhere on your destination.</p><p>Hello and thank you for choosing Nanotrasen for your nuclear information needs. Today's crash course will deal with the operation of a Fission Class Nanotrasen made Nuclear Device.<br>First and foremost, <b>DO NOT TOUCH ANYTHING UNTIL THE BOMB IS IN PLACE.</b> Pressing any button on the compacted bomb will cause it to extend and bolt itself into place. If this is done to unbolt it one must completely log in which at this time may not be possible.<br>To make the device functional:<br>#1 Place bomb in designated detonation zone<br> #2 Extend and anchor bomb (attack with hand).<br>#3 Insert Nuclear Auth. Disk into slot.<br>#4 Type numeric code into keypad ([nuke_code]).<br>Note: If you make a mistake press R to reset the device.<br>#5 Press the E button to log onto the device.<br>You now have activated the device. To deactivate the buttons at anytime, for example when you have already prepped the bomb for detonation, remove the authentication disk OR press the R on the keypad. Now the bomb CAN ONLY be detonated using the timer. A manual detonation is not an option.<br>Note: Toggle off the <b>SAFETY</b>.<br>Use the - - and + + to set a detonation time between 5 seconds and 10 minutes. Then press the timer toggle button to start the countdown. Now remove the authentication disk so that the buttons deactivate.<br>Note: <b>THE BOMB IS STILL SET AND WILL DETONATE</b><br>Now before you remove the disk if you need to move the bomb you can: Toggle off the anchor, move it, and re-anchor.</p><p>The nuclear authorization code is: <b>[nuke_code ? nuke_code : "None provided"]</b></p><p><b>Good luck, soldier!</b></p>"
 			P.name = "DOOM Manual"
 			P.icon = "pamphlet-ds"
-			var/obj/item/weapon/stamp/centcom/stamp = new
+			var/obj/item/stamp/centcom/stamp = new
 			P.stamp(stamp)
 			qdel(stamp)
 
@@ -117,20 +117,20 @@ var/global/sent_doomstrike_team = 0
 	return new_doomguy
 
 /mob/living/carbon/human/proc/equip_doom_commando()
-	var/obj/item/device/radio/R = new /obj/item/device/radio/headset/alt(src)
+	var/obj/item/radio/R = new /obj/item/radio/headset/alt(src)
 	R.set_frequency(DTH_FREQ)
 	equip_to_slot_or_del(R, slot_l_ear)
 	equip_to_slot_or_del(new /obj/item/clothing/mask/atmta/gas/doom(src), slot_wear_mask)
-	equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/revolver/doublebarrel(src), slot_back)
+	equip_to_slot_or_del(new /obj/item/gun/projectile/revolver/doublebarrel(src), slot_back)
 	equip_to_slot_or_del(new /obj/item/clothing/under/atmta/doom(src), slot_w_uniform)
 	equip_to_slot_or_del(new /obj/item/clothing/shoes/atmta/magboots/doom(src), slot_shoes)
 	equip_to_slot_or_del(new /obj/item/clothing/head/atmta/helmet/space/doom(src), slot_head)
-	equip_to_slot_or_del(new /obj/item/weapon/storage/belt/atmta/doom(src), slot_belt)
+	equip_to_slot_or_del(new /obj/item/storage/belt/atmta/doom(src), slot_belt)
 	equip_to_slot_or_del(new /obj/item/clothing/suit/atmta/space/doom(src), slot_wear_suit)
-	var/obj/item/weapon/gun/projectile/automatic/l6_saw/doomgun = new(src)
+	var/obj/item/gun/projectile/automatic/l6_saw/doomgun = new(src)
 	src.equip_to_slot_or_del(doomgun, slot_r_hand)
 
-	var/obj/item/weapon/card/id/W = new(src)
+	var/obj/item/card/id/W = new(src)
 	W.name = "[real_name]'s ID Card"
 	W.icon_state = "deathsquad"
 	W.assignment = "Death Commando"

@@ -416,7 +416,7 @@
 
 //Don't use this on lists larger than half a dozen or so
 /proc/insertion_sort_numeric_list_ascending(var/list/L)
-	//log_to_dd("ascending len input: [L.len]")
+	//log_world("ascending len input: [L.len]")
 	var/list/out = list(pop(L))
 	for(var/entry in L)
 		if(isnum(entry))
@@ -429,13 +429,13 @@
 			if(!success)
 				out.Add(entry)
 
-	//log_to_dd("	output: [out.len]")
+	//log_world("	output: [out.len]")
 	return out
 
 /proc/insertion_sort_numeric_list_descending(var/list/L)
-	//log_to_dd("descending len input: [L.len]")
+	//log_world("descending len input: [L.len]")
 	var/list/out = insertion_sort_numeric_list_ascending(L)
-	//log_to_dd("	output: [out.len]")
+	//log_world("	output: [out.len]")
 	return reverselist(out)
 
 //Copies a list, and all lists inside it recusively
@@ -639,7 +639,7 @@ proc/dd_sortedObjectList(list/incoming)
 
 /datum/alarm/dd_SortValue()
 
-	return "[sanitize(last_name)]"
+	return "[sanitize_local(last_name)]"
 
 //Picks from the list, with some safeties, and returns the "default" arg if it fails
 #define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)

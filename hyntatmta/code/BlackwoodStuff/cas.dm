@@ -1,4 +1,4 @@
-//Порт Cards against spess с хиппи.
+//пїЅпїЅпїЅпїЅ Cards against spess пїЅ пїЅпїЅпїЅпїЅпїЅ.
 
 /obj/item/toy/cards/deck/cas
 	name = "\improper CAS deck (white)"
@@ -95,7 +95,7 @@
 	return
 
 /obj/item/toy/cards/singlecard/cas/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/weapon/pen))
+	if(istype(I, /obj/item/pen))
 		if(!blank)
 			to_chat(user, "You cannot write on that card.")
 			return
@@ -106,13 +106,13 @@
 		blank = 0
 
 //Boxes
-/obj/item/weapon/storage/box/cas
+/obj/item/storage/box/cas
 	name = "Cards Against Spess box"
 	desc = "A cardboard box which contains the Cards Against Spess game."
 	icon = 'hyntatmta/icons/obj/cas.dmi'
 	icon_state = "cas"
 
-/obj/item/weapon/storage/box/cas/New()
+/obj/item/storage/box/cas/New()
 	..()
 	new /obj/item/toy/cards/deck/cas(src)
 	new /obj/item/toy/cards/deck/cas/black(src)

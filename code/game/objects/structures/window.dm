@@ -42,7 +42,7 @@ var/global/wcResearch = pick(list("#ee82ee"))
 	var/state = 2
 	var/reinf = 0
 	var/basestate
-	var/shardtype = /obj/item/weapon/shard
+	var/shardtype = /obj/item/shard
 	var/glasstype = /obj/item/stack/sheet/glass
 	var/disassembled = 0
 	var/sheets = 1 // Number of sheets needed to build this window (determines how much shit is spawned by destroy())
@@ -190,8 +190,8 @@ var/global/wcResearch = pick(list("#ee82ee"))
 /obj/structure/window/attackby(obj/item/I as obj, mob/living/user as mob, params)
 	if(!istype(I))
 		return//I really wish I did not need this
-	if(istype(I, /obj/item/weapon/grab) && get_dist(src,user)<2)
-		var/obj/item/weapon/grab/G = I
+	if(istype(I, /obj/item/grab) && get_dist(src,user)<2)
+		var/obj/item/grab/G = I
 		if(istype(G.affecting,/mob/living))
 			var/mob/living/M = G.affecting
 			var/state = G.state
@@ -235,7 +235,7 @@ var/global/wcResearch = pick(list("#ee82ee"))
 		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
 	..()
 
-/obj/structure/window/proc/handle_decon(obj/item/weapon/W, mob/user, var/takes_time = FALSE)
+/obj/structure/window/proc/handle_decon(obj/item/W, mob/user, var/takes_time = FALSE)
 	//screwdriver
 	if(isscrewdriver(W))
 		playsound(loc, W.usesound, 75, 1)
@@ -394,7 +394,7 @@ var/global/wcResearch = pick(list("#ee82ee"))
 	update_nearby_icons()
 	return
 
-/obj/structure/window/initialize()
+/obj/structure/window/Initialize()
 	air_update_turf(1)
 	return ..()
 
@@ -451,7 +451,7 @@ var/global/wcResearch = pick(list("#ee82ee"))
 	desc = "A plasma-glass alloy window. It looks insanely tough to break. It appears it's also insanely tough to burn through."
 	basestate = "plasmawindow"
 	icon_state = "plasmawindow"
-	shardtype = /obj/item/weapon/shard/plasma
+	shardtype = /obj/item/shard/plasma
 	glasstype = /obj/item/stack/sheet/plasmaglass
 	health = 120
 	armor = list("melee" = 75, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 45, "bio" = 100, "rad" = 100)
@@ -462,7 +462,7 @@ var/global/wcResearch = pick(list("#ee82ee"))
 	update_nearby_icons()
 	return
 
-/obj/structure/window/plasmabasic/initialize()
+/obj/structure/window/plasmabasic/Initialize()
 	..()
 	air_update_turf(1)
 
@@ -479,7 +479,7 @@ var/global/wcResearch = pick(list("#ee82ee"))
 	desc = "A plasma-glass alloy window, with rods supporting it. It looks hopelessly tough to break. It also looks completely fireproof, considering how basic plasma windows are insanely fireproof."
 	basestate = "plasmarwindow"
 	icon_state = "plasmarwindow"
-	shardtype = /obj/item/weapon/shard/plasma
+	shardtype = /obj/item/shard/plasma
 	glasstype = /obj/item/stack/sheet/plasmaglass
 	reinf = 1
 	health = 160
@@ -491,7 +491,7 @@ var/global/wcResearch = pick(list("#ee82ee"))
 	update_nearby_icons()
 	return
 
-/obj/structure/window/plasmareinforced/initialize()
+/obj/structure/window/plasmareinforced/Initialize()
 	..()
 	air_update_turf(1)
 

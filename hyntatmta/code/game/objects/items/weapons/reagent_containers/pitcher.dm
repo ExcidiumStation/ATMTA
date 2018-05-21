@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/pitcher
+/obj/item/reagent_containers/food/drinks/drinkingglass/pitcher
 	name = "Pitcher"
 	desc = "A big container for holding a lot of liquid that you then serve to people."
 	icon = 'hyntatmta/icons/obj/reagent_containers.dmi'
@@ -7,7 +7,7 @@
 	volume = 120
 	materials = list(MAT_GLASS=300)
 
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/pitcher/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/drinkingglass/pitcher/on_reagent_change()
 	overlays.Cut()
 
 	if(reagents.total_volume)

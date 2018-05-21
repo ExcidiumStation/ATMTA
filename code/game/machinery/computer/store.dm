@@ -2,12 +2,12 @@
 	name = "merch computer"
 	icon = 'icons/obj/computer.dmi'
 	icon_screen = "comm_logs"
-	circuit = /obj/item/weapon/circuitboard/merch
+	circuit = /obj/item/circuitboard/merch
 
 	light_color = LIGHT_COLOR_GREEN
 
-/obj/item/weapon/circuitboard/merch
-	name = "Merchandise Computer Circuitboard"
+/obj/item/circuitboard/merch
+	name = "\improper Merchandise Computer Circuitboard"
 	build_path = /obj/machinery/computer/merch
 
 /obj/machinery/computer/merch/New()

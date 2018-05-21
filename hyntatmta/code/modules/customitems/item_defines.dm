@@ -1,4 +1,4 @@
-/obj/item/weapon/lighter/zippo/robust
+/obj/item/lighter/zippo/robust
     name = "robust zippo"
     desc = "What a quiant idea."
     icon = 'hyntatmta/icons/obj/custom_items.dmi'
@@ -6,7 +6,7 @@
     icon_on = "robustzippoon"
     icon_off = "robustzippo"
 
-/obj/item/weapon/rcd/arcd
+/obj/item/rcd/arcd
 	name = "advanced rapid-construction-device (ARCD)"
 	desc = "A prototype RCD with ranged capability and extended capacity"
 	max_matter = 300
@@ -14,7 +14,7 @@
 	canRwall = 1
 	icon_state = "arcd"
 
-/obj/item/weapon/rcd/arcd/afterattack(atom/A, mob/user)
+/obj/item/rcd/arcd/afterattack(atom/A, mob/user)
 	if(istype(A,/area/shuttle)||istype(A,/turf/space/transit))
 		return 0
 	if(!(istype(A, /turf) || istype(A, /obj/machinery/door/airlock) || istype(A, /obj/structure/grille) || istype(A, /obj/structure/window)))

@@ -1,8 +1,6 @@
 #define SEC_DATA_R_LIST	1	// Record list
 #define SEC_DATA_MAINT	2	// Records maintenance
 #define SEC_DATA_RECORD	3	// Record
-#define SEC_DATA_LOGS	4	//Cell Logs
-#define SEC_DATA_TICKETS	5	//Ticket list
 
 /obj/machinery/computer/secure_data//TODO:SANITY
 	name = "security records"
@@ -10,8 +8,8 @@
 	icon_keyboard = "security_key"
 	icon_screen = "security"
 	req_one_access = list(access_security, access_forensics_lockers)
-	circuit = /obj/item/weapon/circuitboard/secure_data
-	var/obj/item/weapon/card/id/scan = null
+	circuit = /obj/item/circuitboard/secure_data
+	var/obj/item/card/id/scan = null
 	var/authenticated = null
 	var/rank = null
 	var/list/authcard_access = list()
@@ -32,7 +30,7 @@
 	return ..()
 
 /obj/machinery/computer/secure_data/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/weapon/card/id) && !scan)
+	if(istype(O, /obj/item/card/id) && !scan)
 		user.drop_item()
 		O.forceMove(src)
 		scan = O
@@ -48,18 +46,6 @@
 		return
 	add_fingerprint(user)
 	ui_interact(user)
-
-/obj/machinery/computer/secure_data/proc/createlog(toprint)
-	if(!toprint)
-		return 0
-	else
-		var/obj/item/weapon/paper/P = toprint
-		playsound(loc, "sound/goonstation/machines/printer_dotmatrix.ogg", 50, 1)
-		to_chat(usr, "<span class='notice'>Printing file [P.name].</span>")
-		sleep(50)
-		var/obj/item/weapon/paper/P2 = new /obj/item/weapon/paper(loc)
-		P2.name = P.name
-		P2.info = P.info
 
 /obj/machinery/computer/secure_data/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, force_open)
@@ -140,18 +126,6 @@
 					security["empty"] = 0
 				else
 					security["empty"] = 1
-
-			if(SEC_DATA_TICKETS)
-				var/list/tickets = list()
-				data["tickets"] = tickets
-				for(var/obj/item/weapon/paper/P in ticket_logs)
-					tickets[++tickets.len] = list("title" = P.info)
-
-			if(SEC_DATA_LOGS)
-				var/list/celllogs = list()
-				data["celllogs"] = celllogs
-				for(var/obj/item/weapon/paper/P in cell_logs)
-					celllogs[++celllogs.len] = list("title" = P.info)
 	return data
 
 /obj/machinery/computer/secure_data/Topic(href, href_list)
@@ -199,9 +173,9 @@
 					var/their_rank = active2.fields["rank"]
 					var/t1
 					if(temp_href[2] == "execute")
-						t1 = copytext(trim(sanitize(input("Explain why they are being executed. Include a list of their crimes, and victims.", "EXECUTION ORDER", null, null) as text)), 1, MAX_MESSAGE_LEN)
+						t1 = copytext(trim(sanitize_local(input("Explain why they are being executed. Include a list of their crimes, and victims.", "EXECUTION ORDER", null, null) as text)), 1, MAX_MESSAGE_LEN)
 					else
-						t1 = copytext(trim(sanitize(input("Enter Reason:", "Secure. records", null, null) as text)), 1, MAX_MESSAGE_LEN)
+						t1 = copytext(trim(sanitize_local(input("Enter Reason:", "Secure. records", null, null) as text)), 1, MAX_MESSAGE_LEN)
 					var/visible_reason
 					if(t1)
 						visible_reason = t1
@@ -244,7 +218,7 @@
 			scan = null
 		else
 			var/obj/item/I = usr.get_active_hand()
-			if(istype(I, /obj/item/weapon/card/id))
+			if(istype(I, /obj/item/card/id))
 				usr.drop_item()
 				I.forceMove(src)
 				scan = I
@@ -257,7 +231,7 @@
 			authenticated = usr.name
 			var/mob/living/silicon/robot/R = usr
 			rank = "[R.modtype] [R.braintype]"
-		else if(istype(scan, /obj/item/weapon/card/id))
+		else if(istype(scan, /obj/item/card/id))
 			if(check_access(scan))
 				authenticated = scan.registered_name
 				rank = scan.assignment
@@ -371,7 +345,7 @@
 				printing = 1
 				playsound(loc, "sound/goonstation/machines/printer_dotmatrix.ogg", 50, 1)
 				sleep(50)
-				var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
+				var/obj/item/paper/P = new /obj/item/paper(loc)
 				P.info = "<CENTER><B>Security Record</B></CENTER><BR>"
 				if(istype(active1, /datum/data/record) && data_core.general.Find(active1))
 					P.info += {"Name: [active1.fields["name"]] ID: [active1.fields["id"]]
@@ -411,23 +385,27 @@
 */
 
 		else if(href_list["printlogs"])
-			if(cell_logs.len)
-				var/toprint = input(usr, "Select log to print", "Available Cell Logs") as null|anything in cell_logs
-				createlog(toprint)
+			if(cell_logs.len && !printing)
+				var/obj/item/paper/P = input(usr, "Select log to print", "Available Cell Logs") as null|anything in cell_logs
+				if(!P)
+					return 0
+				printing = 1
+				playsound(loc, "sound/goonstation/machines/printer_dotmatrix.ogg", 50, 1)
+				to_chat(usr, "<span class='notice'>Printing file [P.name].</span>")
+				sleep(50)
+				var/obj/item/paper/log = new /obj/item/paper(loc)
+				log.name = P.name
+				log.info = P.info
+				printing = 0
+				return 1
 			else
 				to_chat(usr, "<span class='notice'>[src] has no logs stored or is already printing.</span>")
 
-		else if(href_list["printticket"])
-			if(ticket_logs.len)
-				var/toprint = input(usr, "Select tickets to print", "Issued Tickets") as null|anything in ticket_logs
-				createlog(toprint)
-			else
-				to_chat(usr, "<span class='notice'>[src] has no logs stored or is already printing.</span>")
 
 		else if(href_list["add_c"])
 			if(istype(active2, /datum/data/record))
 				var/a2 = active2
-				var/t1 = copytext(trim(sanitize(input("Add Comment:", "Secure. records", null, null) as message)), 1, MAX_MESSAGE_LEN)
+				var/t1 = copytext(trim(sanitize_local(input("Add Comment:", "Secure. records", null, null) as message)), 1, MAX_MESSAGE_LEN)
 				if(!t1 || ..() || active2 != a2)
 					return 1
 				active2.fields["comments"] += "Made by [authenticated] ([rank]) on [current_date_string] [station_time_timestamp()]<BR>[t1]"
@@ -453,7 +431,7 @@
 							active2.fields["name"] = t1
 				if("id")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input id:", "Secure. records", active1.fields["id"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize_local(input("Please input id:", "Secure. records", active1.fields["id"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active1 != a1)
 							return 1
 						active1.fields["id"] = t1
@@ -461,7 +439,7 @@
 							active2.fields["id"] = t1
 				if("fingerprint")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input fingerprint hash:", "Secure. records", active1.fields["fingerprint"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize_local(input("Please input fingerprint hash:", "Secure. records", active1.fields["fingerprint"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active1 != a1)
 							return 1
 						active1.fields["fingerprint"] = t1
@@ -479,31 +457,31 @@
 						active1.fields["age"] = t1
 				if("mi_crim")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input minor crimes list:", "Secure. records", active2.fields["mi_crim"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize_local(input("Please input minor crimes list:", "Secure. records", active2.fields["mi_crim"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["mi_crim"] = t1
 				if("mi_crim_d")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please summarize minor crimes:", "Secure. records", active2.fields["mi_crim_d"], null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize_local(input("Please summarize minor crimes:", "Secure. records", active2.fields["mi_crim_d"], null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["mi_crim_d"] = t1
 				if("ma_crim")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please input major crimes list:", "Secure. records", active2.fields["ma_crim"], null) as text)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize_local(input("Please input major crimes list:", "Secure. records", active2.fields["ma_crim"], null) as text)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["ma_crim"] = t1
 				if("ma_crim_d")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please summarize major crimes:", "Secure. records", active2.fields["ma_crim_d"], null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize_local(input("Please summarize major crimes:", "Secure. records", active2.fields["ma_crim_d"], null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["ma_crim_d"] = t1
 				if("notes")
 					if(istype(active2, /datum/data/record))
-						var/t1 = copytext(html_encode(trim(input("Please summarize notes:", "Secure. records", html_decode(active2.fields["notes"]), null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(html_encode(trim(input("Please summarize notes:", "Secure. records", lhtml_decode(active2.fields["notes"]), null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active2 != a2)
 							return 1
 						active2.fields["notes"] = t1
@@ -529,7 +507,7 @@
 						setTemp("<h3 class='bad'>You do not have the required rank to do this!</h3>")
 				if("species")
 					if(istype(active1, /datum/data/record))
-						var/t1 = copytext(trim(sanitize(input("Please enter race:", "General records", active1.fields["species"], null) as message)), 1, MAX_MESSAGE_LEN)
+						var/t1 = copytext(trim(sanitize_local(input("Please enter race:", "General records", active1.fields["species"], null) as message)), 1, MAX_MESSAGE_LEN)
 						if(!t1 || ..() || active1 != a1)
 							return 1
 						active1.fields["species"] = t1
@@ -563,7 +541,7 @@
 	P.fields["pixel_y"] = rand(-10, 10)
 	P.fields["size"] = 2
 
-	var/obj/item/weapon/photo/PH = new/obj/item/weapon/photo(loc)
+	var/obj/item/photo/PH = new/obj/item/photo(loc)
 	PH.construct(P)
 
 */
@@ -622,5 +600,3 @@
 #undef SEC_DATA_R_LIST
 #undef SEC_DATA_MAINT
 #undef SEC_DATA_RECORD
-#undef SEC_DATA_LOGS
-#undef SEC_DATA_TICKETS

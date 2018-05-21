@@ -15,7 +15,7 @@ var/regex/jobban_regex = regex("(\[\\S]+) - (\[^#]+\[^# ])(?: ## (.+))?")
 /proc/jobban_fullban(mob/M, rank, reason)
 	if(!M || !M.key)
 		return
-	jobban_keylist.Add(text("[M.ckey] - [rank] ## [sanitize(reason)]"))
+	jobban_keylist.Add(text("[M.ckey] - [rank] ## [sanitize_local(reason)]"))
 	jobban_assoc_insert(M.ckey, rank, reason)
 	if(config.ban_legacy_system)
 		jobban_savebanfile()
@@ -78,8 +78,7 @@ DEBUG
 				log_runtime(EXCEPTION("Skipping malformed job ban: [s]"))
 	else
 		if(!establish_db_connection())
-			log_to_dd("Database connection failed. Reverting to the legacy ban system.")
-			diary << "Database connection failed. Reverting to the legacy ban system."
+			log_world("Database connection failed. Reverting to the legacy ban system.")
 			config.ban_legacy_system = 1
 			jobban_loadbanfile()
 			return

@@ -61,10 +61,10 @@
 	if(usr)
 		if(usr.client)
 			if(usr.client.holder)
-				to_chat(M, "<b>You hear a voice in your head... <i>[sanitize(msg)]</i></b>")
+				to_chat(M, "<b>You hear a voice in your head... <i>[sanitize_local(msg)]</i></b>")
 
-	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [sanitize(msg)]")
-	message_admins("<span class='boldnotice'>SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] : [sanitize(msg)]</span>", 1)
+	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [sanitize_local(msg)]")
+	message_admins("<span class='boldnotice'>SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] : [sanitize_local(msg)]</span>", 1)
 	feedback_add_details("admin_verb","SMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
@@ -113,9 +113,9 @@
 
 	if(!msg)
 		return
-	to_chat(world, "[sanitize(msg)]")
-	log_admin("GlobalNarrate: [key_name(usr)] : [sanitize(msg)]")
-	message_admins("\blue \bold GlobalNarrate: [key_name_admin(usr)]: [sanitize(msg)]<BR>", 1)
+	to_chat(world, "[sanitize_local(msg)]")
+	log_admin("GlobalNarrate: [key_name(usr)] : [sanitize_local(msg)]")
+	message_admins("\blue \bold GlobalNarrate: [key_name_admin(usr)]: [sanitize_local(msg)]<BR>", 1)
 	feedback_add_details("admin_verb","GLN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)	// Targetted narrate -- TLE
@@ -136,9 +136,9 @@
 	if( !msg )
 		return
 
-	to_chat(M, sanitize(msg))
-	log_admin("DirectNarrate: [key_name(usr)] to ([key_name(M)]): [sanitize(msg)]")
-	message_admins("\blue \bold DirectNarrate: [key_name_admin(usr)] to ([key_name_admin(M)]): [sanitize(msg)]<BR>", 1)
+	to_chat(M, sanitize_local(msg))
+	log_admin("DirectNarrate: [key_name(usr)] to ([key_name(M)]): [sanitize_local(msg)]")
+	message_admins("\blue \bold DirectNarrate: [key_name_admin(usr)] to ([key_name_admin(M)]): [sanitize_local(msg)]<BR>", 1)
 
 	feedback_add_details("admin_verb","DIRN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -430,7 +430,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	//Announces the character on all the systems, based on the record.
 	if(!issilicon(new_character))//If they are not a cyborg/AI.
-		if(!record_found&&new_character.mind.assigned_role!="MODE")//If there are no records for them. If they have a record, this info is already in there. MODE people are not announced anyway.
+		if(!record_found && new_character.mind.assigned_role != new_character.mind.special_role)//If there are no records for them. If they have a record, this info is already in there. Offstation special characters announced anyway.
 			//Power to the user!
 			if(alert(new_character,"Warning: No data core entry detected. Would you like to announce the arrival of this character by adding them to various databases, such as medical records?",,"No","Yes")=="Yes")
 				data_core.manifest_inject(new_character)

@@ -239,13 +239,13 @@
 		gen_record = query.item[42]
 		// Apparently, the preceding vars weren't always encoded properly...
 		if(findtext(flavor_text, "<")) // ... so let's clumsily check for tags!
-			flavor_text = html_encode(flavor_text)
+			flavor_text = lhtml_decode(flavor_text)
 		if(findtext(med_record, "<"))
-			med_record = html_encode(med_record)
+			med_record = lhtml_decode(med_record)
 		if(findtext(sec_record, "<"))
-			sec_record = html_encode(sec_record)
+			sec_record = lhtml_decode(sec_record)
 		if(findtext(gen_record, "<"))
-			gen_record = html_encode(gen_record)
+			gen_record = lhtml_decode(gen_record)
 		disabilities = text2num(query.item[43])
 		player_alt_titles = params2list(query.item[44])
 		organ_data = params2list(query.item[45])

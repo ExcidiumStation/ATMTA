@@ -12,7 +12,7 @@
 		UnsubscribeProcess()
 
 	attackby(obj/item/W as obj, mob/user as mob)
-		if(istype(W, /obj/item/weapon/shard))
+		if(istype(W, /obj/item/shard))
 			glass_amt += 1
 			user.visible_message("<span style=\"color:blue\">[user] inserts [W] into [src].</span>")
 			user.unEquip(W)
@@ -63,22 +63,22 @@
 
 		switch(object)
 			if("drinking")
-				new /obj/item/weapon/reagent_containers/food/drinks/drinkingglass(get_turf(src))
+				new /obj/item/reagent_containers/food/drinks/drinkingglass(get_turf(src))
 				src.glass_amt -= 1
 			if("shot")
-				new /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/shotglass(get_turf(src))
+				new /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass(get_turf(src))
 				src.glass_amt -= 1
 			if("wine")
-				new /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/wine(get_turf(src))
+				new /obj/item/reagent_containers/food/drinks/drinkingglass/wine(get_turf(src))
 				src.glass_amt -= 1
 			if("cocktail")
-				new /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/cocktail(get_turf(src))
+				new /obj/item/reagent_containers/food/drinks/drinkingglass/cocktail(get_turf(src))
 				src.glass_amt -= 1
 			if("flute")
-				new /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/champagne(get_turf(src))
+				new /obj/item/reagent_containers/food/drinks/drinkingglass/champagne(get_turf(src))
 				src.glass_amt -= 1
 			if("pitcher")
-				new /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/pitcher(get_turf(src))
+				new /obj/item/reagent_containers/food/drinks/drinkingglass/pitcher(get_turf(src))
 				src.glass_amt -= 1
 			else
 				return

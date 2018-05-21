@@ -101,7 +101,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	var/scanned_user = "Unknown" //Will contain the name of the person who currently uses the newscaster
 	var/msg = "" //Feed message
 	var/msg_title = "" // Feed message title
-	var/obj/item/weapon/photo/photo = null
+	var/obj/item/photo/photo = null
 	var/channel_name = "" //the feed channel which will be receiving the feed, or being created
 	var/c_locked = 0 //Will our new channel be locked to public submissions?
 	var/hitstaken = 0 //Death at 3 hits from an item with force>=15
@@ -299,7 +299,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		return 1
 
 	if(href_list["set_channel_name"])
-		channel_name = trim(sanitize(strip_html_simple(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""))))
+		channel_name = trim(sanitize_local(strip_html_simple(input(usr, "Provide a Feed Channel Name", "Network Channel Handler", ""))))
 
 	else if(href_list["set_channel_lock"])
 		c_locked = !c_locked
@@ -580,7 +580,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			FC.body = cominput
 			FC.time_stamp = worldtime2text()
 			FM.comments += FC
-			log_comment("[usr]/([usr.ckey]) as [scanned_user] commented on message [FM.body] -- [FC.body]")
 		updateUsrDialog()
 
 	else if(href_list["refresh"])
@@ -594,7 +593,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	return 1
 
 /obj/machinery/newscaster/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/weapon/wrench))
+	if(istype(I, /obj/item/wrench))
 		to_chat(user, "<span class='notice'>Now [anchored ? "un" : ""]securing [name]</span>")
 		playsound(loc, I.usesound, 50, 1)
 		if(do_after(user, 60 * I.toolspeed, target = src))
@@ -607,8 +606,8 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 100, 1)
 		visible_message("<span class='danger'>[user.name] further abuses the shattered [name].</span>", null, 5)
 	else
-		if(istype(I, /obj/item/weapon) )
-			var/obj/item/weapon/W = I
+		if(istype(I, /obj/item) )
+			var/obj/item/W = I
 			if(W.damtype == STAMINA)
 				return
 			if(W.force < 15)
@@ -634,13 +633,13 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			photo.forceMove(get_turf(src))
 			user.put_in_inactive_hand(photo)
 		photo = null
-	if(istype(user.get_active_hand(), /obj/item/weapon/photo))
+	if(istype(user.get_active_hand(), /obj/item/photo))
 		photo = user.get_active_hand()
 		user.drop_item()
 		photo.forceMove(src)
 	else if(issilicon(user))
 		var/mob/living/silicon/tempAI = user
-		var/obj/item/device/camera/siliconcam/camera = tempAI.aiCamera
+		var/obj/item/camera/siliconcam/camera = tempAI.aiCamera
 
 		if(!camera)
 			return
@@ -648,7 +647,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		if(!selection)
 			return
 
-		var/obj/item/weapon/photo/P = new/obj/item/weapon/photo()
+		var/obj/item/photo/P = new/obj/item/photo()
 		P.construct(selection)
 		photo = P
 
@@ -657,7 +656,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 //###################################### NEWSPAPER! ######################################################################
 //########################################################################################################################
 
-/obj/item/weapon/newspaper
+/obj/item/newspaper
 	name = "newspaper"
 	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Stations."
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -672,7 +671,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	var/scribble=""
 	var/scribble_page = null
 
-/obj/item/weapon/newspaper/attack_self(mob/user as mob)
+/obj/item/newspaper/attack_self(mob/user as mob)
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		var/dat
@@ -756,7 +755,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		to_chat(user, "The paper is full of intelligible symbols!")
 
 
-/obj/item/weapon/newspaper/Topic(href, href_list)
+/obj/item/newspaper/Topic(href, href_list)
 	var/mob/living/U = usr
 	..()
 	if((src in U.contents) || ( istype(loc, /turf) && in_range(src, U) ))
@@ -788,8 +787,8 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			attack_self(loc)
 
 
-/obj/item/weapon/newspaper/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
-	if(istype(W, /obj/item/weapon/pen))
+/obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob, params)
+	if(istype(W, /obj/item/pen))
 		if(scribble_page == curr_page)
 			to_chat(user, "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")
 		else
@@ -814,14 +813,14 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	if(ishuman(user))                      							 //User is a human
 		var/mob/living/carbon/human/human_user = user
 		if(human_user.wear_id)                                      //Newscaster scans you
-			if(istype(human_user.wear_id, /obj/item/device/pda))	//autorecognition, woo!
-				var/obj/item/device/pda/P = human_user.wear_id
+			if(istype(human_user.wear_id, /obj/item/pda))	//autorecognition, woo!
+				var/obj/item/pda/P = human_user.wear_id
 				if(P.id)
 					scanned_user = "[P.id.registered_name] ([P.id.assignment])"
 				else
 					scanned_user = "Unknown"
-			else if(istype(human_user.wear_id, /obj/item/weapon/card/id))
-				var/obj/item/weapon/card/id/ID = human_user.wear_id
+			else if(istype(human_user.wear_id, /obj/item/card/id))
+				var/obj/item/card/id/ID = human_user.wear_id
 				scanned_user = "[ID.registered_name] ([ID.assignment])"
 			else
 				scanned_user = "Unknown"
@@ -840,7 +839,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 /obj/machinery/newscaster/proc/print_paper()
 	feedback_inc("newscaster_newspapers_printed",1)
-	var/obj/item/weapon/newspaper/NEWSPAPER = new /obj/item/weapon/newspaper
+	var/obj/item/newspaper/NEWSPAPER = new /obj/item/newspaper
 	for(var/datum/feed_channel/FC in news_network.network_channels)
 		NEWSPAPER.news_content += FC
 	if(news_network.wanted_issue)

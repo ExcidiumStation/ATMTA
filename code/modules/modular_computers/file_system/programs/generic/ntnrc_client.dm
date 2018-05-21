@@ -103,7 +103,7 @@
 			if(!message || !channel)
 				return
 			channel.add_message(message, username)
-			log_chat("[user]/([user.ckey]) as [username] sent to [channel.title]: [message]")
+			log_chat("[username] sent to [channel.title]: [message]", user)
 
 		if("PRG_joinchannel")
 			. = 1
@@ -167,7 +167,7 @@
 		if("PRG_changename")
 			. = 1
 			var/mob/living/user = usr
-			var/newname = sanitize(input(user,"Enter new nickname or leave blank to cancel:"))
+			var/newname = sanitize_local(input(user,"Enter new nickname or leave blank to cancel:"))
 			if(!newname)
 				return 1
 			if(channel)
@@ -190,7 +190,7 @@
 				logfile.stored_data += "[logstring]\[BR\]"
 			logfile.stored_data += "\[b\]Logfile dump completed.\[/b\]"
 			logfile.calculate_size()
-			var/obj/item/weapon/computer_hardware/hard_drive/hard_drive = computer.all_components[MC_HDD]
+			var/obj/item/computer_hardware/hard_drive/hard_drive = computer.all_components[MC_HDD]
 			if(!computer || !hard_drive || !hard_drive.store_file(logfile))
 				if(!computer)
 					// This program shouldn't even be runnable without computer.
@@ -220,7 +220,7 @@
 				return 1
 
 			var/mob/living/user = usr
-			var/newpassword = sanitize(input(user, "Enter new password for this channel. Leave blank to cancel, enter 'nopassword' to remove password completely:"))
+			var/newpassword = sanitize_local(input(user, "Enter new password for this channel. Leave blank to cancel, enter 'nopassword' to remove password completely:"))
 			if(!channel || !newpassword || ((channel.operator != src) && !netadmin_mode))
 				return 1
 

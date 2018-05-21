@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/champagne
+/obj/item/reagent_containers/food/drinks/drinkingglass/champagne
 	name = "Champagne flute"
 	desc = "A glass on a foot used to serve Champagne. Let's celebrate and suck some..."
 	icon = 'hyntatmta/icons/obj/reagent_containers.dmi'
@@ -6,7 +6,7 @@
 	volume = 20
 	materials = list(MAT_GLASS=100)
 
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/champagne/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/drinkingglass/champagne/on_reagent_change()
 	overlays.Cut()
 
 	if(reagents.total_volume)

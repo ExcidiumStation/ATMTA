@@ -1,4 +1,4 @@
-/obj/item/device/vape
+/obj/item/vape
 	name = "E-cig"
 	desc = "Simple and cheap vaping device"
 	icon = 'hyntatmta/icons/obj/vape.dmi'
@@ -14,14 +14,14 @@
 	var/vape_consume = 0.25
 	var/vape_clouds = 1
 
-/obj/item/device/vape/New()
+/obj/item/vape/New()
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 30
 
-/obj/item/device/vape/Destroy()
+/obj/item/vape/Destroy()
 	qdel(reagents)
 	return ..()
 
-/obj/item/device/vape/attack(var/mob/living/carbon/M, mob/user as mob, def_zone)
+/obj/item/vape/attack(var/mob/living/carbon/M, mob/user as mob, def_zone)
 	if(vape_cooldown > world.time)
 		to_chat(user, "<span class='warning'><B>[name]</B> on the cooldown!</span>")
 		return
@@ -36,7 +36,7 @@
 				vape_cooldown = world.time + vape_delay
 	return
 
-/obj/item/device/vape/afterattack(obj/item/weapon/reagent_containers/glass/glass, mob/user as mob, proximity)
+/obj/item/vape/afterattack(obj/item/reagent_containers/glass/glass, mob/user as mob, proximity)
 	..()
 	if(!proximity) return
 	if(istype(glass))	//you can dip cigarettes into beakers
@@ -49,7 +49,7 @@
 			else
 				to_chat(user, "<span class='notice'>[glass] is full!</span>")
 
-/obj/item/device/vape/proc/vaping(mob/user as mob)
+/obj/item/vape/proc/vaping(mob/user as mob)
 	if(!reagents.total_volume) // There were reagents, but now they're gone
 		to_chat(user, "<span class='notice'>[name] is empty!.</span>")
 		return
@@ -64,7 +64,7 @@
 		reagents.remove_any(vape_consume*4)
 	return
 
-/obj/item/device/vape/attack_self(mob/user as mob)
+/obj/item/vape/attack_self(mob/user as mob)
 	switch(on) // fam
 		if(TRUE)
 			on = FALSE // not chill dude
@@ -105,7 +105,7 @@
 			reagents.handle_reactions()
 	return ..()
 
-/obj/item/device/vape/random
+/obj/item/vape/random
 	name = "VapeX RandomRoulette"
 	desc = "You can only guess the contents of this devil's toy..."
 	icon_state = "random"
@@ -113,13 +113,13 @@
 	chem_volume = 30
 	vape_clouds = 2
 
-/obj/item/device/vape/random/New()
+/obj/item/vape/random/New()
 	..()
 	var/random_reagent = pick("fuel","saltpetre","synaptizine","green_vomit","potass_iodide","msg","lexorin","mannitol","spaceacillin","cryoxadone","holywater","tea","egg","haloperidol","mutagen","omnizine","carpet","aranesp","cryostylane","chocolate","bilk","cheese","rum","blood","charcoal","coffee","ectoplasm","space_drugs","milk","mutadone","antihol","teporone","insulin","salbutamol","toxin")
 	reagents.add_reagent(random_reagent, 10)
 
 
-/obj/item/device/vape/stylish
+/obj/item/vape/stylish
 	name = "VapeNation eCig"
 	desc = "Style rules. Go green."
 	icon_state = "stylish"

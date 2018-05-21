@@ -46,7 +46,7 @@
 /datum/gear/karma/kaminacape
 	display_name = "kamina cape"
 	wl_id = "9001"
-	path = /obj/item/weapon/bedsheet/kaminacape
+	path = /obj/item/bedsheet/kaminacape
 
 /datum/gear/karma/simoncoat
 	display_name = "simon coat"

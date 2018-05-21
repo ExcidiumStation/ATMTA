@@ -1,5 +1,5 @@
 
-/obj/item/device/ticket_machine
+/obj/item/ticket_machine
 	name = "handheld ticket dispenser"
 	desc = "A device that allows for security personnel to issue tickes for violation of Space Law."
 	icon_state = "atmos"
@@ -13,7 +13,7 @@
 	var/screen = 0
 	var/ticketid = null
 
-	var/obj/item/weapon/card/id/ID
+	var/obj/item/card/id/ID
 	var/datum/money_account/linked_account
 	var/datum/money_account/D
 	var/datum/spacelaw/selecteddatum
@@ -23,11 +23,11 @@
 	var/printing = 0
 	req_access = list(access_brig)
 
-obj/item/device/ticket_machine/New()
+obj/item/ticket_machine/New()
 	..()
 	linked_account = department_accounts["Security"]
 
-/obj/item/device/ticket_machine/proc/reset() //Reset the device
+/obj/item/ticket_machine/proc/reset() //Reset the device
 	ticketamount = null
 	ID = null
 	ticketreason = null
@@ -36,8 +36,8 @@ obj/item/device/ticket_machine/New()
 	screen = 0
 	printing = 0
 
-/obj/item/device/ticket_machine/attackby(obj/O, mob/user, params) //Get credentials
-	if(istype(O, /obj/item/weapon/card/id))
+/obj/item/ticket_machine/attackby(obj/O, mob/user, params) //Get credentials
+	if(istype(O, /obj/item/card/id))
 		visible_message("<span class='info'>[user] swipes a card through [src].</span>")
 		if(ID)
 			to_chat(user, "<span class='warning'>Identification Card already scanned!</span>")
@@ -48,7 +48,7 @@ obj/item/device/ticket_machine/New()
 
 ///////////////////////////////////////////////////////PAYMENT/////////////////////////////////////////////////
 
-/obj/item/device/ticket_machine/proc/pay_ticket(mob/user)
+/obj/item/ticket_machine/proc/pay_ticket(mob/user)
 	printing = 1
 	screen = 4
 	sleep(50)
@@ -85,7 +85,7 @@ obj/item/device/ticket_machine/New()
 	screen = 0
 ///////////////////////////////////////////////////////TICKETS AND CHARGES/////////////////////////////////////////////////
 
-/obj/item/device/ticket_machine/proc/clearstringandtime()
+/obj/item/ticket_machine/proc/clearstringandtime()
 	ticketreason = ""//Empty the string list so we can fill it again
 	ticketamount = 0
 	ticketdescription = ""
@@ -95,7 +95,7 @@ obj/item/device/ticket_machine/New()
 		ticketamount += C.max_fine
 		ticketdescription += "[C.reason], "
 
-/obj/item/device/ticket_machine/proc/print_ticket(mob/user) // Ticket Reciepts
+/obj/item/ticket_machine/proc/print_ticket(mob/user) // Ticket Reciepts
 		var/ticketid = rand(1111,9999)
 		var/entry = {"<center><h3>Infringement Notice #[ticketid]<br></h3></center><small><b>Issued to:	</b>[ID.registered_name]<br><b>Rank:	</b>[ID.rank] <br><b>Issued at:	</b> [worldtime2text()]<br>
 					 <b>Charged with:	</b>[ticketreason]<br><b>Reason for the ticket:	</b>[ticketdescription]<br><b>Ticket Amount (Cr):	</b>[ticketamount]<br><b>Issuing Officer:</b>	[usr]</small>"}
@@ -103,7 +103,7 @@ obj/item/device/ticket_machine/New()
 		spawn(50)
 		playsound(loc, "sound/goonstation/machines/printer_dotmatrix.ogg", 50, 1)
 
-		var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(src))
+		var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 		P.name = "Ticket [ticketid] - [ID.registered_name] at: [worldtime2text()]"
 		P.info += {"<center>[station_name()] - Security Department</center>
 				[entry]
@@ -112,7 +112,7 @@ obj/item/device/ticket_machine/New()
 		ticket_logs.Add(P)
 		reset()
 
-/obj/item/device/ticket_machine/proc/add_charge(mob/user)
+/obj/item/ticket_machine/proc/add_charge(mob/user)
 
 	switch(alert("Select Action to Proceed.", "Space Law", "Custom Crime", "Minor Crimes", "Abort"))
 		if("Abort")
@@ -145,7 +145,7 @@ obj/item/device/ticket_machine/New()
 		clearstringandtime()
 		return 1
 
-/obj/item/device/ticket_machine/proc/remove_charge(mob/user)
+/obj/item/ticket_machine/proc/remove_charge(mob/user)
 	if(committedcrimes.len)
 		var/datum/spacelaw/removecrime = input(usr, "Please select charge to remove for [ID.registered_name]") as null|anything in committedcrimes
 		if(isnull(removecrime))
@@ -159,7 +159,7 @@ obj/item/device/ticket_machine/New()
 
 ///////////////////////////////////////////////////////UI/////////////////////////////////////////////////
 
-/obj/item/device/ticket_machine/attack_self(var/mob/user)
+/obj/item/ticket_machine/attack_self(var/mob/user)
 	if(..())
 		return
 
@@ -171,7 +171,7 @@ obj/item/device/ticket_machine/New()
 	user.set_machine(src)
 	interact(user)
 
-/obj/item/device/ticket_machine/interact(mob/user as mob)
+/obj/item/ticket_machine/interact(mob/user as mob)
 	var/dat
 
 	if(screen == 0)
@@ -181,7 +181,7 @@ obj/item/device/ticket_machine/New()
 
 	if(screen == 1)
 		dat = "<center><h1>Issued Ticket(s):</h1></center>"
-		for(var/obj/item/weapon/paper/P in ticket_logs)
+		for(var/obj/item/paper/P in ticket_logs)
 			if(ticket_logs.len)
 				dat += "[P.info]<hr>"
 			else
@@ -217,7 +217,7 @@ obj/item/device/ticket_machine/New()
 	popup.open()
 	onclose(user, "menu")
 
-/obj/item/device/ticket_machine/Topic(href, href_list) //Button actions
+/obj/item/ticket_machine/Topic(href, href_list) //Button actions
 	..()
 	if(!allowed(usr) && !usr.can_admin_interact())
 		return 1

@@ -1,4 +1,4 @@
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/cocktail
+/obj/item/reagent_containers/food/drinks/drinkingglass/cocktail
 	name = "Cocktail glass"
 	desc = "Glass used to serve cocktails"
 	icon = 'hyntatmta/icons/obj/reagent_containers.dmi'
@@ -6,7 +6,7 @@
 	volume = 20
 	materials = list(MAT_GLASS=100)
 
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/cocktail/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/drinkingglass/cocktail/on_reagent_change()
 	overlays.Cut()
 
 	if(reagents.total_volume)

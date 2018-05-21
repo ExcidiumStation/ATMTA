@@ -17,6 +17,6 @@
 
 	uniform = /obj/item/clothing/under/color/orange
 	shoes = /obj/item/clothing/shoes/orange
-	r_hand = /obj/item/weapon/storage/box/survival/prisoner
+	r_hand = /obj/item/storage/box/survival/prisoner
 	l_ear = /obj/item/clothing/mask/cigarette/random
-	pda = /obj/item/device/pda/prisoner
+	pda = /obj/item/pda/prisoner

@@ -235,7 +235,7 @@ var/global/list/round_voters = list() //Keeps track of the individuals voting fo
 					question = "End the shift?"
 					choices.Add("Initiate Crew Transfer", "Continue The Round")
 			if("custom")
-				question = html_encode(input(usr,"What is the vote for?") as text|null)
+				question = lhtml_decode(input(usr,"What is the vote for?") as text|null)
 				if(!question)	return 0
 				for(var/i=1,i<=10,i++)
 					var/option = capitalize(html_encode(input(usr,"Please enter an option or hit cancel to finish") as text|null))

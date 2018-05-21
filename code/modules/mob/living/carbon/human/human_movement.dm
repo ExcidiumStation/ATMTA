@@ -10,12 +10,12 @@
 		return 1
 
 	//Do we have a working jetpack?
-	var/obj/item/weapon/tank/jetpack/thrust
-	if(istype(back,/obj/item/weapon/tank/jetpack))
+	var/obj/item/tank/jetpack/thrust
+	if(istype(back,/obj/item/tank/jetpack))
 		thrust = back
-	else if(istype(back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/rig = back
-		for(var/obj/item/rig_module/maneuvering_jets/module in rig.installed_modules)
+	else if(istype(back,/obj/item/rig))
+		var/obj/item/rig/rig = back
+		for(var/obj/item/rig_module/device/maneuvering_jets/module in rig.installed_modules)
 			thrust = module.jets
 			break
 
@@ -39,12 +39,12 @@
 		if(!lying && !buckled && !throwing)
 			for(var/obj/item/organ/external/splinted in splinted_limbs)
 				splinted.update_splints()
-        
+
 	if(!has_gravity(loc))
 		return
-	
+
 	var/obj/item/clothing/shoes/S = shoes
-			
+
 	//Bloody footprints
 	var/turf/T = get_turf(src)
 	var/obj/item/organ/external/l_foot = get_organ("l_foot")

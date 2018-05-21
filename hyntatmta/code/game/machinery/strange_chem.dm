@@ -64,7 +64,7 @@
 
 	if(href_list["ejectBeaker"])
 		if(beaker)
-			var/obj/item/weapon/reagent_containers/glass/B = beaker
+			var/obj/item/reagent_containers/glass/B = beaker
 			B.forceMove(loc)
 			beaker = null
 	if(href_list["input"])
@@ -74,7 +74,7 @@
 				visible_message("OUT OF RANGE")
 				return
 			else
-				var/obj/item/weapon/reagent_containers/glass/X = src.beaker
+				var/obj/item/reagent_containers/glass/X = src.beaker
 				var/datum/reagents/U = X.reagents
 				if(!U)
 					if(!X.QDELETED)
